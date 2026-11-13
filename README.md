@@ -6,7 +6,8 @@ OpenRoads Designer**, and **MicroStation 2024–2026** — **without any Bentley
 
 * geometry (lines, line strings, shapes, curves, arcs/ellipses, complex chains/shapes, B-splines, cones, text, text
   nodes, cells, shared cells, tags, point strings …) with **layer (level) names**
-* symbology: colour table + extended (true) colours, weights, built-in & custom **line styles** (names/numbers),
+* symbology: colour table + extended (true) colours, weights, built-in & custom **line styles** (names/numbers, dash
+  patterns, point symbols),
   ByLevel/ByCell resolution, level overrides, display priority, fill
 * **feature metadata**: EC instances (OpenRoads civil data, GIS feature classes, item-type style data from binary EC XML
   XAttributes), EC relationships, **tags** (title-block data) resolved to their target elements, string linkages,
@@ -103,14 +104,18 @@ plotted words and its own PDF plots overlap the official sheets with a median in
 ## Status / known gaps
 
 Decoded and verified: container, element headers, display headers, all common geometry, complex/cell/shared-cell
-structure, text, levels (incl. symbology & flags), fonts, line style names/numbers, units & global origin, extended
-colours, XAttributes, binary EC XML, tags, reference attachments, V7.
+structure, text, levels (incl. symbology & flags), fonts, line style names/numbers, custom line style definitions
+(strokes, compounds, point symbols: 100% vs MicroStation's line style API; drawn dash patterns and phases match its
+stroked geometry), units & global origin, extended colours, XAttributes, binary EC XML, tags, reference attachments,
+model GCS (Lambert conformal conic and lat/long; lon/lat within ≈ 5 mm of MicroStation on the 2 corpus files that
+carry one), V7.
 
 Dimensions (V8): definition points, type, values, unit formatting, override/text-block texts decode (100% vs the
 MicroStation oracle on 4 files); linear dimensions and notes are drawn (extension/dimension lines, arrows/dots, text) —
 angular/radial kinds and V7 dimensions only partially (`docs/FORMAT-V8.md §4.2`).
 
-Not yet: custom line style **stroke definitions** (custom styles currently plot continuous), multiline
-graphics (MicroStation regenerates them from definitions), polyface mesh payloads,
-raster attachments, GCS auto-detection from the file, level "frozen" flag, sheet vs design model type. See
-`docs/FORMAT-V8.md §9`.
+Not yet: parts of custom line style rendering (compound children at perpendicular offsets are drawn on the centre
+line; tapers/half widths, centre-stretch and single-segment modes, device-unit styles; styles defined only in external
+dgnlibs/RSC files plot continuous), multiline graphics (MicroStation regenerates them from definitions), polyface mesh
+payloads, raster attachments, GCS parameters for non-Lambert projections (TM, UTM …) plus reference GCS and vertical
+datum, level "frozen" flag, sheet vs design model type. See `docs/FORMAT-V8.md §9`.
