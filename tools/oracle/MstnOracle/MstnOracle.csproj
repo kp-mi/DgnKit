@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Ground-truth oracle: drives the locally installed, licensed MicroStation via COM automation and dumps
+    models/levels/elements as JSON for DgnKit's comparison tests. Windows + MicroStation only; not part of the library.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <MstnDir Condition="'$(MstnDir)' == ''">C:\Program Files\Bentley\MicroStation 2026\MicroStation</MstnDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- run inside MicroStation by the line-styles mode -->
+    <None Include="..\linestyle_oracle.py" Link="linestyle_oracle.py" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Bentley.Interop.MicroStationDGN">
+      <HintPath>$(MstnDir)\Assemblies\Bentley.Interop.MicroStationDGN.dll</HintPath>
+      <EmbedInteropTypes>false</EmbedInteropTypes>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+</Project>

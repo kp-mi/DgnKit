@@ -1,0 +1,12 @@
+bin/
+obj/
+*.user
+.vs/
+# downloaded public corpus (re-create with tools/fetch-corpus.ps1)
+testdata/corpus/
+testdata/*.log
+testdata/tmp.json
+testdata/*.dgnkit.json
+# generated comparison outputs (re-create with dotnet test)
+testdata/reports/pdf/
+testdata/reports/exports/

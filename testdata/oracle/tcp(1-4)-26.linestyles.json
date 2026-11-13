@@ -1,0 +1,65 @@
+{
+ "generator": "MicroStation DgnPlatform line style API (linestyle_oracle.py)",
+ "lineStyles": [
+  {
+   "name": "Continuous",
+   "number": -1,
+   "entryNumber": 0,
+   "location": 2,
+   "source": "C:\\Users\\Kaustubh Page\\AppData\\Local\\Temp\\claude\\67c21fd2cc65cc64\\db5fee86-1b23-48f3-ba05-4b89cd552946\\scratchpad\\ls-oracle-in\\tcp(1-4)-26.dgn",
+   "unitsType": 1,
+   "styleScale": 0.0,
+   "physical": false,
+   "snappable": false,
+   "root": {
+    "type": 3,
+    "class": "LsLineCodeComponent",
+    "name": "Continuous",
+    "componentId": 34083,
+    "phaseMode": 3,
+    "phase": 0.0,
+    "iterationLimit": false,
+    "iterations": 0,
+    "singleSegment": true,
+    "strokes": []
+   }
+  }
+ ],
+ "file": "C:\\Users\\Kaustubh Page\\AppData\\Local\\Temp\\claude\\67c21fd2cc65cc64\\db5fee86-1b23-48f3-ba05-4b89cd552946\\scratchpad\\ls-oracle-in\\tcp(1-4)-26.dgn",
+ "uorPerMaster": 12000.0,
+ "model": "Default",
+ "modelInfo": {
+  "lineStyleScale": 1.0,
+  "lineStyleScaleMode": 0,
+  "annotationScale": 1.0,
+  "uorPerMeter": 39370.0,
+  "uorPerStorage": 12000.0
+ },
+ "samples": [],
+ "models": {
+  "Default": {
+   "lineStyleScale": 1.0,
+   "lineStyleScaleMode": 0,
+   "annotationScale": 1.0,
+   "uorPerMeter": 39370.0,
+   "uorPerStorage": 12000.0,
+   "modelType": 0
+  },
+  "TCP(1-4)-26_1": {
+   "lineStyleScale": 480.0,
+   "lineStyleScaleMode": 1,
+   "annotationScale": 480.0,
+   "uorPerMeter": 3280.8333333333335,
+   "uorPerStorage": 1000.0,
+   "modelType": 3
+  },
+  "TCP(1-4)-26_1 [Sheet]": {
+   "lineStyleScale": 1.0,
+   "lineStyleScaleMode": 1,
+   "annotationScale": 1.0,
+   "uorPerMeter": 3280.8333333333335,
+   "uorPerStorage": 1000.0,
+   "modelType": 1
+  }
+ }
+}

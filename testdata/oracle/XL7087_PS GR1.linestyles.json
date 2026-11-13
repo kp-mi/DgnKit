@@ -1,0 +1,3039 @@
+{
+ "generator": "MicroStation DgnPlatform line style API (linestyle_oracle.py)",
+ "lineStyles": [
+  {
+   "name": "Continuous",
+   "number": -7,
+   "entryNumber": 0,
+   "location": 2,
+   "source": "C:\\Users\\Kaustubh Page\\AppData\\Local\\Temp\\claude\\67c21fd2cc65cc64\\db5fee86-1b23-48f3-ba05-4b89cd552946\\scratchpad\\ls-oracle-in\\XL7087_PS GR1.dgn",
+   "unitsType": 1,
+   "styleScale": 0.0,
+   "physical": false,
+   "snappable": false,
+   "root": {
+    "type": 3,
+    "class": "LsLineCodeComponent",
+    "name": "Continuous",
+    "componentId": 2154,
+    "phaseMode": 3,
+    "phase": 0.0,
+    "iterationLimit": false,
+    "iterations": 0,
+    "singleSegment": true,
+    "strokes": []
+   }
+  },
+  {
+   "name": "RD_BR_BarrierCenter",
+   "number": -6,
+   "entryNumber": 0,
+   "location": 2,
+   "source": "C:\\Users\\Kaustubh Page\\AppData\\Local\\Temp\\claude\\67c21fd2cc65cc64\\db5fee86-1b23-48f3-ba05-4b89cd552946\\scratchpad\\ls-oracle-in\\XL7087_PS GR1.dgn",
+   "unitsType": 1,
+   "styleScale": 0.0,
+   "physical": false,
+   "snappable": true,
+   "root": {
+    "type": 2,
+    "class": "LsCompoundComponent",
+    "name": "RD_BR_BarrierCenter",
+    "componentId": 1948,
+    "components": [
+     {
+      "type": 3,
+      "class": "LsLineCodeComponent",
+      "name": "Barrier_Roadway_Exist",
+      "componentId": 1949,
+      "phaseMode": 0,
+      "phase": 0.0,
+      "iterationLimit": false,
+      "iterations": 0,
+      "singleSegment": false,
+      "strokes": [
+       {
+        "length": 25.0,
+        "isDash": true,
+        "startWidth": 16.666666,
+        "endWidth": 16.666666,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": true,
+        "rightWidth": true,
+        "capMode": 1
+       },
+       {
+        "length": 8.333333,
+        "isDash": false,
+        "startWidth": 0.0,
+        "endWidth": 0.0,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       },
+       {
+        "length": 58.33333300000001,
+        "isDash": true,
+        "startWidth": 16.666666,
+        "endWidth": 16.666666,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": true,
+        "rightWidth": true,
+        "capMode": 1
+       },
+       {
+        "length": 8.333333,
+        "isDash": false,
+        "startWidth": 0.0,
+        "endWidth": 0.0,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       },
+       {
+        "length": 25.0,
+        "isDash": true,
+        "startWidth": 16.666666,
+        "endWidth": 16.666666,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": true,
+        "rightWidth": true,
+        "capMode": 1
+       }
+      ],
+      "offset": 0.0
+     },
+     {
+      "type": 4,
+      "class": "LsLinePointComponent",
+      "name": "Barrier_Roadway_End",
+      "componentId": 1950,
+      "lineCode": {
+       "type": 3,
+       "class": "LsLineCodeComponent",
+       "name": "Barrier_Roadway_New",
+       "componentId": 1951,
+       "phaseMode": 0,
+       "phase": 0.0,
+       "iterationLimit": false,
+       "iterations": 0,
+       "singleSegment": false,
+       "strokes": [
+        {
+         "length": 125.0,
+         "isDash": false,
+         "startWidth": 0.0,
+         "endWidth": 0.0,
+         "stretchable": false,
+         "invertStart": false,
+         "invertEnd": false,
+         "bypassCorner": false,
+         "leftWidth": false,
+         "rightWidth": false,
+         "capMode": 1
+        }
+       ]
+      },
+      "symbols": [
+       {
+        "strokeNumber": 0,
+        "location": 0,
+        "strokeLocation": 1,
+        "rotation": 0,
+        "xOffset": 0.0,
+        "yOffset": 0.0,
+        "angle": 0.0,
+        "symbol": {
+         "type": 1,
+         "class": "LsPointSymbolComponent",
+         "name": "Barrier_End",
+         "componentId": 1952,
+         "unitScale": 10000.0,
+         "is3d": true,
+         "suppressScale": false
+        }
+       }
+      ],
+      "offset": 0.0
+     }
+    ]
+   }
+  },
+  {
+   "name": "RD_BR_GuardrailNew",
+   "number": -5,
+   "entryNumber": 0,
+   "location": 2,
+   "source": "C:\\Users\\Kaustubh Page\\AppData\\Local\\Temp\\claude\\67c21fd2cc65cc64\\db5fee86-1b23-48f3-ba05-4b89cd552946\\scratchpad\\ls-oracle-in\\XL7087_PS GR1.dgn",
+   "unitsType": 1,
+   "styleScale": 0.0,
+   "physical": false,
+   "snappable": true,
+   "root": {
+    "type": 2,
+    "class": "LsCompoundComponent",
+    "name": "RD_BR_GuardrailNew",
+    "componentId": 1884,
+    "components": [
+     {
+      "type": 3,
+      "class": "LsLineCodeComponent",
+      "name": "Guardrail_New",
+      "componentId": 1885,
+      "phaseMode": 0,
+      "phase": 0.0,
+      "iterationLimit": false,
+      "iterations": 0,
+      "singleSegment": false,
+      "strokes": [
+       {
+        "length": 20.833333000000003,
+        "isDash": true,
+        "startWidth": 0.0,
+        "endWidth": 0.0,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       },
+       {
+        "length": 41.666666000000006,
+        "isDash": false,
+        "startWidth": 0.0,
+        "endWidth": 0.0,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       },
+       {
+        "length": 166.66666600000002,
+        "isDash": true,
+        "startWidth": 0.0,
+        "endWidth": 0.0,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       }
+      ],
+      "offset": 0.0
+     },
+     {
+      "type": 4,
+      "class": "LsLinePointComponent",
+      "name": "Guardrail",
+      "componentId": 1887,
+      "lineCode": {
+       "type": 3,
+       "class": "LsLineCodeComponent",
+       "name": "Guardrail_New",
+       "componentId": 1885,
+       "phaseMode": 0,
+       "phase": 0.0,
+       "iterationLimit": false,
+       "iterations": 0,
+       "singleSegment": false,
+       "strokes": [
+        {
+         "length": 20.833333000000003,
+         "isDash": true,
+         "startWidth": 0.0,
+         "endWidth": 0.0,
+         "stretchable": false,
+         "invertStart": false,
+         "invertEnd": false,
+         "bypassCorner": false,
+         "leftWidth": false,
+         "rightWidth": false,
+         "capMode": 0
+        },
+        {
+         "length": 41.666666000000006,
+         "isDash": false,
+         "startWidth": 0.0,
+         "endWidth": 0.0,
+         "stretchable": false,
+         "invertStart": false,
+         "invertEnd": false,
+         "bypassCorner": false,
+         "leftWidth": false,
+         "rightWidth": false,
+         "capMode": 0
+        },
+        {
+         "length": 166.66666600000002,
+         "isDash": true,
+         "startWidth": 0.0,
+         "endWidth": 0.0,
+         "stretchable": false,
+         "invertStart": false,
+         "invertEnd": false,
+         "bypassCorner": false,
+         "leftWidth": false,
+         "rightWidth": false,
+         "capMode": 0
+        }
+       ]
+      },
+      "symbols": [
+       {
+        "strokeNumber": 1,
+        "location": 0,
+        "strokeLocation": 3,
+        "rotation": 0,
+        "xOffset": 0.0,
+        "yOffset": 0.0,
+        "angle": 0.0,
+        "symbol": {
+         "type": 1,
+         "class": "LsPointSymbolComponent",
+         "name": "Guardrail_Tic",
+         "componentId": 1888,
+         "unitScale": 10000.0,
+         "is3d": true,
+         "suppressScale": false
+        }
+       }
+      ],
+      "offset": 0.0
+     }
+    ]
+   }
+  },
+  {
+   "name": "RD_BR_Guardrail",
+   "number": -4,
+   "entryNumber": 0,
+   "location": 2,
+   "source": "C:\\Users\\Kaustubh Page\\AppData\\Local\\Temp\\claude\\67c21fd2cc65cc64\\db5fee86-1b23-48f3-ba05-4b89cd552946\\scratchpad\\ls-oracle-in\\XL7087_PS GR1.dgn",
+   "unitsType": 1,
+   "styleScale": 0.0,
+   "physical": false,
+   "snappable": true,
+   "root": {
+    "type": 2,
+    "class": "LsCompoundComponent",
+    "name": "RD_BR_Guardrail",
+    "componentId": 1874,
+    "components": [
+     {
+      "type": 3,
+      "class": "LsLineCodeComponent",
+      "name": "Guardrail_Exist",
+      "componentId": 1875,
+      "phaseMode": 0,
+      "phase": 0.0,
+      "iterationLimit": false,
+      "iterations": 0,
+      "singleSegment": false,
+      "strokes": [
+       {
+        "length": 20.833333000000003,
+        "isDash": true,
+        "startWidth": 0.0,
+        "endWidth": 0.0,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       },
+       {
+        "length": 41.666666000000006,
+        "isDash": false,
+        "startWidth": 0.0,
+        "endWidth": 0.0,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       },
+       {
+        "length": 62.5,
+        "isDash": true,
+        "startWidth": 0.0,
+        "endWidth": 0.0,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       },
+       {
+        "length": 41.666666000000006,
+        "isDash": false,
+        "startWidth": 0.0,
+        "endWidth": 0.0,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       },
+       {
+        "length": 62.5,
+        "isDash": true,
+        "startWidth": 0.0,
+        "endWidth": 0.0,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       }
+      ],
+      "offset": 0.0
+     },
+     {
+      "type": 4,
+      "class": "LsLinePointComponent",
+      "name": "Guardrail",
+      "componentId": 1876,
+      "lineCode": {
+       "type": 3,
+       "class": "LsLineCodeComponent",
+       "name": "Guardrail_New",
+       "componentId": 1877,
+       "phaseMode": 0,
+       "phase": 0.0,
+       "iterationLimit": false,
+       "iterations": 0,
+       "singleSegment": false,
+       "strokes": [
+        {
+         "length": 20.833333000000003,
+         "isDash": true,
+         "startWidth": 0.0,
+         "endWidth": 0.0,
+         "stretchable": false,
+         "invertStart": false,
+         "invertEnd": false,
+         "bypassCorner": false,
+         "leftWidth": false,
+         "rightWidth": false,
+         "capMode": 0
+        },
+        {
+         "length": 41.666666000000006,
+         "isDash": false,
+         "startWidth": 0.0,
+         "endWidth": 0.0,
+         "stretchable": false,
+         "invertStart": false,
+         "invertEnd": false,
+         "bypassCorner": false,
+         "leftWidth": false,
+         "rightWidth": false,
+         "capMode": 0
+        },
+        {
+         "length": 166.66666600000002,
+         "isDash": true,
+         "startWidth": 0.0,
+         "endWidth": 0.0,
+         "stretchable": false,
+         "invertStart": false,
+         "invertEnd": false,
+         "bypassCorner": false,
+         "leftWidth": false,
+         "rightWidth": false,
+         "capMode": 0
+        }
+       ]
+      },
+      "symbols": [
+       {
+        "strokeNumber": 1,
+        "location": 0,
+        "strokeLocation": 3,
+        "rotation": 0,
+        "xOffset": 0.0,
+        "yOffset": 0.0,
+        "angle": 0.0,
+        "symbol": {
+         "type": 1,
+         "class": "LsPointSymbolComponent",
+         "name": "Guardrail_Tic",
+         "componentId": 1878,
+         "unitScale": 10000.0,
+         "is3d": true,
+         "suppressScale": false
+        }
+       }
+      ],
+      "offset": 0.0
+     }
+    ]
+   }
+  },
+  {
+   "name": "AA_TM_FullTerminator",
+   "number": -3
+  },
+  {
+   "name": "AA_TM_DoubleTerminator",
+   "number": -2
+  },
+  {
+   "name": "AA_TM_Double",
+   "number": -1,
+   "entryNumber": 0,
+   "location": 2,
+   "source": "C:\\Users\\Kaustubh Page\\AppData\\Local\\Temp\\claude\\67c21fd2cc65cc64\\db5fee86-1b23-48f3-ba05-4b89cd552946\\scratchpad\\ls-oracle-in\\XL7087_PS GR1.dgn",
+   "unitsType": 1,
+   "styleScale": 0.0,
+   "physical": false,
+   "snappable": true,
+   "root": {
+    "type": 2,
+    "class": "LsCompoundComponent",
+    "name": "AA_TM_Double",
+    "componentId": 1769,
+    "components": [
+     {
+      "type": 3,
+      "class": "LsLineCodeComponent",
+      "name": "AA_Terminator",
+      "componentId": 1770,
+      "phaseMode": 0,
+      "phase": 0.0,
+      "iterationLimit": false,
+      "iterations": 0,
+      "singleSegment": false,
+      "strokes": [],
+      "offset": 0.0
+     },
+     {
+      "type": 4,
+      "class": "LsLinePointComponent",
+      "name": "AA_TM_Double",
+      "componentId": 1781,
+      "lineCode": {
+       "type": 3,
+       "class": "LsLineCodeComponent",
+       "name": "AA_Terminator",
+       "componentId": 1770,
+       "phaseMode": 0,
+       "phase": 0.0,
+       "iterationLimit": false,
+       "iterations": 0,
+       "singleSegment": false,
+       "strokes": []
+      },
+      "symbols": [
+       {
+        "strokeNumber": 0,
+        "location": 1,
+        "strokeLocation": 3,
+        "rotation": 0,
+        "xOffset": 0.0,
+        "yOffset": 0.0,
+        "angle": 0.0,
+        "symbol": {
+         "type": 1,
+         "class": "LsPointSymbolComponent",
+         "name": "AA_TM_Double_Begin",
+         "componentId": 1782,
+         "unitScale": 1.0,
+         "is3d": true,
+         "suppressScale": false
+        }
+       },
+       {
+        "strokeNumber": 0,
+        "location": 2,
+        "strokeLocation": 3,
+        "rotation": 0,
+        "xOffset": 0.0,
+        "yOffset": 0.0,
+        "angle": 0.0,
+        "symbol": {
+         "type": 1,
+         "class": "LsPointSymbolComponent",
+         "name": "AA_TM_Double_End",
+         "componentId": 1784,
+         "unitScale": 1.0,
+         "is3d": true,
+         "suppressScale": false
+        }
+       }
+      ],
+      "offset": 0.0
+     }
+    ]
+   }
+  }
+ ],
+ "file": "C:\\Users\\Kaustubh Page\\AppData\\Local\\Temp\\claude\\67c21fd2cc65cc64\\db5fee86-1b23-48f3-ba05-4b89cd552946\\scratchpad\\ls-oracle-in\\XL7087_PS GR1.dgn",
+ "uorPerMaster": 10000.0,
+ "model": "Default",
+ "modelInfo": {
+  "lineStyleScale": 1200.0,
+  "lineStyleScaleMode": 1,
+  "annotationScale": 1200.0,
+  "uorPerMeter": 32808.333333333336,
+  "uorPerStorage": 10000.0
+ },
+ "samples": [
+  {
+   "elementId": 1789,
+   "model": "guardrail 4",
+   "type": 3,
+   "style": -1,
+   "byLevel": false,
+   "params": {
+    "modifiers": 0,
+    "scale": 1.0,
+    "dashScale": 1.0,
+    "gapScale": 1.0,
+    "startWidth": 0.0,
+    "endWidth": 0.0,
+    "distPhase": 0.0,
+    "fractPhase": 0.0
+   },
+   "source": [
+    {
+     "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+     "length": [
+      true,
+      5997.205181546184
+     ],
+     "start": [
+      5440.90808071587,
+      6423.018334792202,
+      0.0
+     ],
+     "end": [
+      11438.113262262053,
+      6423.018334792202,
+      0.0
+     ]
+    }
+   ],
+   "dropStatus": 0,
+   "dropped": [
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        5997.205181546184
+       ],
+       "start": [
+        5440.90808071587,
+        6423.018334792202,
+        0.0
+       ],
+       "end": [
+        11438.113262262053,
+        6423.018334792202,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        159.94437458582212
+       ],
+       "start": [
+        5440.90808071587,
+        6423.018334792202,
+        0.0
+       ],
+       "end": [
+        5440.90808071587,
+        6423.018334792202,
+        0.0
+       ],
+       "points": [
+        [
+         5440.90808071587,
+         6423.018334792202,
+         0.0
+        ],
+        [
+         5506.42891402561,
+         6410.168334731107,
+         0.0
+        ],
+        [
+         5503.395580601131,
+         6423.018334792202,
+         0.0
+        ],
+        [
+         5506.42891402561,
+         6435.868334853297,
+         0.0
+        ],
+        [
+         5440.90808071587,
+         6423.018334792202,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        159.94437458582212
+       ],
+       "start": [
+        11438.113262258328,
+        6423.018334799653,
+        0.0
+       ],
+       "end": [
+        11438.113262258328,
+        6423.018334799653,
+        0.0
+       ],
+       "points": [
+        [
+         11438.113262258328,
+         6423.018334799653,
+         0.0
+        ],
+        [
+         11372.592428948588,
+         6435.868334860747,
+         0.0
+        ],
+        [
+         11375.625762373067,
+         6423.018334799653,
+         0.0
+        ],
+        [
+         11372.592428948588,
+         6410.168334738558,
+         0.0
+        ],
+        [
+         11438.113262258328,
+         6423.018334799653,
+         0.0
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "elementId": 1852,
+   "model": "guardrail 4",
+   "type": 3,
+   "style": -1,
+   "byLevel": false,
+   "params": {
+    "modifiers": 0,
+    "scale": 1.0,
+    "dashScale": 1.0,
+    "gapScale": 1.0,
+    "startWidth": 0.0,
+    "endWidth": 0.0,
+    "distPhase": 0.0,
+    "fractPhase": 0.0
+   },
+   "source": [
+    {
+     "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+     "length": [
+      true,
+      5997.205181546184
+     ],
+     "start": [
+      5440.90808071587,
+      5940.710363556114,
+      0.0
+     ],
+     "end": [
+      11438.113262262053,
+      5940.710363556114,
+      0.0
+     ]
+    }
+   ],
+   "dropStatus": 0,
+   "dropped": [
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        5997.205181546184
+       ],
+       "start": [
+        5440.90808071587,
+        5940.710363556114,
+        0.0
+       ],
+       "end": [
+        11438.113262262053,
+        5940.710363556114,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        159.94437458582212
+       ],
+       "start": [
+        5440.90808071587,
+        5940.710363556114,
+        0.0
+       ],
+       "end": [
+        5440.90808071587,
+        5940.710363556114,
+        0.0
+       ],
+       "points": [
+        [
+         5440.90808071587,
+         5940.710363556114,
+         0.0
+        ],
+        [
+         5506.42891402561,
+         5927.86036349502,
+         0.0
+        ],
+        [
+         5503.395580601131,
+         5940.710363556114,
+         0.0
+        ],
+        [
+         5506.42891402561,
+         5953.560363617209,
+         0.0
+        ],
+        [
+         5440.90808071587,
+         5940.710363556114,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        159.94437458582212
+       ],
+       "start": [
+        11438.113262258328,
+        5940.710363563565,
+        0.0
+       ],
+       "end": [
+        11438.113262258328,
+        5940.710363563565,
+        0.0
+       ],
+       "points": [
+        [
+         11438.113262258328,
+         5940.710363563565,
+         0.0
+        ],
+        [
+         11372.592428948588,
+         5953.56036362466,
+         0.0
+        ],
+        [
+         11375.625762373067,
+         5940.710363563565,
+         0.0
+        ],
+        [
+         11372.592428948588,
+         5927.86036350247,
+         0.0
+        ],
+        [
+         11438.113262258328,
+         5940.710363563565,
+         0.0
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "elementId": 1883,
+   "model": "guardrail 4",
+   "type": 3,
+   "style": -4,
+   "byLevel": false,
+   "params": {
+    "modifiers": 33,
+    "scale": 1.5263090120100402,
+    "dashScale": 1.0,
+    "gapScale": 1.0,
+    "startWidth": 0.0,
+    "endWidth": 0.0,
+    "distPhase": 0.006859532977526966,
+    "fractPhase": 0.0
+   },
+   "source": [
+    {
+     "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+     "length": [
+      true,
+      824.5505179102838
+     ],
+     "start": [
+      11438.113262262053,
+      6975.343475424168,
+      0.0
+     ],
+     "end": [
+      12262.663780172337,
+      6975.343475424168,
+      0.0
+     ]
+    }
+   ],
+   "dropStatus": 0,
+   "dropped": [
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        86.09095495715155
+       ],
+       "start": [
+        11438.113262262053,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        11524.204217219205,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        95.39431325062833
+       ],
+       "start": [
+        11587.800425035417,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        11683.194738286045,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908105986
+       ],
+       "start": [
+        11683.194738286045,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        11714.992842194151,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        95.39431325062833
+       ],
+       "start": [
+        11778.589050010363,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        11873.983363260992,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        95.39431325062833
+       ],
+       "start": [
+        11937.579571077204,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        12032.973884327832,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908105986
+       ],
+       "start": [
+        12032.973884327832,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        12064.771988235938,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        95.39431325062833
+       ],
+       "start": [
+        12128.36819605215,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        12223.762509302778,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        11746.790946102257,
+        6943.545371004748,
+        0.0
+       ],
+       "end": [
+        11746.790946102257,
+        7007.141579843588,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        12096.570092144042,
+        6943.545371004748,
+        0.0
+       ],
+       "end": [
+        12096.570092144042,
+        7007.141579843588,
+        0.0
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "elementId": 1892,
+   "model": "guardrail 4",
+   "type": 3,
+   "style": -5,
+   "byLevel": true,
+   "params": {
+    "modifiers": 1,
+    "scale": 1.5263090120100402,
+    "dashScale": 1.0,
+    "gapScale": 1.0,
+    "startWidth": 0.0,
+    "endWidth": 0.0,
+    "distPhase": 0.0,
+    "fractPhase": 0.0
+   },
+   "source": [
+    {
+     "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+     "length": [
+      true,
+      5997.205181546182
+     ],
+     "start": [
+      11438.113262262053,
+      6975.343475424168,
+      0.0
+     ],
+     "end": [
+      5440.908080715872,
+      6975.343475424168,
+      0.0
+     ]
+    }
+   ],
+   "dropStatus": 0,
+   "dropped": [
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908105986
+       ],
+       "start": [
+        11438.113262262053,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        11406.315158353947,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        254.3848343174668
+       ],
+       "start": [
+        11342.718950537736,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        11088.334116220269,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908105986
+       ],
+       "start": [
+        11088.334116220269,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        11056.536012312163,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        254.3848343174668
+       ],
+       "start": [
+        10992.93980449595,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        10738.554970178484,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908105986
+       ],
+       "start": [
+        10738.554970178484,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        10706.756866270378,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        254.3848343174668
+       ],
+       "start": [
+        10643.160658454166,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        10388.7758241367,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908105986
+       ],
+       "start": [
+        10388.7758241367,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        10356.977720228593,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        254.3848343174668
+       ],
+       "start": [
+        10293.381512412381,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        10038.996678094914,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908105986
+       ],
+       "start": [
+        10038.996678094914,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        10007.198574186808,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        254.3848343174668
+       ],
+       "start": [
+        9943.602366370596,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        9689.21753205313,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908105986
+       ],
+       "start": [
+        9689.21753205313,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        9657.419428145024,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        254.3848343174668
+       ],
+       "start": [
+        9593.823220328812,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        9339.438386011345,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908105986
+       ],
+       "start": [
+        9339.438386011345,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        9307.640282103239,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        254.3848343174668
+       ],
+       "start": [
+        9244.044074287027,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        8989.65923996956,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908105986
+       ],
+       "start": [
+        8989.65923996956,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        8957.861136061454,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        254.3848343174668
+       ],
+       "start": [
+        8894.264928245242,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        8639.880093927775,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908105986
+       ],
+       "start": [
+        8639.880093927775,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        8608.08199001967,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        254.3848343174668
+       ],
+       "start": [
+        8544.485782203457,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        8290.10094788599,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908105986
+       ],
+       "start": [
+        8290.10094788599,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        8258.302843977885,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        254.38483431746772
+       ],
+       "start": [
+        8194.706636161673,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        7940.321801844205,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908105986
+       ],
+       "start": [
+        7940.321801844205,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        7908.523697936099,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        254.38483431746772
+       ],
+       "start": [
+        7844.927490119887,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        7590.542655802419,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908105986
+       ],
+       "start": [
+        7590.542655802419,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        7558.744551894313,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        254.38483431746772
+       ],
+       "start": [
+        7495.148344078101,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        7240.7635097606335,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908105986
+       ],
+       "start": [
+        7240.7635097606335,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        7208.9654058525275,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        254.38483431746772
+       ],
+       "start": [
+        7145.3691980363155,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        6890.984363718848,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908105986
+       ],
+       "start": [
+        6890.984363718848,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        6859.186259810742,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        254.38483431746772
+       ],
+       "start": [
+        6795.59005199453,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        6541.205217677062,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908105986
+       ],
+       "start": [
+        6541.205217677062,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        6509.407113768956,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        254.38483431746772
+       ],
+       "start": [
+        6445.810905952744,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        6191.4260716352765,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908105986
+       ],
+       "start": [
+        6191.4260716352765,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        6159.6279677271705,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        254.38483431746772
+       ],
+       "start": [
+        6096.0317599109585,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        5841.646925593491,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908105986
+       ],
+       "start": [
+        5841.646925593491,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        5809.848821685385,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        254.38483431746772
+       ],
+       "start": [
+        5746.252613869173,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        5491.867779551705,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908105986
+       ],
+       "start": [
+        5491.867779551705,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        5460.069675643599,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        11374.517054445841,
+        7007.141579843588,
+        0.0
+       ],
+       "end": [
+        11374.517054445841,
+        6943.545371004748,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        11024.737908404057,
+        7007.141579843588,
+        0.0
+       ],
+       "end": [
+        11024.737908404057,
+        6943.545371004748,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        10674.958762362272,
+        7007.141579843588,
+        0.0
+       ],
+       "end": [
+        10674.958762362272,
+        6943.545371004748,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        10325.179616320487,
+        7007.141579843588,
+        0.0
+       ],
+       "end": [
+        10325.179616320487,
+        6943.545371004748,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        9975.400470278702,
+        7007.141579843588,
+        0.0
+       ],
+       "end": [
+        9975.400470278702,
+        6943.545371004748,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        9625.621324236918,
+        7007.141579843588,
+        0.0
+       ],
+       "end": [
+        9625.621324236918,
+        6943.545371004748,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        9275.842178195133,
+        7007.141579843588,
+        0.0
+       ],
+       "end": [
+        9275.842178195133,
+        6943.545371004748,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        8926.063032153348,
+        7007.141579843588,
+        0.0
+       ],
+       "end": [
+        8926.063032153348,
+        6943.545371004748,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        8576.283886111563,
+        7007.141579843588,
+        0.0
+       ],
+       "end": [
+        8576.283886111563,
+        6943.545371004748,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        8226.504740069779,
+        7007.141579843588,
+        0.0
+       ],
+       "end": [
+        8226.504740069779,
+        6943.545371004748,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        7876.725594027993,
+        7007.141579843588,
+        0.0
+       ],
+       "end": [
+        7876.725594027993,
+        6943.545371004748,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        7526.946447986207,
+        7007.141579843588,
+        0.0
+       ],
+       "end": [
+        7526.946447986207,
+        6943.545371004748,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        7177.1673019444215,
+        7007.141579843588,
+        0.0
+       ],
+       "end": [
+        7177.1673019444215,
+        6943.545371004748,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        6827.388155902636,
+        7007.141579843588,
+        0.0
+       ],
+       "end": [
+        6827.388155902636,
+        6943.545371004748,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        6477.60900986085,
+        7007.141579843588,
+        0.0
+       ],
+       "end": [
+        6477.60900986085,
+        6943.545371004748,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        6127.8298638190645,
+        7007.141579843588,
+        0.0
+       ],
+       "end": [
+        6127.8298638190645,
+        6943.545371004748,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        5778.050717777279,
+        7007.141579843588,
+        0.0
+       ],
+       "end": [
+        5778.050717777279,
+        6943.545371004748,
+        0.0
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "elementId": 1893,
+   "model": "guardrail 4",
+   "type": 3,
+   "style": -4,
+   "byLevel": false,
+   "params": {
+    "modifiers": 1,
+    "scale": 1.5263090120100402,
+    "dashScale": 1.0,
+    "gapScale": 1.0,
+    "startWidth": 0.0,
+    "endWidth": 0.0,
+    "distPhase": 0.0,
+    "fractPhase": 0.0
+   },
+   "source": [
+    {
+     "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+     "length": [
+      true,
+      932.4904374079542
+     ],
+     "start": [
+      5440.908080715872,
+      6975.343475424168,
+      0.0
+     ],
+     "end": [
+      4508.417643307917,
+      6975.343475424168,
+      0.0
+     ]
+    }
+   ],
+   "dropStatus": 0,
+   "dropped": [
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908105986
+       ],
+       "start": [
+        5440.908080715872,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        5409.109976807766,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        95.39431325062742
+       ],
+       "start": [
+        5345.513768991554,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        5250.119455740926,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        95.39431325062742
+       ],
+       "start": [
+        5186.523247924714,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        5091.128934674087,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908105986
+       ],
+       "start": [
+        5091.128934674087,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        5059.330830765981,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        95.39431325062742
+       ],
+       "start": [
+        4995.734622949769,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        4900.3403096991415,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        95.39431325062742
+       ],
+       "start": [
+        4836.7441018829295,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        4741.349788632302,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908105986
+       ],
+       "start": [
+        4741.349788632302,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        4709.551684724196,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        95.39431325062742
+       ],
+       "start": [
+        4645.955476907984,
+        6975.343475424168,
+        0.0
+       ],
+       "end": [
+        4550.561163657357,
+        6975.343475424168,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        5377.31187289966,
+        7007.141579843588,
+        0.0
+       ],
+       "end": [
+        5377.31187289966,
+        6943.545371004748,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        5027.532726857874,
+        7007.141579843588,
+        0.0
+       ],
+       "end": [
+        5027.532726857874,
+        6943.545371004748,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        4677.753580816088,
+        7007.141579843588,
+        0.0
+       ],
+       "end": [
+        4677.753580816088,
+        6943.545371004748,
+        0.0
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "elementId": 1946,
+   "model": "guardrail 4",
+   "type": 3,
+   "style": -4,
+   "byLevel": false,
+   "params": {
+    "modifiers": 1,
+    "scale": 1.5263090120100402,
+    "dashScale": 1.0,
+    "gapScale": 1.0,
+    "startWidth": 0.0,
+    "endWidth": 0.0,
+    "distPhase": 0.0,
+    "fractPhase": 0.0
+   },
+   "source": [
+    {
+     "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+     "length": [
+      true,
+      623.5812873593786
+     ],
+     "start": [
+      1812.5704839288592,
+      7542.818382887012,
+      0.0
+     ],
+     "end": [
+      1188.9891965694806,
+      7542.818382887012,
+      0.0
+     ]
+    }
+   ],
+   "dropStatus": 0,
+   "dropped": [
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908106214
+       ],
+       "start": [
+        1812.5704839288592,
+        7542.818382887012,
+        0.0
+       ],
+       "end": [
+        1780.772380020753,
+        7542.818382887012,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        95.39431325062742
+       ],
+       "start": [
+        1717.1761722045405,
+        7542.818382887012,
+        0.0
+       ],
+       "end": [
+        1621.7818589539131,
+        7542.818382887012,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        95.39431325062742
+       ],
+       "start": [
+        1558.1856511377007,
+        7542.818382887012,
+        0.0
+       ],
+       "end": [
+        1462.7913378870733,
+        7542.818382887012,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908106214
+       ],
+       "start": [
+        1462.7913378870733,
+        7542.818382887012,
+        0.0
+       ],
+       "end": [
+        1430.993233978967,
+        7542.818382887012,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        95.39431325062742
+       ],
+       "start": [
+        1367.3970261627546,
+        7542.818382887012,
+        0.0
+       ],
+       "end": [
+        1272.0027129121272,
+        7542.818382887012,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        19.417308526434226
+       ],
+       "start": [
+        1208.4065050959148,
+        7542.818382887012,
+        0.0
+       ],
+       "end": [
+        1188.9891965694806,
+        7542.818382887012,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        1748.9742761126467,
+        7574.616487306433,
+        0.0
+       ],
+       "end": [
+        1748.9742761126467,
+        7511.020278467592,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        1399.1951300708606,
+        7574.616487306433,
+        0.0
+       ],
+       "end": [
+        1399.1951300708606,
+        7511.020278467592,
+        0.0
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "elementId": 1947,
+   "model": "guardrail 4",
+   "type": 3,
+   "style": -5,
+   "byLevel": true,
+   "params": {
+    "modifiers": 1,
+    "scale": 1.5263090120100402,
+    "dashScale": 1.0,
+    "gapScale": 1.0,
+    "startWidth": 0.0,
+    "endWidth": 0.0,
+    "distPhase": 0.0,
+    "fractPhase": 0.0
+   },
+   "source": [
+    {
+     "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+     "length": [
+      true,
+      623.5812873593786
+     ],
+     "start": [
+      1812.5704839288592,
+      7292.818382887012,
+      0.0
+     ],
+     "end": [
+      1188.9891965694806,
+      7292.818382887012,
+      0.0
+     ]
+    }
+   ],
+   "dropStatus": 0,
+   "dropped": [
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908106214
+       ],
+       "start": [
+        1812.5704839288592,
+        7292.818382887012,
+        0.0
+       ],
+       "end": [
+        1780.772380020753,
+        7292.818382887012,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        254.3848343174675
+       ],
+       "start": [
+        1717.1761722045405,
+        7292.818382887012,
+        0.0
+       ],
+       "end": [
+        1462.791337887073,
+        7292.818382887012,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        31.798103908106214
+       ],
+       "start": [
+        1462.791337887073,
+        7292.818382887012,
+        0.0
+       ],
+       "end": [
+        1430.9932339789668,
+        7292.818382887012,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        178.40782959327385
+       ],
+       "start": [
+        1367.3970261627544,
+        7292.818382887012,
+        0.0
+       ],
+       "end": [
+        1188.9891965694806,
+        7292.818382887012,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        1748.9742761126467,
+        7324.616487306433,
+        0.0
+       ],
+       "end": [
+        1748.9742761126467,
+        7261.020278467592,
+        0.0
+       ]
+      }
+     ]
+    },
+    {
+     "type": 3,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+       "length": [
+        true,
+        63.59620883884054
+       ],
+       "start": [
+        1399.1951300708606,
+        7324.616487306433,
+        0.0
+       ],
+       "end": [
+        1399.1951300708606,
+        7261.020278467592,
+        0.0
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "models": {
+  "Default": {
+   "lineStyleScale": 1200.0,
+   "lineStyleScaleMode": 1,
+   "annotationScale": 1200.0,
+   "uorPerMeter": 32808.333333333336,
+   "uorPerStorage": 10000.0,
+   "modelType": 0
+  },
+  "guardrail 4": {
+   "lineStyleScale": 1.0,
+   "lineStyleScaleMode": 1,
+   "annotationScale": 1.0,
+   "uorPerMeter": 32808.333333333336,
+   "uorPerStorage": 10000.0,
+   "modelType": 1
+  }
+ }
+}

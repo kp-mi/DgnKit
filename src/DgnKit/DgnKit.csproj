@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <RootNamespace>DgnKit</RootNamespace>
+    <AssemblyName>DgnKit</AssemblyName>
+    <Description>Standalone reader for MicroStation DGN files (V7 ISFF, V8/V8i, CONNECT Edition / OpenRoads). No Bentley runtime required.</Description>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+
+</Project>

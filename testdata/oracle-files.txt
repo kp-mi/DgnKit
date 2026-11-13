@@ -1,0 +1,20 @@
+# Corpus files dumped with the MicroStation COM oracle (tools/oracle/mstn-oracle.ps1 -ListFile testdata/oracle-files.txt)
+testdata/corpus/gdal-dgnv8/test_dgnv8.dgn
+testdata/corpus/txdot-RSE-1-21/RSE(1)-21.dgn
+testdata/corpus/txdot-trb04-1/TRB04(1).DGN
+testdata/corpus/txdot-csb104/CSB104.DGN
+testdata/corpus/njdot-traffic/Traffic Construction Details DGN file set__102_IndexForTrafficControlDetails.dgn
+testdata/corpus/fdot-102-600/102-600-2of11.dgn
+testdata/corpus/wsdot-XE3691/XL7087_PS_CT.dgn
+testdata/corpus/wsdot-XE3736/08_XL7089_PS_QT1.dgn
+testdata/corpus/wsdot-XE3771/XL6985_PS_IN01.dgn
+testdata/corpus/wsdot-XE3649/SR 24 & SR 240 Paver_PS_EU.dgn
+testdata/corpus/ndot-condemnation-border/LPA Condemnation Plat Border ORD 2023_10 US Survey Feet.dgn
+testdata/corpus/ndot-lightdetails/v8i_stdplanborder.dgn
+testdata/corpus/txdot-BB-AFL-24/BB-AFL-24.dgn
+testdata/corpus/txdot-crcp117/crcp117.dgn
+testdata/corpus/txdot-mb96/MB96.DGN
+testdata/corpus/fdot-000-510/000-510-1of2.dgn
+testdata/corpus/fdot-102-600/102-600-5of11.dgn
+testdata/corpus/fdot-110-100/110-100-1of1.dgn
+testdata/corpus/wsdot-XE3736/12_XL7089_PS_TC1.dgn

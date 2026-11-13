@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/DgnKit.Cli/DgnKit.Cli.csproj" />
+    <Project Path="src/DgnKit.Export/DgnKit.Export.csproj" />
+    <Project Path="src/DgnKit/DgnKit.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/DgnKit.Tests/DgnKit.Tests.csproj" />
+  </Folder>
+</Solution>

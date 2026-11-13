@@ -1,0 +1,4499 @@
+{
+ "generator": "MicroStation DgnPlatform line style API (linestyle_oracle.py)",
+ "lineStyles": [
+  {
+   "name": "RD_MK_LineSkipCenter",
+   "number": -8,
+   "entryNumber": 0,
+   "location": 2,
+   "source": "C:\\Users\\Kaustubh Page\\AppData\\Local\\Temp\\claude\\67c21fd2cc65cc64\\db5fee86-1b23-48f3-ba05-4b89cd552946\\scratchpad\\ls-oracle-in\\12_XL7089_PS_TC1.dgn",
+   "unitsType": 1,
+   "styleScale": 0.0,
+   "physical": true,
+   "snappable": true,
+   "root": {
+    "type": 3,
+    "class": "LsLineCodeComponent",
+    "name": "RD_MK_LineSkip",
+    "componentId": 31501,
+    "phaseMode": 0,
+    "phase": 0.0,
+    "iterationLimit": false,
+    "iterations": 0,
+    "singleSegment": false,
+    "strokes": [
+     {
+      "length": 35000.0,
+      "isDash": true,
+      "startWidth": 6666.67,
+      "endWidth": 6666.67,
+      "stretchable": false,
+      "invertStart": false,
+      "invertEnd": false,
+      "bypassCorner": false,
+      "leftWidth": false,
+      "rightWidth": false,
+      "capMode": 0
+     },
+     {
+      "length": 30000.0,
+      "isDash": false,
+      "startWidth": 0.0,
+      "endWidth": 0.0,
+      "stretchable": false,
+      "invertStart": false,
+      "invertEnd": false,
+      "bypassCorner": false,
+      "leftWidth": false,
+      "rightWidth": false,
+      "capMode": 0
+     },
+     {
+      "length": 35000.0,
+      "isDash": true,
+      "startWidth": 6666.67,
+      "endWidth": 6666.67,
+      "stretchable": false,
+      "invertStart": false,
+      "invertEnd": false,
+      "bypassCorner": false,
+      "leftWidth": false,
+      "rightWidth": false,
+      "capMode": 0
+     },
+     {
+      "length": 100000.0,
+      "isDash": false,
+      "startWidth": 0.0,
+      "endWidth": 0.0,
+      "stretchable": false,
+      "invertStart": false,
+      "invertEnd": false,
+      "bypassCorner": false,
+      "leftWidth": false,
+      "rightWidth": false,
+      "capMode": 0
+     },
+     {
+      "length": 100000.0,
+      "isDash": false,
+      "startWidth": 0.0,
+      "endWidth": 0.0,
+      "stretchable": false,
+      "invertStart": false,
+      "invertEnd": false,
+      "bypassCorner": false,
+      "leftWidth": false,
+      "rightWidth": false,
+      "capMode": 0
+     },
+     {
+      "length": 100000.0,
+      "isDash": false,
+      "startWidth": 0.0,
+      "endWidth": 0.0,
+      "stretchable": false,
+      "invertStart": false,
+      "invertEnd": false,
+      "bypassCorner": false,
+      "leftWidth": false,
+      "rightWidth": false,
+      "capMode": 0
+     }
+    ]
+   }
+  },
+  {
+   "name": "RD_MK_LineSolid",
+   "number": -7,
+   "entryNumber": 0,
+   "location": 2,
+   "source": "C:\\Users\\Kaustubh Page\\AppData\\Local\\Temp\\claude\\67c21fd2cc65cc64\\db5fee86-1b23-48f3-ba05-4b89cd552946\\scratchpad\\ls-oracle-in\\12_XL7089_PS_TC1.dgn",
+   "unitsType": 1,
+   "styleScale": 0.0,
+   "physical": true,
+   "snappable": true,
+   "root": {
+    "type": 3,
+    "class": "LsLineCodeComponent",
+    "name": "RD_MK_LineSolid",
+    "componentId": 30453,
+    "phaseMode": 0,
+    "phase": 0.0,
+    "iterationLimit": false,
+    "iterations": 0,
+    "singleSegment": false,
+    "strokes": [
+     {
+      "length": 32500.0,
+      "isDash": true,
+      "startWidth": 3333.33,
+      "endWidth": 3333.33,
+      "stretchable": false,
+      "invertStart": false,
+      "invertEnd": false,
+      "bypassCorner": false,
+      "leftWidth": false,
+      "rightWidth": false,
+      "capMode": 0
+     },
+     {
+      "length": 17500.0,
+      "isDash": false,
+      "startWidth": 0.0,
+      "endWidth": 0.0,
+      "stretchable": false,
+      "invertStart": false,
+      "invertEnd": false,
+      "bypassCorner": false,
+      "leftWidth": false,
+      "rightWidth": false,
+      "capMode": 0
+     },
+     {
+      "length": 32500.0,
+      "isDash": true,
+      "startWidth": 3333.33,
+      "endWidth": 3333.33,
+      "stretchable": false,
+      "invertStart": false,
+      "invertEnd": false,
+      "bypassCorner": false,
+      "leftWidth": false,
+      "rightWidth": false,
+      "capMode": 0
+     },
+     {
+      "length": 17500.0,
+      "isDash": false,
+      "startWidth": 0.0,
+      "endWidth": 0.0,
+      "stretchable": false,
+      "invertStart": false,
+      "invertEnd": false,
+      "bypassCorner": false,
+      "leftWidth": false,
+      "rightWidth": false,
+      "capMode": 0
+     }
+    ]
+   }
+  },
+  {
+   "name": "RD_MK_LineDouble",
+   "number": -6,
+   "entryNumber": 0,
+   "location": 2,
+   "source": "C:\\Users\\Kaustubh Page\\AppData\\Local\\Temp\\claude\\67c21fd2cc65cc64\\db5fee86-1b23-48f3-ba05-4b89cd552946\\scratchpad\\ls-oracle-in\\12_XL7089_PS_TC1.dgn",
+   "unitsType": 1,
+   "styleScale": 0.0,
+   "physical": true,
+   "snappable": true,
+   "root": {
+    "type": 2,
+    "class": "LsCompoundComponent",
+    "name": "RD_MK_LineDouble",
+    "componentId": 30448,
+    "components": [
+     {
+      "type": 3,
+      "class": "LsLineCodeComponent",
+      "name": "RD_MK_LineDouble",
+      "componentId": 30449,
+      "phaseMode": 0,
+      "phase": 0.0,
+      "iterationLimit": false,
+      "iterations": 0,
+      "singleSegment": false,
+      "strokes": [
+       {
+        "length": 70000.0,
+        "isDash": true,
+        "startWidth": 3333.33,
+        "endWidth": 3333.33,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       },
+       {
+        "length": 30000.0,
+        "isDash": false,
+        "startWidth": 3333.33,
+        "endWidth": 3333.33,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": true,
+        "rightWidth": true,
+        "capMode": 0
+       },
+       {
+        "length": 70000.0,
+        "isDash": true,
+        "startWidth": 3333.33,
+        "endWidth": 3333.33,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       },
+       {
+        "length": 30000.0,
+        "isDash": false,
+        "startWidth": 3333.33,
+        "endWidth": 3333.33,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": true,
+        "rightWidth": true,
+        "capMode": 0
+       },
+       {
+        "length": 70000.0,
+        "isDash": true,
+        "startWidth": 3333.33,
+        "endWidth": 3333.33,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       },
+       {
+        "length": 30000.0,
+        "isDash": false,
+        "startWidth": 0.0,
+        "endWidth": 0.0,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       },
+       {
+        "length": 70000.0,
+        "isDash": true,
+        "startWidth": 3333.33,
+        "endWidth": 3333.33,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       },
+       {
+        "length": 30000.0,
+        "isDash": false,
+        "startWidth": 0.0,
+        "endWidth": 0.0,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       }
+      ],
+      "offset": 3333.33
+     },
+     {
+      "type": 3,
+      "class": "LsLineCodeComponent",
+      "name": "RD_MK_LineDouble",
+      "componentId": 30449,
+      "phaseMode": 0,
+      "phase": 0.0,
+      "iterationLimit": false,
+      "iterations": 0,
+      "singleSegment": false,
+      "strokes": [
+       {
+        "length": 70000.0,
+        "isDash": true,
+        "startWidth": 3333.33,
+        "endWidth": 3333.33,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       },
+       {
+        "length": 30000.0,
+        "isDash": false,
+        "startWidth": 3333.33,
+        "endWidth": 3333.33,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": true,
+        "rightWidth": true,
+        "capMode": 0
+       },
+       {
+        "length": 70000.0,
+        "isDash": true,
+        "startWidth": 3333.33,
+        "endWidth": 3333.33,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       },
+       {
+        "length": 30000.0,
+        "isDash": false,
+        "startWidth": 3333.33,
+        "endWidth": 3333.33,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": true,
+        "rightWidth": true,
+        "capMode": 0
+       },
+       {
+        "length": 70000.0,
+        "isDash": true,
+        "startWidth": 3333.33,
+        "endWidth": 3333.33,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       },
+       {
+        "length": 30000.0,
+        "isDash": false,
+        "startWidth": 0.0,
+        "endWidth": 0.0,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       },
+       {
+        "length": 70000.0,
+        "isDash": true,
+        "startWidth": 3333.33,
+        "endWidth": 3333.33,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       },
+       {
+        "length": 30000.0,
+        "isDash": false,
+        "startWidth": 0.0,
+        "endWidth": 0.0,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       }
+      ],
+      "offset": -3333.33
+     }
+    ]
+   }
+  },
+  {
+   "name": "RD_MK_LineSolidNew",
+   "number": -5,
+   "entryNumber": 0,
+   "location": 2,
+   "source": "C:\\Users\\Kaustubh Page\\AppData\\Local\\Temp\\claude\\67c21fd2cc65cc64\\db5fee86-1b23-48f3-ba05-4b89cd552946\\scratchpad\\ls-oracle-in\\12_XL7089_PS_TC1.dgn",
+   "unitsType": 1,
+   "styleScale": 0.0,
+   "physical": true,
+   "snappable": true,
+   "root": {
+    "type": 3,
+    "class": "LsLineCodeComponent",
+    "name": "RD_MK_LineSolidNew",
+    "componentId": 20170,
+    "phaseMode": 0,
+    "phase": 0.0,
+    "iterationLimit": false,
+    "iterations": 0,
+    "singleSegment": false,
+    "strokes": [
+     {
+      "length": 10000.0,
+      "isDash": true,
+      "startWidth": 3333.33,
+      "endWidth": 3333.33,
+      "stretchable": false,
+      "invertStart": false,
+      "invertEnd": false,
+      "bypassCorner": false,
+      "leftWidth": true,
+      "rightWidth": true,
+      "capMode": 0
+     }
+    ]
+   }
+  },
+  {
+   "name": "RD_MK_LineSkipCenterNew",
+   "number": -4,
+   "entryNumber": 0,
+   "location": 2,
+   "source": "C:\\Users\\Kaustubh Page\\AppData\\Local\\Temp\\claude\\67c21fd2cc65cc64\\db5fee86-1b23-48f3-ba05-4b89cd552946\\scratchpad\\ls-oracle-in\\12_XL7089_PS_TC1.dgn",
+   "unitsType": 1,
+   "styleScale": 0.0,
+   "physical": true,
+   "snappable": true,
+   "root": {
+    "type": 3,
+    "class": "LsLineCodeComponent",
+    "name": "RD_MK_LineSkipNew",
+    "componentId": 20143,
+    "phaseMode": 0,
+    "phase": 0.0,
+    "iterationLimit": false,
+    "iterations": 0,
+    "singleSegment": false,
+    "strokes": [
+     {
+      "length": 100000.0,
+      "isDash": true,
+      "startWidth": 6666.67,
+      "endWidth": 6666.67,
+      "stretchable": false,
+      "invertStart": false,
+      "invertEnd": false,
+      "bypassCorner": false,
+      "leftWidth": true,
+      "rightWidth": false,
+      "capMode": 0
+     },
+     {
+      "length": 100000.0,
+      "isDash": false,
+      "startWidth": 0.0,
+      "endWidth": 0.0,
+      "stretchable": false,
+      "invertStart": false,
+      "invertEnd": false,
+      "bypassCorner": false,
+      "leftWidth": false,
+      "rightWidth": false,
+      "capMode": 0
+     },
+     {
+      "length": 100000.0,
+      "isDash": false,
+      "startWidth": 0.0,
+      "endWidth": 0.0,
+      "stretchable": false,
+      "invertStart": false,
+      "invertEnd": false,
+      "bypassCorner": false,
+      "leftWidth": false,
+      "rightWidth": false,
+      "capMode": 0
+     },
+     {
+      "length": 100000.0,
+      "isDash": false,
+      "startWidth": 0.0,
+      "endWidth": 0.0,
+      "stretchable": false,
+      "invertStart": false,
+      "invertEnd": false,
+      "bypassCorner": false,
+      "leftWidth": false,
+      "rightWidth": false,
+      "capMode": 0
+     }
+    ]
+   }
+  },
+  {
+   "name": "AA_TM_FullTerminator",
+   "number": -3
+  },
+  {
+   "name": "AA_TM_SquiggleTerminator",
+   "number": -2
+  },
+  {
+   "name": "RD_BR_BarrierCenter",
+   "number": -1,
+   "entryNumber": 0,
+   "location": 2,
+   "source": "C:\\Users\\Kaustubh Page\\AppData\\Local\\Temp\\claude\\67c21fd2cc65cc64\\db5fee86-1b23-48f3-ba05-4b89cd552946\\scratchpad\\ls-oracle-in\\12_XL7089_PS_TC1.dgn",
+   "unitsType": 1,
+   "styleScale": 0.0,
+   "physical": false,
+   "snappable": true,
+   "root": {
+    "type": 2,
+    "class": "LsCompoundComponent",
+    "name": "RD_BR_BarrierCenter",
+    "componentId": 1874,
+    "components": [
+     {
+      "type": 3,
+      "class": "LsLineCodeComponent",
+      "name": "Barrier_Roadway_Exist",
+      "componentId": 1875,
+      "phaseMode": 0,
+      "phase": 0.0,
+      "iterationLimit": false,
+      "iterations": 0,
+      "singleSegment": false,
+      "strokes": [
+       {
+        "length": 25.0,
+        "isDash": true,
+        "startWidth": 16.666666,
+        "endWidth": 16.666666,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": true,
+        "rightWidth": true,
+        "capMode": 1
+       },
+       {
+        "length": 8.333333,
+        "isDash": false,
+        "startWidth": 0.0,
+        "endWidth": 0.0,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       },
+       {
+        "length": 58.33333300000001,
+        "isDash": true,
+        "startWidth": 16.666666,
+        "endWidth": 16.666666,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": true,
+        "rightWidth": true,
+        "capMode": 1
+       },
+       {
+        "length": 8.333333,
+        "isDash": false,
+        "startWidth": 0.0,
+        "endWidth": 0.0,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": false,
+        "rightWidth": false,
+        "capMode": 0
+       },
+       {
+        "length": 25.0,
+        "isDash": true,
+        "startWidth": 16.666666,
+        "endWidth": 16.666666,
+        "stretchable": false,
+        "invertStart": false,
+        "invertEnd": false,
+        "bypassCorner": false,
+        "leftWidth": true,
+        "rightWidth": true,
+        "capMode": 1
+       }
+      ],
+      "offset": 0.0
+     },
+     {
+      "type": 4,
+      "class": "LsLinePointComponent",
+      "name": "Barrier_Roadway_End",
+      "componentId": 1885,
+      "lineCode": {
+       "type": 3,
+       "class": "LsLineCodeComponent",
+       "name": "Barrier_Roadway_New",
+       "componentId": 1886,
+       "phaseMode": 0,
+       "phase": 0.0,
+       "iterationLimit": false,
+       "iterations": 0,
+       "singleSegment": false,
+       "strokes": [
+        {
+         "length": 125.0,
+         "isDash": false,
+         "startWidth": 0.0,
+         "endWidth": 0.0,
+         "stretchable": false,
+         "invertStart": false,
+         "invertEnd": false,
+         "bypassCorner": false,
+         "leftWidth": false,
+         "rightWidth": false,
+         "capMode": 1
+        }
+       ]
+      },
+      "symbols": [
+       {
+        "strokeNumber": 0,
+        "location": 0,
+        "strokeLocation": 1,
+        "rotation": 0,
+        "xOffset": 0.0,
+        "yOffset": 0.0,
+        "angle": 0.0,
+        "symbol": {
+         "type": 1,
+         "class": "LsPointSymbolComponent",
+         "name": "Barrier_End",
+         "componentId": 1887,
+         "unitScale": 10000.0,
+         "is3d": true,
+         "suppressScale": false
+        }
+       }
+      ],
+      "offset": 0.0
+     }
+    ]
+   }
+  }
+ ],
+ "file": "C:\\Users\\Kaustubh Page\\AppData\\Local\\Temp\\claude\\67c21fd2cc65cc64\\db5fee86-1b23-48f3-ba05-4b89cd552946\\scratchpad\\ls-oracle-in\\12_XL7089_PS_TC1.dgn",
+ "uorPerMaster": 10000.0,
+ "model": "Shoulder Closure-1 [Sheet]",
+ "modelInfo": {
+  "lineStyleScale": 1.0,
+  "lineStyleScaleMode": 1,
+  "annotationScale": 1.0,
+  "uorPerMeter": 32808.333333333336,
+  "uorPerStorage": 10000.0
+ },
+ "samples": [
+  {
+   "elementId": 31504,
+   "model": "Shoulder Closure-1 [Sheet]",
+   "type": 3,
+   "style": -4,
+   "byLevel": false,
+   "params": {
+    "modifiers": 33,
+    "scale": 0.0008333333333333334,
+    "dashScale": 1.0,
+    "gapScale": 1.0,
+    "startWidth": 0.0,
+    "endWidth": 0.0,
+    "distPhase": 0.04273598352697983,
+    "fractPhase": 0.0
+   },
+   "source": [
+    {
+     "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+     "length": [
+      true,
+      480.5593854111233
+     ],
+     "start": [
+      1415.3703148528393,
+      6532.437867753218,
+      0.0
+     ],
+     "end": [
+      934.810933313368,
+      6532.498868715005,
+      0.0
+     ]
+    }
+   ],
+   "dropStatus": 0,
+   "dropped": [
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        171.50995860788458
+       ],
+       "start": [
+        1415.3699622487577,
+        6529.66008860893,
+        0.0
+       ],
+       "end": [
+        1415.3699622487577,
+        6529.66008860893,
+        0.0
+       ],
+       "points": [
+        [
+         1415.3699622487577,
+         6529.66008860893,
+         0.0
+        ],
+        [
+         1332.3927627799926,
+         6529.670621519468,
+         0.0
+        ],
+        [
+         1332.3931153840742,
+         6532.448400663756,
+         0.0
+        ],
+        [
+         1415.3703148528393,
+         6532.437867753218,
+         0.0
+        ],
+        [
+         1415.3699622487577,
+         6529.66008860893,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000078
+       ],
+       "start": [
+        1082.3927647941305,
+        6529.702355870955,
+        0.0
+       ],
+       "end": [
+        1082.3927647941305,
+        6529.702355870955,
+        0.0
+       ],
+       "points": [
+        [
+         1082.3927647941305,
+         6529.702355870955,
+         0.0
+        ],
+        [
+         999.0594321321764,
+         6529.712933988118,
+         0.0
+        ],
+        [
+         999.0597847362582,
+         6532.490713132405,
+         0.0
+        ],
+        [
+         1082.393117398212,
+         6532.480135015243,
+         0.0
+        ],
+        [
+         1082.3927647941305,
+         6529.702355870955,
+         0.0
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "elementId": 31505,
+   "model": "Shoulder Closure-1 [Sheet]",
+   "type": 3,
+   "style": -4,
+   "byLevel": false,
+   "params": {
+    "modifiers": 33,
+    "scale": 0.0008333333333333334,
+    "dashScale": 1.0,
+    "gapScale": 1.0,
+    "startWidth": 0.0,
+    "endWidth": 0.0,
+    "distPhase": 0.04273598352697983,
+    "fractPhase": 0.0
+   },
+   "source": [
+    {
+     "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+     "length": [
+      true,
+      11720.823161825538
+     ],
+     "start": [
+      13261.166609866352,
+      6532.562029168132,
+      0.0
+     ],
+     "end": [
+      1540.343448040815,
+      6532.562029168132,
+      0.0
+     ]
+    }
+   ],
+   "dropStatus": 0,
+   "dropped": [
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        171.50995860788316
+       ],
+       "start": [
+        13261.166609866352,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        13261.166609866352,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         13261.166609866352,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         13178.189409729077,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         13178.189409729077,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         13261.166609866352,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         13261.166609866352,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        12928.189409729075,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        12928.189409729075,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         12928.189409729075,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         12844.856076395741,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         12844.856076395741,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         12928.189409729075,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         12928.189409729075,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        12594.85607639574,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        12594.85607639574,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         12594.85607639574,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         12511.522743062405,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         12511.522743062405,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         12594.85607639574,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         12594.85607639574,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        12261.522743062404,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        12261.522743062404,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         12261.522743062404,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         12178.18940972907,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         12178.18940972907,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         12261.522743062404,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         12261.522743062404,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        11928.189409729068,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        11928.189409729068,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         11928.189409729068,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         11844.856076395734,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         11844.856076395734,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         11928.189409729068,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         11928.189409729068,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        11594.856076395732,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        11594.856076395732,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         11594.856076395732,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         11511.522743062398,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         11511.522743062398,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         11594.856076395732,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         11594.856076395732,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        11261.522743062396,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        11261.522743062396,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         11261.522743062396,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         11178.189409729062,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         11178.189409729062,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         11261.522743062396,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         11261.522743062396,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        10928.18940972906,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        10928.18940972906,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         10928.18940972906,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         10844.856076395727,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         10844.856076395727,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         10928.18940972906,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         10928.18940972906,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        10594.856076395725,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        10594.856076395725,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         10594.856076395725,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         10511.52274306239,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         10511.52274306239,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         10594.856076395725,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         10594.856076395725,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        10261.522743062389,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        10261.522743062389,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         10261.522743062389,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         10178.189409729055,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         10178.189409729055,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         10261.522743062389,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         10261.522743062389,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        9928.189409729053,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        9928.189409729053,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         9928.189409729053,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         9844.85607639572,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         9844.85607639572,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         9928.189409729053,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         9928.189409729053,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        9594.856076395718,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        9594.856076395718,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         9594.856076395718,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         9511.522743062384,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         9511.522743062384,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         9594.856076395718,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         9594.856076395718,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        9261.522743062382,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        9261.522743062382,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         9261.522743062382,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         9178.189409729048,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         9178.189409729048,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         9261.522743062382,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         9261.522743062382,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        8928.189409729046,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        8928.189409729046,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         8928.189409729046,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         8844.856076395712,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         8844.856076395712,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         8928.189409729046,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         8928.189409729046,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        8594.85607639571,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        8594.85607639571,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         8594.85607639571,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         8511.522743062376,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         8511.522743062376,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         8594.85607639571,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         8594.85607639571,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        8261.522743062375,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        8261.522743062375,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         8261.522743062375,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         8178.1894097290415,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         8178.1894097290415,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         8261.522743062375,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         8261.522743062375,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        7928.189409729042,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        7928.189409729042,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         7928.189409729042,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         7844.856076395709,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         7844.856076395709,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         7928.189409729042,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         7928.189409729042,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        7594.85607639571,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        7594.85607639571,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         7594.85607639571,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         7511.522743062377,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         7511.522743062377,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         7594.85607639571,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         7594.85607639571,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        7261.522743062378,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        7261.522743062378,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         7261.522743062378,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         7178.189409729045,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         7178.189409729045,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         7261.522743062378,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         7261.522743062378,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        6928.189409729046,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        6928.189409729046,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         6928.189409729046,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         6844.856076395713,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         6844.856076395713,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         6928.189409729046,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         6928.189409729046,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        6594.856076395714,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        6594.856076395714,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         6594.856076395714,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         6511.522743062381,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         6511.522743062381,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         6594.856076395714,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         6594.856076395714,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        6261.522743062382,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        6261.522743062382,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         6261.522743062382,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         6178.189409729049,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         6178.189409729049,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         6261.522743062382,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         6261.522743062382,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        5928.18940972905,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        5928.18940972905,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         5928.18940972905,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         5844.856076395717,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         5844.856076395717,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         5928.18940972905,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         5928.18940972905,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        5594.8560763957175,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        5594.8560763957175,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         5594.8560763957175,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         5511.5227430623845,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         5511.5227430623845,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         5594.8560763957175,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         5594.8560763957175,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        5261.522743062385,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        5261.522743062385,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         5261.522743062385,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         5178.189409729052,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         5178.189409729052,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         5261.522743062385,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         5261.522743062385,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        4928.189409729053,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        4928.189409729053,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         4928.189409729053,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         4844.85607639572,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         4844.85607639572,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         4928.189409729053,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         4928.189409729053,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        4594.856076395721,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        4594.856076395721,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         4594.856076395721,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         4511.522743062388,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         4511.522743062388,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         4594.856076395721,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         4594.856076395721,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        4261.522743062389,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        4261.522743062389,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         4261.522743062389,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         4178.189409729056,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         4178.189409729056,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         4261.522743062389,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         4261.522743062389,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000044
+       ],
+       "start": [
+        3928.1894097290556,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        3928.1894097290556,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         3928.1894097290556,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         3844.856076395722,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         3844.856076395722,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         3928.1894097290556,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         3928.1894097290556,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000044
+       ],
+       "start": [
+        3594.8560763957216,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        3594.8560763957216,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         3594.8560763957216,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         3511.522743062388,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         3511.522743062388,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         3594.8560763957216,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         3594.8560763957216,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000044
+       ],
+       "start": [
+        3261.5227430623877,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        3261.5227430623877,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         3261.5227430623877,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         3178.189409729054,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         3178.189409729054,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         3261.5227430623877,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         3261.5227430623877,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000044
+       ],
+       "start": [
+        2928.1894097290538,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        2928.1894097290538,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         2928.1894097290538,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         2844.8560763957203,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         2844.8560763957203,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         2928.1894097290538,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         2928.1894097290538,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000044
+       ],
+       "start": [
+        2594.85607639572,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        2594.85607639572,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         2594.85607639572,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         2511.5227430623863,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         2511.5227430623863,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         2594.85607639572,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         2594.85607639572,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000044
+       ],
+       "start": [
+        2261.522743062386,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        2261.522743062386,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         2261.522743062386,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         2178.1894097290524,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         2178.1894097290524,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         2261.522743062386,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         2261.522743062386,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999998
+       ],
+       "start": [
+        1928.1894097290524,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        1928.1894097290524,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         1928.1894097290524,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         1844.8560763957191,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         1844.8560763957191,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         1928.1894097290524,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         1928.1894097290524,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        114.58081504314214
+       ],
+       "start": [
+        1594.8560763957194,
+        6529.784250001465,
+        0.0
+       ],
+       "end": [
+        1594.8560763957194,
+        6529.784250001465,
+        0.0
+       ],
+       "points": [
+        [
+         1594.8560763957194,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         1540.343448040815,
+         6529.784250001465,
+         0.0
+        ],
+        [
+         1540.343448040815,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         1594.8560763957194,
+         6532.562029168132,
+         0.0
+        ],
+        [
+         1594.8560763957194,
+         6529.784250001465,
+         0.0
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "elementId": 31506,
+   "model": "Shoulder Closure-1 [Sheet]",
+   "type": 3,
+   "style": -4,
+   "byLevel": false,
+   "params": {
+    "modifiers": 33,
+    "scale": 0.0008333333333333334,
+    "dashScale": 1.0,
+    "gapScale": 1.0,
+    "startWidth": 0.0,
+    "endWidth": 0.0,
+    "distPhase": 0.04273598352697983,
+    "fractPhase": 0.0
+   },
+   "source": [
+    {
+     "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_Line",
+     "length": [
+      true,
+      11720.823161825538
+     ],
+     "start": [
+      13261.166609866352,
+      5732.562029212835,
+      0.0
+     ],
+     "end": [
+      1540.343448040815,
+      5732.562029212835,
+      0.0
+     ]
+    }
+   ],
+   "dropStatus": 0,
+   "dropped": [
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        171.50995860788316
+       ],
+       "start": [
+        13261.166609866352,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        13261.166609866352,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         13261.166609866352,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         13178.189409729077,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         13178.189409729077,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         13261.166609866352,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         13261.166609866352,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        12928.189409729075,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        12928.189409729075,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         12928.189409729075,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         12844.856076395741,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         12844.856076395741,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         12928.189409729075,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         12928.189409729075,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        12594.85607639574,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        12594.85607639574,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         12594.85607639574,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         12511.522743062405,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         12511.522743062405,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         12594.85607639574,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         12594.85607639574,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        12261.522743062404,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        12261.522743062404,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         12261.522743062404,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         12178.18940972907,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         12178.18940972907,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         12261.522743062404,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         12261.522743062404,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        11928.189409729068,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        11928.189409729068,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         11928.189409729068,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         11844.856076395734,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         11844.856076395734,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         11928.189409729068,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         11928.189409729068,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        11594.856076395732,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        11594.856076395732,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         11594.856076395732,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         11511.522743062398,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         11511.522743062398,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         11594.856076395732,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         11594.856076395732,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        11261.522743062396,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        11261.522743062396,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         11261.522743062396,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         11178.189409729062,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         11178.189409729062,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         11261.522743062396,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         11261.522743062396,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        10928.18940972906,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        10928.18940972906,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         10928.18940972906,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         10844.856076395727,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         10844.856076395727,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         10928.18940972906,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         10928.18940972906,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        10594.856076395725,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        10594.856076395725,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         10594.856076395725,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         10511.52274306239,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         10511.52274306239,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         10594.856076395725,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         10594.856076395725,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        10261.522743062389,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        10261.522743062389,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         10261.522743062389,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         10178.189409729055,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         10178.189409729055,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         10261.522743062389,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         10261.522743062389,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        9928.189409729053,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        9928.189409729053,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         9928.189409729053,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         9844.85607639572,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         9844.85607639572,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         9928.189409729053,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         9928.189409729053,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        9594.856076395718,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        9594.856076395718,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         9594.856076395718,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         9511.522743062384,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         9511.522743062384,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         9594.856076395718,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         9594.856076395718,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        9261.522743062382,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        9261.522743062382,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         9261.522743062382,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         9178.189409729048,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         9178.189409729048,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         9261.522743062382,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         9261.522743062382,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        8928.189409729046,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        8928.189409729046,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         8928.189409729046,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         8844.856076395712,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         8844.856076395712,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         8928.189409729046,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         8928.189409729046,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000134
+       ],
+       "start": [
+        8594.85607639571,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        8594.85607639571,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         8594.85607639571,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         8511.522743062376,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         8511.522743062376,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         8594.85607639571,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         8594.85607639571,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        8261.522743062375,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        8261.522743062375,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         8261.522743062375,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         8178.1894097290415,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         8178.1894097290415,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         8261.522743062375,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         8261.522743062375,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        7928.189409729042,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        7928.189409729042,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         7928.189409729042,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         7844.856076395709,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         7844.856076395709,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         7928.189409729042,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         7928.189409729042,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        7594.85607639571,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        7594.85607639571,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         7594.85607639571,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         7511.522743062377,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         7511.522743062377,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         7594.85607639571,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         7594.85607639571,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        7261.522743062378,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        7261.522743062378,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         7261.522743062378,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         7178.189409729045,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         7178.189409729045,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         7261.522743062378,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         7261.522743062378,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        6928.189409729046,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        6928.189409729046,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         6928.189409729046,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         6844.856076395713,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         6844.856076395713,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         6928.189409729046,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         6928.189409729046,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        6594.856076395714,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        6594.856076395714,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         6594.856076395714,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         6511.522743062381,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         6511.522743062381,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         6594.856076395714,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         6594.856076395714,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        6261.522743062382,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        6261.522743062382,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         6261.522743062382,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         6178.189409729049,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         6178.189409729049,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         6261.522743062382,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         6261.522743062382,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        5928.18940972905,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        5928.18940972905,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         5928.18940972905,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         5844.856076395717,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         5844.856076395717,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         5928.18940972905,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         5928.18940972905,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        5594.8560763957175,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        5594.8560763957175,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         5594.8560763957175,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         5511.5227430623845,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         5511.5227430623845,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         5594.8560763957175,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         5594.8560763957175,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        5261.522743062385,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        5261.522743062385,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         5261.522743062385,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         5178.189409729052,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         5178.189409729052,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         5261.522743062385,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         5261.522743062385,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        4928.189409729053,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        4928.189409729053,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         4928.189409729053,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         4844.85607639572,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         4844.85607639572,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         4928.189409729053,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         4928.189409729053,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        4594.856076395721,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        4594.856076395721,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         4594.856076395721,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         4511.522743062388,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         4511.522743062388,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         4594.856076395721,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         4594.856076395721,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999953
+       ],
+       "start": [
+        4261.522743062389,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        4261.522743062389,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         4261.522743062389,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         4178.189409729056,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         4178.189409729056,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         4261.522743062389,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         4261.522743062389,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000044
+       ],
+       "start": [
+        3928.1894097290556,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        3928.1894097290556,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         3928.1894097290556,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         3844.856076395722,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         3844.856076395722,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         3928.1894097290556,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         3928.1894097290556,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000044
+       ],
+       "start": [
+        3594.8560763957216,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        3594.8560763957216,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         3594.8560763957216,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         3511.522743062388,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         3511.522743062388,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         3594.8560763957216,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         3594.8560763957216,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000044
+       ],
+       "start": [
+        3261.5227430623877,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        3261.5227430623877,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         3261.5227430623877,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         3178.189409729054,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         3178.189409729054,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         3261.5227430623877,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         3261.5227430623877,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000044
+       ],
+       "start": [
+        2928.1894097290538,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        2928.1894097290538,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         2928.1894097290538,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         2844.8560763957203,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         2844.8560763957203,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         2928.1894097290538,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         2928.1894097290538,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000044
+       ],
+       "start": [
+        2594.85607639572,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        2594.85607639572,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         2594.85607639572,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         2511.5227430623863,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         2511.5227430623863,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         2594.85607639572,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         2594.85607639572,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222500000044
+       ],
+       "start": [
+        2261.522743062386,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        2261.522743062386,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         2261.522743062386,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         2178.1894097290524,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         2178.1894097290524,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         2261.522743062386,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         2261.522743062386,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        172.22222499999998
+       ],
+       "start": [
+        1928.1894097290524,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        1928.1894097290524,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         1928.1894097290524,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         1844.8560763957191,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         1844.8560763957191,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         1928.1894097290524,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         1928.1894097290524,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "type": 6,
+     "curves": [
+      {
+       "kind": "CurvePrimitiveType_.eCURVE_PRIMITIVE_TYPE_LineString",
+       "length": [
+        true,
+        114.58081504314214
+       ],
+       "start": [
+        1594.8560763957194,
+        5729.784250046168,
+        0.0
+       ],
+       "end": [
+        1594.8560763957194,
+        5729.784250046168,
+        0.0
+       ],
+       "points": [
+        [
+         1594.8560763957194,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         1540.343448040815,
+         5729.784250046168,
+         0.0
+        ],
+        [
+         1540.343448040815,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         1594.8560763957194,
+         5732.562029212835,
+         0.0
+        ],
+        [
+         1594.8560763957194,
+         5729.784250046168,
+         0.0
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "models": {
+  "Shoulder Closure-1 [Sheet]": {
+   "lineStyleScale": 1.0,
+   "lineStyleScaleMode": 1,
+   "annotationScale": 1.0,
+   "uorPerMeter": 32808.333333333336,
+   "uorPerStorage": 10000.0,
+   "modelType": 1
+  },
+  "Default": {
+   "lineStyleScale": 1200.0,
+   "lineStyleScaleMode": 1,
+   "annotationScale": 1200.0,
+   "uorPerMeter": 32808.333333333336,
+   "uorPerStorage": 10000.0,
+   "modelType": 0
+  },
+  "Default-1": {
+   "lineStyleScale": 1200.0,
+   "lineStyleScaleMode": 1,
+   "annotationScale": 1200.0,
+   "uorPerMeter": 32808.333333333336,
+   "uorPerStorage": 10000.0,
+   "modelType": 0
+  },
+  "Shoulder Closure-1": {
+   "lineStyleScale": 600.0,
+   "lineStyleScaleMode": 1,
+   "annotationScale": 600.0,
+   "uorPerMeter": 32808.333333333336,
+   "uorPerStorage": 10000.0,
+   "modelType": 3
+  }
+ }
+}

@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\DgnKit\DgnKit.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ACadSharp" Version="3.8.35" />
+    <PackageReference Include="ProjNET" Version="2.1.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
