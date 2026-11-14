@@ -31,7 +31,7 @@ iModelHub. One loader serves every format.
 | `units` | always `"meter"` |
 | `source` | `{ path, name, format ("DGN V8"…), formatVersion, size, modified (ISO-8601 UTC), sha256 }` → `bis:RepositoryLink` |
 | `spatialExtents` | `{ low:[x,y,z], high:[x,y,z] }` of all spatial geometry → project extents |
-| `gcs` | optional `{ epsg, csmapKey, description, unitMeters, wkt, source }` — the GCS of the spatial coordinates |
+| `gcs` | optional `{ epsg, csmapKey, description, unitMeters, wkt, source, verticalCRS? }` — the GCS of the spatial coordinates. `verticalCRS` is the iTwin.js vertical datum of the heights: `ELLIPSOID` (default), `NAVD88`, `NGVD29`, `GEOID` or `LOCAL_ELLIPSOID` |
 
 ### font
 

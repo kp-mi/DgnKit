@@ -24,7 +24,7 @@ export interface ImxHeader {
   units: "meter";
   source: { path: string; name: string; format: string; formatVersion?: string; size: number; modified?: string; sha256?: string };
   spatialExtents?: ImxRange;
-  gcs?: { epsg?: number; csmapKey?: string; description?: string; unitMeters?: number; wkt?: string; source?: string };
+  gcs?: { epsg?: number; csmapKey?: string; description?: string; unitMeters?: number; wkt?: string; source?: string; verticalCRS?: "ELLIPSOID" | "NAVD88" | "NGVD29" | "GEOID" | "LOCAL_ELLIPSOID" };
 }
 
 export interface ImxFont { kind: "font"; key: string; name: string; type: "truetype" | "rsc" | "shx" }
