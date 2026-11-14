@@ -1,4 +1,4 @@
-# Verification summary (2026-11-12)
+# Verification summary (2026-11-13)
 
 ## Corpus
 108 public DGN files + 47 official plot PDFs fetched by `tools/fetch-corpus.ps1` (manifest `testdata/corpus.json`):
@@ -8,21 +8,23 @@ NJDOT traffic details (V8 2004); FDOT standard plans FY2027-28 (CONNECT); GDAL t
 
 **Read health:** 108/108 files read, 0 diagnostics, 2–340 ms per file.
 
-## 1. Field-by-field vs MicroStation 2026 (COM oracle, 15 files incl. V7)
-Full table: `oracle-report.md`.
+## 1. Field-by-field vs MicroStation 2026 (COM oracle, 18 files incl. 1 V7)
+Full table and totals: `oracle-report.md`.
 
 | area | match |
 |---|---|
-| elements found / type / colour / weight / style / level | 100% |
+| elements found / type / colour / weight | 100% |
+| element level / style | 99.7% / 99.9% (12_XL7089_PS_TC1, plus 1 level in test_dgnv8 and 4 styles in BB-AFL-24) |
 | line/shape vertices, arcs (centre, radii, start point) | 100% |
 | cell & shared-cell names and origins, shared-cell resolution | 100% |
-| levels: name, code, colour, weight, style, displayed, plot | 99.7–100% |
+| dimensions (V8): points, type, value, text, override, terminators, height | 100% (4 files) |
+| levels: exists / displayed / plot / style / weight / name / code / colour | 100 / 99.8 / 99.8 / 99.1 / 97.5 / 96.2 / 96.2 / 95.7% (almost all in 12_XL7089_PS_TC1; 102-600-2of11 and 110-100-1of1 differ on a few colours, styles and weights) |
 | models: units (UOR/master), global origin, 2D/3D | 100% |
-| tags: value, target element, tag set, origin | 100% (name 99.3%) |
-| text strings (incl. RSC fraction glyphs) | 99.5% |
-| text justification point | 98.7% (V7 has no stored extents) |
-| element range | 97.8% (cell ranges computed differently by MicroStation) |
-| text height | 96.4% (remaining = annotation-scaled text: we report model height, MicroStation reports paper height) |
+| tags: value, target element, tag set, origin | 100% (name 99.4%) |
+| text strings (incl. RSC fraction glyphs) | 99.6% |
+| text justification point | 98.8% (mostly the V7 file, which has no stored extents) |
+| element range | 99.0% (cell ranges computed differently by MicroStation) |
+| text height | 96.0% (remaining = annotation-scaled text: we report model height, MicroStation reports paper height) |
 
 ## 2. vs official DOT plot PDFs (91 sheet comparisons)
 Full table: `pdf-report.md` (+ overlay PNGs in `pdf/`).
@@ -31,7 +33,7 @@ Full table: `pdf-report.md` (+ overlay PNGs in `pdf/`).
 |---|---|---|---|
 | NJDOT | 23 | 100% | 91% (23 registered) |
 | WSDOT | 37 | 90% | 90% (33 registered) |
-| TxDOT | 17 | 99% | 98% (5 registered; 12 PDFs have no text layer, all-sheet median 88%) |
+| TxDOT | 17 | 99% | 99.5% (5 registered; 12 PDFs have no text layer, all-sheet median 88%) |
 | FDOT | 14 | 95% | 88% (14 registered) |
 | **all** | 91 | **94.6%** (79 sheets with a text layer) | **90.5%** (75 registered; 59 ≥ 85%) |
 

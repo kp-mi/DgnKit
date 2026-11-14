@@ -117,9 +117,11 @@ Three independent checks run in `dotnet test`:
    inside Washington State after State Plane → WGS84 projection.
 
 Latest results (`testdata/reports/SUMMARY.md`): all 108 corpus files read with zero diagnostics; against MicroStation
-itself, element type/colour/weight/style/level, vertices, arcs, cell origins, level tables, units, global origin and tag
-values match **100%** (text strings 99.5%); against the official DOT PDFs, DgnKit recovers a median **92.9%** of the
-plotted words and its own PDF plots overlap the official sheets with a median ink F1 of **90.9%**.
+itself (18 files), element type/colour/weight, vertices, arcs, cell and shared-cell origins, dimensions, units, global
+origin and tag values match **100%**, element level/style 99.7–99.9%, text strings 99.6% and level tables 95.7–100%
+(almost all level mismatches are in one WSDOT file); against the official DOT PDFs, DgnKit recovers a median
+**94.6%** of the plotted words (79 sheets with a text layer) and its own PDF plots overlap the official sheets with a
+median ink F1 of **90.5%** (75 text-registered sheets, 59 of them ≥ 85%).
 
 ## Status / known gaps
 
