@@ -42,6 +42,11 @@ public class OracleTests
         Assert.All(results, r => Assert.True(r.Rate("model.uorPerMaster") >= 0.99, $"{r.File}: model.uorPerMaster"));
         Assert.All(results, r => Assert.True(r.Rate("geometry.vertices") >= 0.98, $"{r.File}: geometry.vertices {r.Rate("geometry.vertices"):P1}"));
         Assert.All(results, r => Assert.True(r.Rate("text.string") >= 0.98, $"{r.File}: text.string {r.Rate("text.string"):P1}"));
+        // Cell placement. Shared cells (35) always use the 3D body layout, also when flagged 2D — 12_XL7089_PS_TC1's
+        // 2D-flagged AA_TM_Terminator instances were read at the wrong offsets until this was asserted.
+        Assert.All(results, r => Assert.True(r.Rate("cell.origin") >= 0.99, $"{r.File}: cell.origin {r.Rate("cell.origin"):P1}"));
+        Assert.All(results, r => Assert.True(r.Rate("sharedcell.origin") >= 0.99, $"{r.File}: sharedcell.origin {r.Rate("sharedcell.origin"):P1}"));
+        Assert.All(results, r => Assert.True(r.Rate("sharedcell.resolved") >= 0.99, $"{r.File}: sharedcell.resolved {r.Rate("sharedcell.resolved"):P1}"));
         // Dimensions (type 33): definition points/type/values exact; displayed text (incl. overrides and text blocks).
         Assert.All(results, r => Assert.True(r.Rate("dimension.type") >= 0.99, $"{r.File}: dimension.type {r.Rate("dimension.type"):P1}"));
         Assert.All(results, r => Assert.True(r.Rate("dimension.points") >= 0.99, $"{r.File}: dimension.points {r.Rate("dimension.points"):P1}"));

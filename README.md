@@ -18,10 +18,13 @@ OpenRoads Designer**, and **MicroStation 2024–2026** — **without any Bentley
 ```
 src/DgnKit          core reader + display list (netstandard2.0, zero dependencies — usable from MicroStation .NET 4.8 add-ins)
 src/DgnKit.Export   exporters (net8.0): ACadSharp (DXF/DWG), ProjNet (CRS), own MiniPdf writer, KML/KMZ/GeoJSON writers
+src/DgnKit.IModel   DGN → BIS mapping and the format-neutral iModel interchange (IMX) writer (net8.0)
 src/DgnKit.Cli      command line tool
+connector/          iTwin.js 5.x connector (TypeScript): IMX → snapshot / incrementally updated iModel (.bim)
 tests/DgnKit.Tests  corpus tests: MicroStation-oracle comparison, official-PDF comparison, exporter round trips
 tools/              corpus fetcher, MicroStation COM oracle (MstnOracle)
-docs/               FORMAT-V8.md (reverse-engineered format notes), ARCHITECTURE.md
+docs/               FORMAT-V8.md (reverse-engineered format notes), ARCHITECTURE.md, IMODEL.md (iModels, BIS, connectors,
+                    DgnKit's iModel mapping), IMODEL-INTERCHANGE.md (IMX spec), imodel/research/ (cited briefs)
 testdata/           corpus manifest, oracle dumps, comparison reports
 ```
 
@@ -47,7 +50,24 @@ dotnet run --project src/DgnKit.Cli -- export design.dgn -f kmz -o design.kmz --
 dotnet run --project src/DgnKit.Cli -- dump drawing.dgn -o drawing.json
 ```
 
-CLI commands: `info`, `scan <dir>`, `dump`, `export -f dxf|dwg|kml|kmz|geojson|pdf|json [--model name] [--crs EPSG:xxxx|file.prj|WKT|local] [--refs] [--paper A1|ANSI-D|WxHmm]`.
+CLI commands: `info`, `scan <dir>`, `dump`, `export -f dxf|dwg|kml|kmz|geojson|pdf|json [--model name] [--crs EPSG:xxxx|file.prj|WKT|local] [--refs] [--paper A1|ANSI-D|WxHmm]`,
+`imodel [-o out.imx.jsonl] [--model name] [--2d-spatial] [--bim out.bim]`.
+
+### iModels
+
+`dgnkit imodel` maps the DGN onto BIS (levels → categories, models → physical models / drawings / sheets, elements →
+exact geometry streams in metres, EC/item-type/tag data → dynamic aspects, V8 ids → provenance) and writes the IMX
+interchange; the iTwin.js connector in `connector/` turns IMX into a snapshot iModel or updates a standalone iModel in
+place. Other formats only need an IMX writer. See [docs/IMODEL.md](docs/IMODEL.md) (also: how iModels are stored, how
+connectors work, BIS, and the recommended iModel structure and schema).
+
+```bash
+dotnet run --project src/DgnKit.Cli -- imodel design.dgn -o design.imx.jsonl --bim design.bim
+```
+
+`--bim` needs Node.js (22, 24 or 26) and a built connector (`cd connector && npm install && npm run build`). Every
+corpus file converts, and `node connector/dist/verify.js design.imx.jsonl design.bim` checks that each primitive
+landed in the iModel.
 
 KML/KMZ/GeoJSON need no `--crs` when the DGN carries a geographic coordinate system: the model's MicroStation GCS
 (`DgnModel.GeoCoordinateSystem`, e.g. `EPSG:2927` or CS-MAP key `HARN.WA-NF`) is used, or, as a checked fallback, the

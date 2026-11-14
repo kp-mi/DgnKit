@@ -21,7 +21,7 @@ namespace DgnKit.Graphics
             switch (e)
             {
                 case LineElement l: r.Extend(T.Apply(l.Start)); r.Extend(T.Apply(l.End)); break;
-                case LineStringElement ls: foreach (var p in ls.Points) r.Extend(T.Apply(p)); break;
+                case LineStringElement ls: foreach (var p in ls.Points) if (!p.IsDisconnect) r.Extend(T.Apply(p)); break;
                 case ArcElement a:
                 {
                     // P(θ) = O + A cosθ + B sinθ (after transform); extrema per axis at θ = atan2(B_k, A_k) (+π)

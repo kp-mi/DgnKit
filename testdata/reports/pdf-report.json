@@ -673,9 +673,9 @@
     "DgnWords": 260,
     "TextRecall": 0.9952153110047847,
     "TextPrecision": 0.8,
-    "InkF1": 0.9837069949202526,
-    "InkRecall": 0.9982409649563668,
-    "InkPrecision": 0.9695901684719429,
+    "InkF1": 0.9954290613335308,
+    "InkRecall": 0.998172431123498,
+    "InkPrecision": 0.9927007299270073,
     "Note": "text-registered (118 anchors)",
     "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\CD-RAC-20.overlay.png"
   },

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\DgnKit\DgnKit.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>DgnKit.IModel</RootNamespace>
+    <Description>Maps DGN data onto BIS (Base Infrastructure Schemas) and writes the format-neutral iModel interchange (IMX) consumed by the TypeScript iModel connector in /connector.</Description>
+  </PropertyGroup>
+
+</Project>

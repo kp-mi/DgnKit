@@ -10,3 +10,11 @@ testdata/*.dgnkit.json
 # generated comparison outputs (re-create with dotnet test)
 testdata/reports/pdf/
 testdata/reports/exports/
+
+# iTwin.js connector (npm install / npm run build)
+connector/node_modules/
+connector/dist/
+*.bim
+*.bim-wal
+*.bim-shm
+*.imx.jsonl

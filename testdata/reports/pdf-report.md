@@ -44,7 +44,7 @@
 | njdot-traffic | Traffic Construction Details DGN file set__124_TCD-22Multi-LaneRoadMovingOperation.dgn | Default | 1/1 | 51 | 100.0% | 79.7% | 95.1% | 83.6% | 89.0% | text-registered (47 anchors) |
 | txdot-BB-AFL-24 | BB-AFL-24.dgn | BB-AFL-24 | 1/1 | 0 | 0.0% | 0.0% | 99.7% | 95.1% | 97.3% | official PDF has no text layer (text plotted as vectors) |
 | txdot-cccg21 | cccg21.dgn | Default | 1/1 | 188 | 100.0% | 83.9% | 78.6% | 92.1% | 84.8% | text-registered (57 anchors) |
-| txdot-CD-RAC-20 | CD-RAC-20.dgn | RAC_1 [Sheet] | 1/2 | 209 | 99.5% | 80.0% | 99.8% | 97.0% | 98.4% | text-registered (118 anchors) |
+| txdot-CD-RAC-20 | CD-RAC-20.dgn | RAC_1 [Sheet] | 1/2 | 209 | 99.5% | 80.0% | 99.8% | 99.3% | 99.5% | text-registered (118 anchors) |
 | txdot-crcp117 | crcp117.dgn | Default | 0/2 | 0 | 0.0% | 0.0% | – | – | – | official PDF has no text layer (text plotted as vectors) |
 | txdot-csb104 | CSB104.DGN | Default | 1/1 | 0 | 0.0% | 0.0% | 77.8% | 85.0% | 81.2% | official PDF has no text layer (text plotted as vectors) |
 | txdot-ec109 | ec109.dgn | Default | 1/1 | 0 | 0.0% | 0.0% | 79.7% | 88.4% | 83.9% | official PDF has no text layer (text plotted as vectors) |

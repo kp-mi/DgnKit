@@ -112,6 +112,19 @@ namespace DgnKit.Formats.V8
             r.F64(o + 24), r.F64(o + 32), r.F64(o + 40),
             r.F64(o + 48), r.F64(o + 56), r.F64(o + 64));
 
+        /// <summary>
+        /// Shared cell definitions (34) and instances (35) always use the 3D body layout in V8 — rotation/scale matrix at
+        /// +56, origin at +128, 152-byte body — whatever the element's is3d flag says (the SDK leaves type 35
+        /// "unpublished"). Verified: every one of the 257 type-34/35 bodies in the corpus is 152 bytes (222 of them
+        /// flagged 2D), and the 3D reading of 2D-flagged instances matches the MicroStation oracle's origins
+        /// (12_XL7089_PS_TC1) while the former 2D reading (+40/+72) gave (0,0) or int32-overflow garbage.
+        /// </summary>
+        private static DPoint3d SharedCellOrigin(LeReader r, int b, bool d3)
+        {
+            var o = P3(r, b + 128);
+            return d3 ? o : new DPoint3d(o.X, o.Y, 0);
+        }
+
         private static Matrix3 Mat2(LeReader r, int o) => new(
             r.F64(o), r.F64(o + 8), 0,
             r.F64(o + 16), r.F64(o + 24), 0,
@@ -216,7 +229,7 @@ namespace DgnKit.Formats.V8
                 {
                     ushort cflags = r.U16(B + 6);
                     scd.IsAnnotation = (cflags & 1) != 0;
-                    scd.Origin = d3 ? P3(r, B + 128) : P2(r, B + 72);
+                    scd.Origin = SharedCellOrigin(r, B, d3);
                     scd.Name = e.GetStringLinkage(1);
                     scd.Description = e.GetStringLinkage(2);
                     scd.IsPointCell = !e.IsSnappable;
@@ -225,8 +238,10 @@ namespace DgnKit.Formats.V8
 
                 case SharedCellElement sc:
                 {
-                    if (d3) { sc.Transform = Mat3(r, B + 56); sc.Origin = P3(r, B + 128); }
-                    else { sc.Transform = Mat2(r, B + 40); sc.Origin = P2(r, B + 72); }
+                    var m = Mat3(r, B + 56);
+                    // 2D: keep the planar part (some writers leave an arbitrary z scale, e.g. 8.3e-7, in a 2D instance)
+                    sc.Transform = d3 ? m : new Matrix3(m.M00, m.M01, 0, m.M10, m.M11, 0, 0, 0, 1);
+                    sc.Origin = SharedCellOrigin(r, B, d3);
                     sc.OverrideFlags = r.U16(B + 4);
                     sc.Name = e.GetStringLinkage(1);
                     break;

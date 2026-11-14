@@ -23,6 +23,34 @@ namespace DgnKit.Geometry
         public double DistanceTo(DPoint3d o) => (this - o).Length;
         public bool IsFinite => !(double.IsNaN(X) || double.IsNaN(Y) || double.IsNaN(Z) || double.IsInfinity(X) || double.IsInfinity(Y) || double.IsInfinity(Z));
 
+        /// <summary>
+        /// MicroStation's DISCONNECT coordinate value (DBL_MAX; SDK <c>Geom/GeomApi.h</c>, <c>Mstn/MstnDefs.h</c>). A vertex
+        /// carrying it separates the runs of a "disconnected" line string or point string — detailing-symbol callouts
+        /// (section/detail markers) store their leader this way. It is stored in UORs and is never a real position.
+        /// </summary>
+        public const double Disconnect = 1.7976931348623157e308;
+
+        /// <summary>True for a disconnect (run separator) vertex: any coordinate equals <see cref="Disconnect"/> (as Bentley's <c>DPoint3d::IsDisconnect</c>). Test raw element points, before any transform.</summary>
+        public bool IsDisconnect => X == Disconnect || Y == Disconnect || Z == Disconnect;
+
+        /// <summary>Splits raw vertices at disconnect vertices into their runs; empty runs are dropped. Without disconnects the result is the input as one run.</summary>
+        public static List<List<DPoint3d>> SplitAtDisconnects(IEnumerable<DPoint3d> points)
+        {
+            var runs = new List<List<DPoint3d>>();
+            var cur = new List<DPoint3d>();
+            foreach (var p in points)
+            {
+                if (p.IsDisconnect)
+                {
+                    if (cur.Count > 0) { runs.Add(cur); cur = new List<DPoint3d>(); }
+                    continue;
+                }
+                cur.Add(p);
+            }
+            if (cur.Count > 0) runs.Add(cur);
+            return runs;
+        }
+
         public bool Equals(DPoint3d o) => X == o.X && Y == o.Y && Z == o.Z;
         public override bool Equals(object? obj) => obj is DPoint3d p && Equals(p);
         public override int GetHashCode() => X.GetHashCode() ^ (Y.GetHashCode() * 397) ^ (Z.GetHashCode() * 7919);

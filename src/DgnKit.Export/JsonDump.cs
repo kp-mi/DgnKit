@@ -216,7 +216,10 @@ public static class JsonDump
                 w.WriteStartArray("points"); WriteXyz(w, m.ToMaster(l.Start)); WriteXyz(w, m.ToMaster(l.End)); w.WriteEndArray();
                 break;
             case LineStringElement ls:
-                w.WriteStartArray("points"); foreach (var p in ls.Points) WriteXyz(w, m.ToMaster(p)); w.WriteEndArray();
+                // a disconnect vertex (MicroStation's DISCONNECT run separator) is written as null
+                w.WriteStartArray("points");
+                foreach (var p in ls.Points) { if (p.IsDisconnect) w.WriteNullValue(); else WriteXyz(w, m.ToMaster(p)); }
+                w.WriteEndArray();
                 break;
             case ArcElement a:
                 WritePoint(w, "center", m.ToMaster(a.Origin));

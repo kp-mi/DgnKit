@@ -22,6 +22,7 @@ internal static class Program
                 "scan" => Scan(args.Skip(1).ToArray()),
                 "dump" => Dump(args.Skip(1).ToArray()),
                 "export" => ExportCmd(args.Skip(1).ToArray()),
+                "imodel" => IModelCmd(args.Skip(1).ToArray()),
                 _ => Usage(),
             };
         }
@@ -45,6 +46,9 @@ internal static class Program
               dgnkit export <file.dgn> -f dxf|dwg|kml|kmz|geojson|pdf|json [-o out] [--model name]
                             [--crs EPSG:2927|<wkt file>|local] [--refs] [--explode] [--paper A1|ANSI-D|WxHmm]
                             (kml/kmz/geojson use the GCS stored in the DGN when --crs is omitted)
+              dgnkit imodel <file.dgn> [-o out.imx.jsonl] [--model name] [--2d-spatial] [--bim out.bim]
+                            map the DGN onto BIS and write the iModel interchange (IMX, docs/IMODEL-INTERCHANGE.md);
+                            --bim also runs the iTwin.js connector (connector/, needs Node.js) to create a snapshot iModel
             """);
         return 1;
     }
@@ -147,5 +151,57 @@ internal static class Program
         var report = exporter.Export(f, outPath, opt);
         Console.WriteLine($"wrote {outPath} ({fmt}) in {sw.ElapsedMilliseconds} ms: {report}");
         return 0;
+    }
+
+    private static int IModelCmd(string[] a)
+    {
+        var sw = Stopwatch.StartNew();
+        var f = DgnFile.Open(a[0]);
+        var imx = Opt(a, "-o") ?? Path.ChangeExtension(a[0], ".imx.jsonl");
+        var model = Opt(a, "--model");
+        var report = DgnKit.IModel.Dgn.DgnImxExporter.Export(f, imx, new DgnKit.IModel.Dgn.DgnImxOptions
+        {
+            TwoDAsSpatial = Flag(a, "--2d-spatial"),
+            Models = model == null ? null : new[] { model },
+        });
+        Console.WriteLine($"wrote {imx} in {sw.ElapsedMilliseconds} ms: {report}");
+
+        var bim = Opt(a, "--bim");
+        if (bim == null) return 0;
+        var connector = FindConnector();
+        if (connector == null)
+        {
+            Console.Error.WriteLine("error: connector/dist/main.js not found — build it first (cd connector && npm install && npm run build)");
+            return 3;
+        }
+        var psi = new ProcessStartInfo("node") { UseShellExecute = false };
+        foreach (var arg in new[] { connector, imx, bim }) psi.ArgumentList.Add(arg);
+        Process? p;
+        try { p = Process.Start(psi); }
+        catch (System.ComponentModel.Win32Exception) { p = null; } // not on PATH
+        if (p == null)
+        {
+            Console.Error.WriteLine("error: could not start node — is Node.js (22, 24 or 26) installed and on PATH?");
+            return 3;
+        }
+        using (p)
+        {
+            p.WaitForExit();
+            return p.ExitCode;
+        }
+    }
+
+    /// <summary>Looks for the built iTwin.js connector (connector/dist/main.js) above the executable and the working directory.</summary>
+    private static string? FindConnector()
+    {
+        foreach (var start in new[] { AppContext.BaseDirectory, Directory.GetCurrentDirectory() })
+        {
+            for (var d = new DirectoryInfo(start); d != null; d = d.Parent)
+            {
+                var candidate = Path.Combine(d.FullName, "connector", "dist", "main.js");
+                if (File.Exists(candidate)) return candidate;
+            }
+        }
+        return null;
     }
 }

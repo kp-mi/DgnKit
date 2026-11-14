@@ -1,0 +1,29 @@
+{
+  "name": "dgnkit-imodel-connector",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Writes DgnKit's IMX interchange (DGN mapped onto BIS) into an iModel with iTwin.js 5.x: snapshot or incrementally-updated standalone iModels.",
+  "license": "MIT",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc -p .",
+    "start": "node dist/main.js",
+    "inspect": "node dist/inspect.js",
+    "verify": "node dist/verify.js"
+  },
+  "engines": {
+    "node": "^22.0.0 || ^24.0.0 || ^26.0.0"
+  },
+  "dependencies": {
+    "@itwin/core-backend": "5.15.1",
+    "@itwin/core-bentley": "5.15.1",
+    "@itwin/core-common": "5.15.1",
+    "@itwin/core-geometry": "5.15.1",
+    "@itwin/core-quantity": "5.15.1",
+    "@itwin/ecschema-metadata": "5.15.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "~5.9.3"
+  }
+}

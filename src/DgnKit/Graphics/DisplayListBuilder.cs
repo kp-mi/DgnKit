@@ -342,18 +342,24 @@ namespace DgnKit.Graphics
                     {
                         foreach (var pt in ls.Points)
                         {
+                            if (pt.IsDisconnect) continue;
                             var pp = NewPrim(ctx, PrimitiveKind.Point, source, e, s, cellPath, level);
                             pp.Points.Add(T.Apply(pt)); ctx.Out.Add(pp);
                         }
                         break;
                     }
-                    var p = NewPrim(ctx, PrimitiveKind.Polyline, source, e, s, cellPath, level);
-                    var pts = ls.IsCurve ? Curves.StrokeCurveElement(ls.Points) : ls.Points;
-                    p.IsStroked = ls.IsCurve;
-                    foreach (var pt in pts) p.Points.Add(T.Apply(pt));
-                    p.Closed = ls.IsClosed;
-                    if (p.Points.Count == 1) p.Kind = PrimitiveKind.Point;
-                    ctx.Out.Add(p);
+                    // a disconnected line string draws each run on its own (and is never closed)
+                    var runs = DPoint3d.SplitAtDisconnects(ls.Points);
+                    foreach (var run in runs)
+                    {
+                        var p = NewPrim(ctx, PrimitiveKind.Polyline, source, e, s, cellPath, level);
+                        var pts = ls.IsCurve ? Curves.StrokeCurveElement(run) : run;
+                        p.IsStroked = ls.IsCurve;
+                        foreach (var pt in pts) p.Points.Add(T.Apply(pt));
+                        p.Closed = ls.IsClosed && runs.Count == 1;
+                        if (p.Points.Count == 1) p.Kind = PrimitiveKind.Point;
+                        ctx.Out.Add(p);
+                    }
                     break;
                 }
                 case ArcElement a:
@@ -522,31 +528,45 @@ namespace DgnKit.Graphics
                 return;
             }
             var pts = new List<DPoint3d>();
-            bool stroked = false;
+            bool stroked = false, broken = false;
+            void Flush(bool closed)
+            {
+                if (pts.Count >= 2)
+                {
+                    var p = NewPrim(ctx, PrimitiveKind.Polyline, source, cx, s, cellPath, level);
+                    foreach (var pt in pts) p.Points.Add(T.Apply(pt));
+                    p.Closed = closed;
+                    p.IsStroked = stroked;
+                    ctx.Out.Add(p);
+                }
+                pts.Clear();
+            }
             foreach (var c in cx.Children)
             {
                 if (c.IsDeleted) continue;
-                IEnumerable<DPoint3d> seg = c switch
+                // a component line string with disconnect vertices breaks the chain into separate (open) polylines
+                IEnumerable<IEnumerable<DPoint3d>> runs = c switch
                 {
-                    LineElement l => new[] { l.Start, l.End },
-                    LineStringElement ls => ls.IsCurve ? Curves.StrokeCurveElement(ls.Points) : ls.Points,
-                    ArcElement a => Curves.StrokeArc(a, ctx.ChordTol * ctx.RootModel.Units.UorPerMaster),
-                    BSplineCurveElement bc => Curves.StrokeBSpline(bc, 0),
-                    _ => Array.Empty<DPoint3d>(),
+                    LineElement l => new[] { new[] { l.Start, l.End } },
+                    LineStringElement ls => DPoint3d.SplitAtDisconnects(ls.Points).Select(run => ls.IsCurve ? Curves.StrokeCurveElement(run) : (IEnumerable<DPoint3d>)run),
+                    ArcElement a => new[] { Curves.StrokeArc(a, ctx.ChordTol * ctx.RootModel.Units.UorPerMaster) },
+                    BSplineCurveElement bc => new[] { Curves.StrokeBSpline(bc, 0) },
+                    _ => Array.Empty<IEnumerable<DPoint3d>>(),
                 };
                 if (c is ArcElement || c is BSplineCurveElement || (c is LineStringElement l2 && l2.IsCurve)) stroked = true;
-                foreach (var pt in seg)
+                bool first = true;
+                foreach (var seg in runs)
                 {
-                    if (pts.Count > 0 && pts[pts.Count - 1].DistanceTo(pt) < 1e-9) continue;
-                    pts.Add(pt);
+                    if (!first) { Flush(false); broken = true; }
+                    first = false;
+                    foreach (var pt in seg)
+                    {
+                        if (pts.Count > 0 && pts[pts.Count - 1].DistanceTo(pt) < 1e-9) continue;
+                        pts.Add(pt);
+                    }
                 }
             }
-            if (pts.Count < 2) return;
-            var p = NewPrim(ctx, PrimitiveKind.Polyline, source, cx, s, cellPath, level);
-            foreach (var pt in pts) p.Points.Add(T.Apply(pt));
-            p.Closed = cx.IsClosed;
-            p.IsStroked = stroked;
-            ctx.Out.Add(p);
+            Flush(cx.IsClosed && !broken);
         }
     }
 }

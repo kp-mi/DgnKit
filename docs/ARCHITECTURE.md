@@ -22,8 +22,16 @@
                  │ PdfExporter  → MiniPdf (own dependency-free vector PDF writer) │
                  │ JsonDump     → full engineering-data JSON                  │
                  └────────────────────────────────────────────────────────────┘
-                 DgnKit.Cli: info | scan | dump | export
+                 ┌───────────── DgnKit.IModel (net8.0) ─────────────┐        ┌──────── connector/ (TypeScript) ────────┐
+  DgnFile ──►    │ DgnImxExporter: DGN → BIS (exact geometry, metres,│ IMX ──►│ ImxLoader on @itwin/core-backend 5.x:    │──► .bim
+                 │ provenance, checksums) → ImxWriter (NDJSON)       │        │ BIS tree, schemas, sync, views (EditTxn) │
+                 └───────────────────────────────────────────────────┘        └──────────────────────────────────────────┘
+                 DgnKit.Cli: info | scan | dump | export | imodel
 ```
+
+The iModel path deliberately does **not** go through the display list: iModels keep exact curves, ByLevel symbology
+(inherited from sub-categories) and element identity, so `DgnImxExporter` walks the element tree itself and reuses only
+the shared pieces (colour table, dimension regeneration, curve stroking for curve strings). See docs/IMODEL.md.
 
 ## Design choices (and the iModel parallels)
 

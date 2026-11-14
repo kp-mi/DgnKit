@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DgnKit\DgnKit.csproj" />
     <ProjectReference Include="..\DgnKit.Export\DgnKit.Export.csproj" />
+    <ProjectReference Include="..\DgnKit.IModel\DgnKit.IModel.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
