@@ -27,7 +27,8 @@ function gcsProps(h: ImxHeader): GeographicCRSProps | undefined {
   if (!g || (!g.epsg && !g.csmapKey))
     return undefined;
   const key = g.csmapKey && !/^EPSG:/i.test(g.csmapKey) ? g.csmapKey : (g.epsg ? `EPSG:${g.epsg}` : g.csmapKey!);
-  return { horizontalCRS: { id: key, epsg: g.epsg, description: g.description }, verticalCRS: { id: "ELLIPSOID" } };
+  // heights are ellipsoidal unless the producer names the vertical datum (NAVD88, NGVD29, GEOID, LOCAL_ELLIPSOID)
+  return { horizontalCRS: { id: key, epsg: g.epsg, description: g.description }, verticalCRS: { id: g.verticalCRS ?? "ELLIPSOID" } };
 }
 
 async function main(): Promise<number> {

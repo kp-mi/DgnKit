@@ -30,7 +30,8 @@ function countPrimitives(entries: unknown, acc: Map<string, number>): Map<string
         countPrimitives(Array.isArray(v) ? v : [v], acc);
         continue;
       }
-      const kind = k === "lineSegment" || k === "lineString" ? "line" : k;
+      // iTwin.js stores a cone with equal radii as a cylinder
+      const kind = k === "lineSegment" || k === "lineString" ? "line" : k === "cylinder" ? "cone" : k;
       acc.set(kind, (acc.get(kind) ?? 0) + 1);
     }
   return acc;
