@@ -130,7 +130,8 @@ public static class PdfComparer
                 string png = Path.Combine(workDir, Path.GetFileNameWithoutExtension(dgnPath) + ".overlay.png");
                 using (var fs = File.Create(png)) overlay.Encode(fs, SKEncodedImageFormat.Png, 90);
                 overlay.Dispose();
-                r.OverlayPng = png;
+                // repo-relative: the report is committed, and an absolute path would carry the local user profile
+                r.OverlayPng = Path.GetRelativePath(TestPaths.RepoRoot, png).Replace('\\', '/');
             }
             catch (Exception ex) { r.Note = (r.Note == null ? "" : r.Note + "; ") + "raster compare failed: " + ex.Message; }
         }

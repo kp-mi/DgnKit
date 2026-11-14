@@ -142,6 +142,31 @@ internal static class Program
         return 0;
     }
 
+    /// <summary>The DgnKit repository root (the folder holding DgnKit.slnx above this tool or the working directory), or null.</summary>
+    private static readonly string RepoRoot = FindRepoRoot();
+
+    private static string FindRepoRoot()
+    {
+        foreach (var start in new[] { AppDomain.CurrentDomain.BaseDirectory, Environment.CurrentDirectory })
+            for (var d = new DirectoryInfo(start); d != null; d = d.Parent)
+                if (File.Exists(Path.Combine(d.FullName, "DgnKit.slnx"))) return d.FullName.TrimEnd('\\');
+        return null;
+    }
+
+    /// <summary>
+    /// A path as written into oracle JSON: repo-relative with forward slashes inside the repository, otherwise the file
+    /// name alone. The dumps are committed, and an absolute path would publish the local user profile. linestyle_oracle.py
+    /// applies the same rule (<c>_report_path</c>).
+    /// </summary>
+    private static string ReportPath(string path)
+    {
+        if (string.IsNullOrEmpty(path) || !Path.IsPathRooted(path)) return path;
+        string full = Path.GetFullPath(path);
+        if (RepoRoot != null && full.StartsWith(RepoRoot + "\\", StringComparison.OrdinalIgnoreCase))
+            return full.Substring(RepoRoot.Length + 1).Replace('\\', '/');
+        return Path.GetFileName(full);
+    }
+
     private static string J(object v)
     {
         switch (v)
@@ -256,7 +281,7 @@ internal static class Program
         app.OpenDesignFile(path, true, MsdV7Action.Workmode);
         var df = app.ActiveDesignFile;
         var sb = new StringBuilder();
-        sb.Append("{\"generator\":\"MicroStation COM oracle (typed)\",\"msVersion\":").Append(J(app.Version)).Append(",\"file\":").Append(J(path));
+        sb.Append("{\"generator\":\"MicroStation COM oracle (typed)\",\"msVersion\":").Append(J(app.Version)).Append(",\"file\":").Append(J(ReportPath(path)));
         sb.Append(",\"format\":").Append(J((int)df.Format));
         bool first;
         if (gcsOnly)
@@ -369,9 +394,12 @@ internal static class Program
         string started = tmpOut + ".started", err = tmpOut + ".err";
         foreach (var p in new[] { tmpOut, started, err }) if (File.Exists(p)) File.Delete(p);
         // The marker is written before any MicroStation import, so a missing marker means the key-in never ran Python.
+        // REPO_ROOT lets the script write repo-relative paths (see ReportPath); RepoRoot never ends in a backslash, which
+        // would end the raw string early
         File.WriteAllText(wrapper,
-            "OUT_PATH = r\"" + tmpOut + "\"\nopen(OUT_PATH + '.started', 'w').write('1')\ntry:\n    exec(compile(open(r\"" + script +
-            "\", encoding='utf-8').read(), 'linestyle_oracle.py', 'exec'), {'__name__': '__main__', 'OUT_PATH': OUT_PATH})\n" +
+            "OUT_PATH = r\"" + tmpOut + "\"\nREPO_ROOT = " + (RepoRoot == null ? "None" : "r\"" + RepoRoot + "\"") +
+            "\nopen(OUT_PATH + '.started', 'w').write('1')\ntry:\n    exec(compile(open(r\"" + script +
+            "\", encoding='utf-8').read(), 'linestyle_oracle.py', 'exec'), {'__name__': '__main__', 'OUT_PATH': OUT_PATH, 'REPO_ROOT': REPO_ROOT})\n" +
             "except BaseException:\n    import traceback\n    open(OUT_PATH + '.err', 'w').write(traceback.format_exc())\n",
             new UTF8Encoding(false));
 

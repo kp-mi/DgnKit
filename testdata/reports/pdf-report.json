@@ -14,7 +14,7 @@
     "InkRecall": 0.81380005200208,
     "InkPrecision": 0.9938618925831202,
     "Note": "text-registered (84 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\000-510-1of2.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/000-510-1of2.overlay.png"
   },
   {
     "Item": "fdot-000-510",
@@ -31,7 +31,7 @@
     "InkRecall": 0.7984419263456091,
     "InkPrecision": 0.9912635142513924,
     "Note": "text-registered (43 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\000-510-2of2.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/000-510-2of2.overlay.png"
   },
   {
     "Item": "fdot-102-600",
@@ -48,7 +48,7 @@
     "InkRecall": 0.7730868675954155,
     "InkPrecision": 0.987934791380841,
     "Note": "text-registered (134 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\102-600-10of11.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/102-600-10of11.overlay.png"
   },
   {
     "Item": "fdot-102-600",
@@ -65,7 +65,7 @@
     "InkRecall": 0.6641697877652933,
     "InkPrecision": 0.9551979121357111,
     "Note": "text-registered (31 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\102-600-11of11.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/102-600-11of11.overlay.png"
   },
   {
     "Item": "fdot-102-600",
@@ -82,7 +82,7 @@
     "InkRecall": 0.7811993517017828,
     "InkPrecision": 0.9966134668732212,
     "Note": "text-registered (136 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\102-600-1of11.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/102-600-1of11.overlay.png"
   },
   {
     "Item": "fdot-102-600",
@@ -99,7 +99,7 @@
     "InkRecall": 0.8126931863996775,
     "InkPrecision": 0.9956933246532125,
     "Note": "text-registered (237 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\102-600-2of11.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/102-600-2of11.overlay.png"
   },
   {
     "Item": "fdot-102-600",
@@ -116,7 +116,7 @@
     "InkRecall": 0.7863981737026815,
     "InkPrecision": 0.9816158971918134,
     "Note": "text-registered (240 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\102-600-3of11.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/102-600-3of11.overlay.png"
   },
   {
     "Item": "fdot-102-600",
@@ -133,7 +133,7 @@
     "InkRecall": 0.7851998098789806,
     "InkPrecision": 0.9915201654601862,
     "Note": "text-registered (245 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\102-600-4of11.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/102-600-4of11.overlay.png"
   },
   {
     "Item": "fdot-102-600",
@@ -150,7 +150,7 @@
     "InkRecall": 0.9898605830164765,
     "InkPrecision": 0.9967330641136167,
     "Note": "text-registered (185 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\102-600-5of11.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/102-600-5of11.overlay.png"
   },
   {
     "Item": "fdot-102-600",
@@ -167,7 +167,7 @@
     "InkRecall": 0.8297364934491388,
     "InkPrecision": 0.9977609314525158,
     "Note": "text-registered (215 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\102-600-6of11.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/102-600-6of11.overlay.png"
   },
   {
     "Item": "fdot-102-600",
@@ -184,7 +184,7 @@
     "InkRecall": 0.7061901013935831,
     "InkPrecision": 0.9907123851598976,
     "Note": "text-registered (130 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\102-600-7of11.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/102-600-7of11.overlay.png"
   },
   {
     "Item": "fdot-102-600",
@@ -201,7 +201,7 @@
     "InkRecall": 0.7070145423438836,
     "InkPrecision": 0.9937557481001017,
     "Note": "text-registered (101 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\102-600-8of11.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/102-600-8of11.overlay.png"
   },
   {
     "Item": "fdot-102-600",
@@ -218,7 +218,7 @@
     "InkRecall": 0.7549369588333587,
     "InkPrecision": 0.9847738807666085,
     "Note": "text-registered (40 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\102-600-9of11.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/102-600-9of11.overlay.png"
   },
   {
     "Item": "fdot-110-100",
@@ -235,7 +235,7 @@
     "InkRecall": 0.7341605068637803,
     "InkPrecision": 0.9984359502555886,
     "Note": "text-registered (50 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\110-100-1of1.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/110-100-1of1.overlay.png"
   },
   {
     "Item": "njdot-traffic",
@@ -252,7 +252,7 @@
     "InkRecall": 0.9676422163233762,
     "InkPrecision": 0.9219458496055356,
     "Note": "text-registered (42 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\Traffic Construction Details DGN file set__102_IndexForTrafficControlDetails.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/Traffic Construction Details DGN file set__102_IndexForTrafficControlDetails.overlay.png"
   },
   {
     "Item": "njdot-traffic",
@@ -269,7 +269,7 @@
     "InkRecall": 0.8996400010992333,
     "InkPrecision": 0.926851501878738,
     "Note": "text-registered (119 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\Traffic Construction Details DGN file set__103_TCD-1LegendAndGeneralNotes.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/Traffic Construction Details DGN file set__103_TCD-1LegendAndGeneralNotes.overlay.png"
   },
   {
     "Item": "njdot-traffic",
@@ -286,7 +286,7 @@
     "InkRecall": 0.9445802185163887,
     "InkPrecision": 0.9377987589442118,
     "Note": "text-registered (119 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\Traffic Construction Details DGN file set__104_TCD-2ConstructionBarrier.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/Traffic Construction Details DGN file set__104_TCD-2ConstructionBarrier.overlay.png"
   },
   {
     "Item": "njdot-traffic",
@@ -303,7 +303,7 @@
     "InkRecall": 0.9322634375908838,
     "InkPrecision": 0.8916339341433868,
     "Note": "text-registered (35 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\Traffic Construction Details DGN file set__105_TCD-3TwoLanes,Undivided,LaneAndShoulderClosing.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/Traffic Construction Details DGN file set__105_TCD-3TwoLanes,Undivided,LaneAndShoulderClosing.overlay.png"
   },
   {
     "Item": "njdot-traffic",
@@ -320,7 +320,7 @@
     "InkRecall": 0.9234649122807017,
     "InkPrecision": 0.8691268784477839,
     "Note": "text-registered (35 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\Traffic Construction Details DGN file set__106_TCD-4TwoLanes,Undivided,LaneAndShoulderClosing.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/Traffic Construction Details DGN file set__106_TCD-4TwoLanes,Undivided,LaneAndShoulderClosing.overlay.png"
   },
   {
     "Item": "njdot-traffic",
@@ -337,7 +337,7 @@
     "InkRecall": 0.9412021262096225,
     "InkPrecision": 0.9222362649617128,
     "Note": "text-registered (35 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\Traffic Construction Details DGN file set__107_TCD-5Two Lanes,Undivided,Intersection.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/Traffic Construction Details DGN file set__107_TCD-5Two Lanes,Undivided,Intersection.overlay.png"
   },
   {
     "Item": "njdot-traffic",
@@ -354,7 +354,7 @@
     "InkRecall": 0.9247654202710699,
     "InkPrecision": 0.8969462637102501,
     "Note": "text-registered (33 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\Traffic Construction Details DGN file set__108_TCD-6Two Lanes,Undivided,Intersection.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/Traffic Construction Details DGN file set__108_TCD-6Two Lanes,Undivided,Intersection.overlay.png"
   },
   {
     "Item": "njdot-traffic",
@@ -371,7 +371,7 @@
     "InkRecall": 0.930543235760557,
     "InkPrecision": 0.9035616229408175,
     "Note": "text-registered (37 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\Traffic Construction Details DGN file set__109_TCD-7Two Lanes,Undivided,Intersection.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/Traffic Construction Details DGN file set__109_TCD-7Two Lanes,Undivided,Intersection.overlay.png"
   },
   {
     "Item": "njdot-traffic",
@@ -388,7 +388,7 @@
     "InkRecall": 0.9375703199376857,
     "InkPrecision": 0.8841765418057747,
     "Note": "text-registered (38 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\Traffic Construction Details DGN file set__110_TCD-8FourLanes,Undivided,LaneAndShoulderClosing.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/Traffic Construction Details DGN file set__110_TCD-8FourLanes,Undivided,LaneAndShoulderClosing.overlay.png"
   },
   {
     "Item": "njdot-traffic",
@@ -405,7 +405,7 @@
     "InkRecall": 0.9129635521617704,
     "InkPrecision": 0.8675275190516512,
     "Note": "text-registered (34 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\Traffic Construction Details DGN file set__111_TCD-9Four Lanes,Undivided,LeftLaneClosing.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/Traffic Construction Details DGN file set__111_TCD-9Four Lanes,Undivided,LeftLaneClosing.overlay.png"
   },
   {
     "Item": "njdot-traffic",
@@ -422,7 +422,7 @@
     "InkRecall": 0.9595132360574428,
     "InkPrecision": 0.8950076081443373,
     "Note": "text-registered (34 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\Traffic Construction Details DGN file set__112_TCD-10FourLanes,Undivided,2LanesAndShoulderClosing.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/Traffic Construction Details DGN file set__112_TCD-10FourLanes,Undivided,2LanesAndShoulderClosing.overlay.png"
   },
   {
     "Item": "njdot-traffic",
@@ -439,7 +439,7 @@
     "InkRecall": 0.9295707167497126,
     "InkPrecision": 0.870439982913285,
     "Note": "text-registered (45 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\Traffic Construction Details DGN file set__113_TCD-11FourLanes,Undivided,Intersection.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/Traffic Construction Details DGN file set__113_TCD-11FourLanes,Undivided,Intersection.overlay.png"
   },
   {
     "Item": "njdot-traffic",
@@ -456,7 +456,7 @@
     "InkRecall": 0.939001667157007,
     "InkPrecision": 0.9019017266136659,
     "Note": "text-registered (33 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\Traffic Construction Details DGN file set__114_TCD-12FourLanes,Undivided,Intersection.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/Traffic Construction Details DGN file set__114_TCD-12FourLanes,Undivided,Intersection.overlay.png"
   },
   {
     "Item": "njdot-traffic",
@@ -473,7 +473,7 @@
     "InkRecall": 0.9309275793650794,
     "InkPrecision": 0.8643672199170125,
     "Note": "text-registered (32 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\Traffic Construction Details DGN file set__115_TCD-13FourLanes,Undivided,Intersection.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/Traffic Construction Details DGN file set__115_TCD-13FourLanes,Undivided,Intersection.overlay.png"
   },
   {
     "Item": "njdot-traffic",
@@ -490,7 +490,7 @@
     "InkRecall": 0.9165576903732019,
     "InkPrecision": 0.9019877075977507,
     "Note": "text-registered (30 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\Traffic Construction Details DGN file set__116_TCD-14_4\u00266Lanes,Divided,RightLanAndShoulderClosing.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/Traffic Construction Details DGN file set__116_TCD-14_4\u00266Lanes,Divided,RightLanAndShoulderClosing.overlay.png"
   },
   {
     "Item": "njdot-traffic",
@@ -507,7 +507,7 @@
     "InkRecall": 0.9136429085673146,
     "InkPrecision": 0.8342470598638253,
     "Note": "text-registered (41 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\Traffic Construction Details DGN file set__117_TCD-15_4\u00266Lanes,Divided,LeftLaneClosing.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/Traffic Construction Details DGN file set__117_TCD-15_4\u00266Lanes,Divided,LeftLaneClosing.overlay.png"
   },
   {
     "Item": "njdot-traffic",
@@ -524,7 +524,7 @@
     "InkRecall": 0.9216773949261643,
     "InkPrecision": 0.8948074534161491,
     "Note": "text-registered (31 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\Traffic Construction Details DGN file set__118_TCD-16SixLanes,Divided,TwoLanesClosing.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/Traffic Construction Details DGN file set__118_TCD-16SixLanes,Divided,TwoLanesClosing.overlay.png"
   },
   {
     "Item": "njdot-traffic",
@@ -541,7 +541,7 @@
     "InkRecall": 0.8490043319117498,
     "InkPrecision": 0.8171477228068643,
     "Note": "text-registered (19 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\Traffic Construction Details DGN file set__119_TCD-17_6Lanes,Divided,CenterLaneClosure.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/Traffic Construction Details DGN file set__119_TCD-17_6Lanes,Divided,CenterLaneClosure.overlay.png"
   },
   {
     "Item": "njdot-traffic",
@@ -558,7 +558,7 @@
     "InkRecall": 0.9510354274663587,
     "InkPrecision": 0.9145374162928288,
     "Note": "text-registered (19 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\Traffic Construction Details DGN file set__120_TCD-18Divided,ExitRampConstruction(Left\u0026Right).overlay.png"
+    "OverlayPng": "testdata/reports/pdf/Traffic Construction Details DGN file set__120_TCD-18Divided,ExitRampConstruction(Left\u0026Right).overlay.png"
   },
   {
     "Item": "njdot-traffic",
@@ -575,7 +575,7 @@
     "InkRecall": 0.9687255865527582,
     "InkPrecision": 0.9233955712588712,
     "Note": "text-registered (19 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\Traffic Construction Details DGN file set__121_TCD-19Divided,ExitRampConstruction(Left\u0026Right)WithDecelerationLane.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/Traffic Construction Details DGN file set__121_TCD-19Divided,ExitRampConstruction(Left\u0026Right)WithDecelerationLane.overlay.png"
   },
   {
     "Item": "njdot-traffic",
@@ -592,7 +592,7 @@
     "InkRecall": 0.9770553592461719,
     "InkPrecision": 0.9251293066900313,
     "Note": "text-registered (36 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\Traffic Construction Details DGN file set__122_TCD-20Divided,EntranceRampConstruction(Left\u0026Right).overlay.png"
+    "OverlayPng": "testdata/reports/pdf/Traffic Construction Details DGN file set__122_TCD-20Divided,EntranceRampConstruction(Left\u0026Right).overlay.png"
   },
   {
     "Item": "njdot-traffic",
@@ -609,7 +609,7 @@
     "InkRecall": 0.9724902434936672,
     "InkPrecision": 0.9090909090909091,
     "Note": "text-registered (23 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\Traffic Construction Details DGN file set__123_TCD-21Divided,EntranceRampConstruction(Left\u0026Right)WithAccelerationLane.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/Traffic Construction Details DGN file set__123_TCD-21Divided,EntranceRampConstruction(Left\u0026Right)WithAccelerationLane.overlay.png"
   },
   {
     "Item": "njdot-traffic",
@@ -626,7 +626,7 @@
     "InkRecall": 0.9511464109096358,
     "InkPrecision": 0.8362149189400989,
     "Note": "text-registered (47 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\Traffic Construction Details DGN file set__124_TCD-22Multi-LaneRoadMovingOperation.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/Traffic Construction Details DGN file set__124_TCD-22Multi-LaneRoadMovingOperation.overlay.png"
   },
   {
     "Item": "txdot-BB-AFL-24",
@@ -643,7 +643,7 @@
     "InkRecall": 0.9971032303370787,
     "InkPrecision": 0.9505007551069072,
     "Note": "official PDF has no text layer (text plotted as vectors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\BB-AFL-24.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/BB-AFL-24.overlay.png"
   },
   {
     "Item": "txdot-cccg21",
@@ -660,7 +660,7 @@
     "InkRecall": 0.7863471345838016,
     "InkPrecision": 0.9206958373018096,
     "Note": "text-registered (57 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\cccg21.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/cccg21.overlay.png"
   },
   {
     "Item": "txdot-CD-RAC-20",
@@ -677,7 +677,7 @@
     "InkRecall": 0.998172431123498,
     "InkPrecision": 0.9927007299270073,
     "Note": "text-registered (118 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\CD-RAC-20.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/CD-RAC-20.overlay.png"
   },
   {
     "Item": "txdot-crcp117",
@@ -711,7 +711,7 @@
     "InkRecall": 0.7777985878298653,
     "InkPrecision": 0.8500799666226271,
     "Note": "official PDF has no text layer (text plotted as vectors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\CSB104.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/CSB104.overlay.png"
   },
   {
     "Item": "txdot-ec109",
@@ -728,7 +728,7 @@
     "InkRecall": 0.7973585714521262,
     "InkPrecision": 0.8842309827873404,
     "Note": "official PDF has no text layer (text plotted as vectors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\ec109.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/ec109.overlay.png"
   },
   {
     "Item": "txdot-ec293",
@@ -745,7 +745,7 @@
     "InkRecall": 0.8427126099706745,
     "InkPrecision": 0.9133177570093458,
     "Note": "official PDF has no text layer (text plotted as vectors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\ec293.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/ec293.overlay.png"
   },
   {
     "Item": "txdot-ed10-26",
@@ -762,7 +762,7 @@
     "InkRecall": 0.999285327024496,
     "InkPrecision": 0.9983225751656192,
     "Note": "text-registered (238 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\ed10-26.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/ed10-26.overlay.png"
   },
   {
     "Item": "txdot-mb05-1",
@@ -813,7 +813,7 @@
     "InkRecall": 0.1305796023265251,
     "InkPrecision": 0.7762048671862574,
     "Note": "official PDF has no text layer (text plotted as vectors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\NOVUS10026.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/NOVUS10026.overlay.png"
   },
   {
     "Item": "txdot-pm3-12",
@@ -830,7 +830,7 @@
     "InkRecall": 0.9091343646792978,
     "InkPrecision": 0.965962845101918,
     "Note": "official PDF has no text layer (text plotted as vectors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\pm3-12.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/pm3-12.overlay.png"
   },
   {
     "Item": "txdot-RSE-1-21",
@@ -847,7 +847,7 @@
     "InkRecall": 0.8539354455361501,
     "InkPrecision": 0.9614886816873135,
     "Note": "text-registered (62 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\RSE(1)-21.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/RSE(1)-21.overlay.png"
   },
   {
     "Item": "txdot-SOLS-24",
@@ -881,7 +881,7 @@
     "InkRecall": 0.9999642250245953,
     "InkPrecision": 0.9988434461951056,
     "Note": "text-registered (227 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\tcp(1-4)-26.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/tcp(1-4)-26.overlay.png"
   },
   {
     "Item": "txdot-trb04-1",
@@ -898,7 +898,7 @@
     "InkRecall": 0.1992559173811713,
     "InkPrecision": 0.4324750394114556,
     "Note": "official PDF has no text layer (text plotted as vectors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\TRB04(1).overlay.png"
+    "OverlayPng": "testdata/reports/pdf/TRB04(1).overlay.png"
   },
   {
     "Item": "txdot-wf194",
@@ -915,7 +915,7 @@
     "InkRecall": 0.8022279401568495,
     "InkPrecision": 0.9041313461502946,
     "Note": "official PDF has no text layer (text plotted as vectors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\WF194.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/WF194.overlay.png"
   },
   {
     "Item": "wsdot-XE3649",
@@ -932,7 +932,7 @@
     "InkRecall": 0.9078359230090918,
     "InkPrecision": 0.776924483452185,
     "Note": "text-registered (7 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\SR 24 \u0026 240 Paver_PS_RS.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/SR 24 \u0026 240 Paver_PS_RS.overlay.png"
   },
   {
     "Item": "wsdot-XE3649",
@@ -949,7 +949,7 @@
     "InkRecall": 0.21977134084757402,
     "InkPrecision": 0.3628177469280555,
     "Note": null,
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\SR 24 \u0026 SR 240 Paver_PS_EU.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/SR 24 \u0026 SR 240 Paver_PS_EU.overlay.png"
   },
   {
     "Item": "wsdot-XE3649",
@@ -966,7 +966,7 @@
     "InkRecall": 0.750131297216499,
     "InkPrecision": 0.35022609347975575,
     "Note": "text-registered (26 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\SR 24 \u0026 SR240 Paver_PS_VM.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/SR 24 \u0026 SR240 Paver_PS_VM.overlay.png"
   },
   {
     "Item": "wsdot-XE3649",
@@ -983,7 +983,7 @@
     "InkRecall": 0.7033845916080674,
     "InkPrecision": 0.7023702370237024,
     "Note": "text-registered (34 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\SR24 \u0026 SR240 PAVER_PS_TC.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/SR24 \u0026 SR240 PAVER_PS_TC.overlay.png"
   },
   {
     "Item": "wsdot-XE3691",
@@ -1000,7 +1000,7 @@
     "InkRecall": 0.9619220942848143,
     "InkPrecision": 0.9926308564823176,
     "Note": "text-registered (71 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\XL7087_PS GR1.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/XL7087_PS GR1.overlay.png"
   },
   {
     "Item": "wsdot-XE3691",
@@ -1017,7 +1017,7 @@
     "InkRecall": 0.9385973452763444,
     "InkPrecision": 0.9844122566639382,
     "Note": "text-registered (43 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\XL7087_PS_CT.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/XL7087_PS_CT.overlay.png"
   },
   {
     "Item": "wsdot-XE3691",
@@ -1034,7 +1034,7 @@
     "InkRecall": 0.946840318248619,
     "InkPrecision": 0.974160071282562,
     "Note": "text-registered (81 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\XL7087_PS_QT.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/XL7087_PS_QT.overlay.png"
   },
   {
     "Item": "wsdot-XE3691",
@@ -1051,7 +1051,7 @@
     "InkRecall": 0.9645297235170168,
     "InkPrecision": 0.9846462619167085,
     "Note": "text-registered (103 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\XL7087_PS_RS1.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/XL7087_PS_RS1.overlay.png"
   },
   {
     "Item": "wsdot-XE3691",
@@ -1068,7 +1068,7 @@
     "InkRecall": 0.8542626138573329,
     "InkPrecision": 0.9854173650687228,
     "Note": "text-registered (62 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\XL7087_PS_TC1.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/XL7087_PS_TC1.overlay.png"
   },
   {
     "Item": "wsdot-XE3691",
@@ -1085,7 +1085,7 @@
     "InkRecall": 0.7925271953334384,
     "InkPrecision": 0.9872873503576591,
     "Note": "text-registered (67 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\XL7087_PS_TC2.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/XL7087_PS_TC2.overlay.png"
   },
   {
     "Item": "wsdot-XE3691",
@@ -1102,7 +1102,7 @@
     "InkRecall": 0.8029706244926186,
     "InkPrecision": 0.9849172392929686,
     "Note": "text-registered (61 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\XL7087_PS_TC3.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/XL7087_PS_TC3.overlay.png"
   },
   {
     "Item": "wsdot-XE3691",
@@ -1119,7 +1119,7 @@
     "InkRecall": 0.9657649207681296,
     "InkPrecision": 0.9836791965142899,
     "Note": "text-registered (149 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\XL7087_PS_TCR.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/XL7087_PS_TCR.overlay.png"
   },
   {
     "Item": "wsdot-XE3691",
@@ -1136,7 +1136,7 @@
     "InkRecall": 0.7769725839963513,
     "InkPrecision": 0.38244521790283836,
     "Note": "text-registered (16 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\XL7087_PS_VM.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/XL7087_PS_VM.overlay.png"
   },
   {
     "Item": "wsdot-XE3736",
@@ -1153,7 +1153,7 @@
     "InkRecall": 0.7383435582822085,
     "InkPrecision": 0.4262664381847238,
     "Note": "text-registered (19 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\01_XL7089_PS_IV.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/01_XL7089_PS_IV.overlay.png"
   },
   {
     "Item": "wsdot-XE3736",
@@ -1170,7 +1170,7 @@
     "InkRecall": 0.9408240697597018,
     "InkPrecision": 0.9863504460287321,
     "Note": "text-registered (36 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\04_XL7089_PS_CT1.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/04_XL7089_PS_CT1.overlay.png"
   },
   {
     "Item": "wsdot-XE3736",
@@ -1187,7 +1187,7 @@
     "InkRecall": 0.9312905764312414,
     "InkPrecision": 0.9837493101122218,
     "Note": "text-registered (84 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\05_XL7089_PS_SP1.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/05_XL7089_PS_SP1.overlay.png"
   },
   {
     "Item": "wsdot-XE3736",
@@ -1204,7 +1204,7 @@
     "InkRecall": 0.8978531003937008,
     "InkPrecision": 0.9884870962756915,
     "Note": "text-registered (92 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\06_XL7089_PS_RS1.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/06_XL7089_PS_RS1.overlay.png"
   },
   {
     "Item": "wsdot-XE3736",
@@ -1221,7 +1221,7 @@
     "InkRecall": 0.9647846834933594,
     "InkPrecision": 0.9904020917700328,
     "Note": "text-registered (109 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\07_XL7089_PS_RS2.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/07_XL7089_PS_RS2.overlay.png"
   },
   {
     "Item": "wsdot-XE3736",
@@ -1238,7 +1238,7 @@
     "InkRecall": 0.47027948193592367,
     "InkPrecision": 0.775791391482578,
     "Note": "text-registered (23 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\08_XL7089_PS_QT1.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/08_XL7089_PS_QT1.overlay.png"
   },
   {
     "Item": "wsdot-XE3736",
@@ -1255,7 +1255,7 @@
     "InkRecall": 0.9399191931653456,
     "InkPrecision": 0.9861837906828335,
     "Note": "text-registered (37 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\09_XL7089_PS_ DD1.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/09_XL7089_PS_ DD1.overlay.png"
   },
   {
     "Item": "wsdot-XE3736",
@@ -1272,7 +1272,7 @@
     "InkRecall": 0.7611111111111111,
     "InkPrecision": 0.3472253445622287,
     "Note": "text-registered (19 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\10_XL7089_PS_PD1.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/10_XL7089_PS_PD1.overlay.png"
   },
   {
     "Item": "wsdot-XE3736",
@@ -1289,7 +1289,7 @@
     "InkRecall": 0.8799231820844997,
     "InkPrecision": 0.8950793469574152,
     "Note": "text-registered (114 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\11_XL7089_PS_CS1.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/11_XL7089_PS_CS1.overlay.png"
   },
   {
     "Item": "wsdot-XE3736",
@@ -1306,7 +1306,7 @@
     "InkRecall": 0.9216097370911183,
     "InkPrecision": 0.8742371624127584,
     "Note": "text-registered (158 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\12_XL7089_PS_TC1.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/12_XL7089_PS_TC1.overlay.png"
   },
   {
     "Item": "wsdot-XE3736",
@@ -1323,7 +1323,7 @@
     "InkRecall": 0.9294218930201582,
     "InkPrecision": 0.9878651763640796,
     "Note": "text-registered (163 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\13_XL7089_PS_TC2.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/13_XL7089_PS_TC2.overlay.png"
   },
   {
     "Item": "wsdot-XE3736",
@@ -1340,7 +1340,7 @@
     "InkRecall": 0.9245804076040418,
     "InkPrecision": 0.7962429215692923,
     "Note": "text-registered (103 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\14_XL7089_PS_TC3.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/14_XL7089_PS_TC3.overlay.png"
   },
   {
     "Item": "wsdot-XE3736",
@@ -1357,7 +1357,7 @@
     "InkRecall": 0.89163035250312,
     "InkPrecision": 0.7261178074551483,
     "Note": "text-registered (80 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\15_XL7089_PS_TC4.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/15_XL7089_PS_TC4.overlay.png"
   },
   {
     "Item": "wsdot-XE3736",
@@ -1374,7 +1374,7 @@
     "InkRecall": 0.013574660633484163,
     "InkPrecision": 0.18270042194092828,
     "Note": null,
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\XL7089_CF_CS.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/XL7089_CF_CS.overlay.png"
   },
   {
     "Item": "wsdot-XE3771",
@@ -1391,7 +1391,7 @@
     "InkRecall": 0.26014456825239424,
     "InkPrecision": 0.41718106995884774,
     "Note": null,
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\316251H_BP_VM.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/316251H_BP_VM.overlay.png"
   },
   {
     "Item": "wsdot-XE3771",
@@ -1408,7 +1408,7 @@
     "InkRecall": 0.8273792437566869,
     "InkPrecision": 0.8963961100870781,
     "Note": "text-registered (69 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\316251H_PS_VM.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/316251H_PS_VM.overlay.png"
   },
   {
     "Item": "wsdot-XE3771",
@@ -1425,7 +1425,7 @@
     "InkRecall": 0.8903692297392294,
     "InkPrecision": 0.9958728520973055,
     "Note": "text-registered (41 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\XL6985_PD_WZTC_TC00.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/XL6985_PD_WZTC_TC00.overlay.png"
   },
   {
     "Item": "wsdot-XE3771",
@@ -1442,7 +1442,7 @@
     "InkRecall": 0.9415681704677876,
     "InkPrecision": 0.9804954806601529,
     "Note": "text-registered (36 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\XL6985_PS_CT01.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/XL6985_PS_CT01.overlay.png"
   },
   {
     "Item": "wsdot-XE3771",
@@ -1459,7 +1459,7 @@
     "InkRecall": 0.443881484745016,
     "InkPrecision": 0.8858467023172906,
     "Note": "text-registered (32 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\XL6985_PS_IN01.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/XL6985_PS_IN01.overlay.png"
   },
   {
     "Item": "wsdot-XE3771",
@@ -1476,7 +1476,7 @@
     "InkRecall": 0.32551691729323307,
     "InkPrecision": 0.9679393762751385,
     "Note": "text-registered (23 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\XL6985_PS_QT01.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/XL6985_PS_QT01.overlay.png"
   },
   {
     "Item": "wsdot-XE3771",
@@ -1493,7 +1493,7 @@
     "InkRecall": 0.8468633308439134,
     "InkPrecision": 0.9844762622456669,
     "Note": "text-registered (65 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\XL6985_PS_RS01.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/XL6985_PS_RS01.overlay.png"
   },
   {
     "Item": "wsdot-XE3771",
@@ -1510,7 +1510,7 @@
     "InkRecall": 0.8444133254716981,
     "InkPrecision": 0.9047655337092922,
     "Note": "text-registered (139 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\XL6985_PS_TC.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/XL6985_PS_TC.overlay.png"
   },
   {
     "Item": "wsdot-XE3771",
@@ -1527,7 +1527,7 @@
     "InkRecall": 0.9018094044811321,
     "InkPrecision": 0.9662342617321633,
     "Note": "text-registered (84 anchors)",
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\XL6985_PS_WZTC_TC01.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/XL6985_PS_WZTC_TC01.overlay.png"
   },
   {
     "Item": "wsdot-XE3771",
@@ -1544,6 +1544,6 @@
     "InkRecall": 0.1689453125,
     "InkPrecision": 0.5527996070726916,
     "Note": null,
-    "OverlayPng": "C:\\Users\\Kaustubh Page\\Documents\\Claude Projects\\DGN Library\\testdata\\reports\\pdf\\XL6985_PS_WZTC_TC02.overlay.png"
+    "OverlayPng": "testdata/reports/pdf/XL6985_PS_WZTC_TC02.overlay.png"
   }
 ]

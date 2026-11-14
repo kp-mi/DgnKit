@@ -5,7 +5,8 @@
 # tree (stroke patterns, compounds, line points, point symbols) using the DgnPlatform line style API, and writes JSON to
 # the path in the module-level OUT_PATH (set by the generated wrapper script) or %DGNKIT_LS_ORACLE_OUT%.
 #
-# Values are reported exactly as DgnPlatform returns them (definition units: see "unitsType" / "styleScale").
+# Values are reported exactly as DgnPlatform returns them (definition units: see "unitsType" / "styleScale"). File
+# paths are the exception: see _report_path.
 import json
 import os
 import traceback
@@ -15,6 +16,22 @@ from MSPyECObjects import *  # before MSPyMstnPlatform (its types derive from EC
 from MSPyBentleyGeom import *
 from MSPyDgnPlatform import *
 from MSPyMstnPlatform import *
+
+
+def _report_path(p):
+    """A path as written into the JSON: repo-relative with forward slashes inside the repository (REPO_ROOT, set by
+    MstnOracle's wrapper, or %DGNKIT_REPO_ROOT%), otherwise the file name alone. The dumps are committed, and an
+    absolute path would publish the local user profile. Same rule as MstnOracle's ReportPath."""
+    p = str(p)
+    if not os.path.isabs(p):
+        return p
+    full = os.path.normpath(p)
+    root = globals().get("REPO_ROOT") or os.environ.get("DGNKIT_REPO_ROOT")
+    if root:
+        root = os.path.normpath(root).rstrip("\\/") + os.sep
+        if full.lower().startswith(root.lower()):
+            return full[len(root):].replace("\\", "/")
+    return os.path.basename(full)
 
 
 def _num(v):
@@ -255,7 +272,7 @@ def dump(out_path):
     result = {"generator": "MicroStation DgnPlatform line style API (linestyle_oracle.py)", "lineStyles": []}
     try:
         dgn_file = ISessionMgr.GetActiveDgnFile()
-        result["file"] = str(dgn_file.GetFileName())
+        result["file"] = _report_path(dgn_file.GetFileName())
         try:
             result["uorPerMaster"] = ModelRef.GetUorPerMaster(ISessionMgr.GetActiveDgnModelRef())
         except Exception:
@@ -271,7 +288,7 @@ def dump(out_path):
                     if e is not None:
                         rec["entryNumber"] = int(e.GetStyleNumber())
                         rec["location"] = _num(e.GetDefinitionLocation())
-                        rec["source"] = str(e.GetSourceFileName())
+                        rec["source"] = _report_path(e.GetSourceFileName())
                 except Exception as ex:
                     rec["entryError"] = str(ex)
                 h = LineStyleHandle.GetStyleHandle(name, dgn_file)

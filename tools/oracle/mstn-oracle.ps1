@@ -38,6 +38,13 @@ function J([object]$v) {
     return '"' + $s + '"'
 }
 function P3($p) { return "[" + (J $p.X) + "," + (J $p.Y) + "," + (J $p.Z) + "]" }
+# Repo-relative path (forward slashes) inside the repository, else the file name alone: the dumps are committed, and an
+# absolute path would publish the local user profile. Same rule as MstnOracle's ReportPath.
+$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path.TrimEnd('\')
+function ReportPath([string]$p) {
+    if ($p.StartsWith($RepoRoot + '\', [StringComparison]::OrdinalIgnoreCase)) { return $p.Substring($RepoRoot.Length + 1).Replace('\', '/') }
+    return [IO.Path]::GetFileName($p)
+}
 
 Write-Host "Starting MicroStation automation server..."
 $app = New-Object -ComObject MicroStationDGN.Application
@@ -52,7 +59,7 @@ foreach ($file in $Files) {
     $sw = [Diagnostics.Stopwatch]::StartNew()
     $df = $app.OpenDesignFileForProgram($path, $true)
     $sb = New-Object Text.StringBuilder
-    [void]$sb.Append("{`"generator`":`"MicroStation COM oracle`",`"msVersion`":" + (J $app.Version) + ",`"file`":" + (J $path))
+    [void]$sb.Append("{`"generator`":`"MicroStation COM oracle`",`"msVersion`":" + (J $app.Version) + ",`"file`":" + (J (ReportPath $path)))
     [void]$sb.Append(",`"format`":" + (J $df.Format) + ",`"v7`":" + (J ($df.Format -eq 2)))
 
     # ---- levels
