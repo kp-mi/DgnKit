@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DgnKit\DgnKit.csproj" />
+    <ProjectReference Include="..\DgnKit.Logic\DgnKit.Logic.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

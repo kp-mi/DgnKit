@@ -19,6 +19,9 @@ OpenRoads Designer**, and **MicroStation 2024–2026** — **without any Bentley
 src/DgnKit          core reader + display list (netstandard2.0, zero dependencies — usable from MicroStation .NET 4.8 add-ins)
 src/DgnKit.Export   exporters (net8.0): ACadSharp (DXF/DWG), ProjNet (CRS), own MiniPdf writer, KML/KMZ/GeoJSON writers
 src/DgnKit.IModel   DGN → BIS mapping and the format-neutral iModel interchange (IMX) writer (net8.0)
+src/DgnKit.Logic    engineering logic layer: knowledge graph + classification / inference / validation rules (netstandard2.0, zero dependencies)
+src/DgnKit.Logic.Dgn  DGN adapter for the logic layer (netstandard2.0)
+rules/              built-in rule packs (JSON): core, buildings, storm, sewer, water, gas, electric, roadway, WSDOT work zone, LRS/GIS
 src/DgnKit.Cli      command line tool
 connector/          iTwin.js 5.x connector (TypeScript): IMX → snapshot / incrementally updated iModel (.bim)
 tests/DgnKit.Tests  corpus tests: MicroStation-oracle comparison, official-PDF comparison, exporter round trips
@@ -51,7 +54,38 @@ dotnet run --project src/DgnKit.Cli -- dump drawing.dgn -o drawing.json
 ```
 
 CLI commands: `info`, `scan <dir>`, `dump`, `export -f dxf|dwg|kml|kmz|geojson|pdf|json [--model name] [--crs EPSG:xxxx|file.prj|WKT|local] [--refs] [--paper A1|ANSI-D|WxHmm]`,
-`imodel [-o out.imx.jsonl] [--model name] [--2d-spatial] [--bim out.bim]`.
+`imodel [-o out.imx.jsonl] [--model name] [--2d-spatial] [--bim out.bim] [--logic [rules]]`,
+`logic <file.dgn|file.geojson>… [--rules …] [--report out.md] [--graphml …] [--cypher …] [--neo4j dir]`,
+`logic query <input>… --from <key> --query downstream|upstream|feeds|network|supply`, `logic rules`, `logic scan <dir>`.
+
+### Engineering logic layer
+
+`dgnkit logic` turns DGN (and GeoJSON) content into an engineering knowledge graph. Rule packs in `rules/` (JSON with
+comments; 201 rules over 125 classes and 32 relations) say how engineering objects associate:
+* **classify** objects from levels, cells, EC classes, tags and attributes;
+* **infer** relationships from geometry and attributes, as log-odds evidence with explanations: a window is hosted by
+  its wall, a sewer lateral flows into its main, a gas service taps its main and ends at a meter;
+* **derive** relationships by composition: a gas main *feeds* the premises behind its services and meters;
+* **validate**:
+  * hard requirements: one host per window;
+  * soft expectations with priors: "a roof usually covers the walls, but not always";
+  * prohibitions: no gas ↔ water connection;
+  * attribute checks: minimum sewer slope, fire-main size;
+  * acyclic flow, and default-deny connectivity;
+  * an open-world status (*unresolved*) when the counterpart is simply not in the data.
+
+Results go to JSON/Markdown reports, GraphML, Neo4j CSV / Cypher, and into iModels (`imodel --logic`) as `DgnKitLogic`
+link-table relationships plus classification aspects. The engine is a zero-dependency in-memory graph with an R-tree;
+no graph database is needed. See [docs/LOGIC.md](docs/LOGIC.md): the analysis, the technology decision, the rule
+language reference and the results.
+
+```bash
+dotnet run --project src/DgnKit.Cli -- logic testdata/logic/utilities.geojson --report utilities.md
+```
+
+```bash
+dotnet run --project src/DgnKit.Cli -- logic query testdata/logic/utilities.geojson --from GAS-M2 --query feeds
+```
 
 ### iModels
 
@@ -115,6 +149,10 @@ Three independent checks run in `dotnet test`:
    matched words, and scores ink overlap → `testdata/reports/pdf-report.md` (+ overlay PNGs).
 3. **Exporter round trips** — DXF/DWG re-read with ACadSharp, PDFs with PdfPig, GeoJSON/KML coordinates checked to fall
    inside Washington State after State Plane → WGS84 projection.
+4. **Engineering logic** — `LogicTests`:
+   * the synthetic building and utility-street fixtures (`testdata/logic`) must yield exactly their planted defects;
+   * on the corpus, WSDOT signs find their mounts (91.6% where mounts are drawn) and LRS mileposts their routes (3,164 of
+     3,164, all ARM-consistent) → `testdata/reports/logic-report.md`.
 
 Latest results (`testdata/reports/SUMMARY.md`): all 108 corpus files read with zero diagnostics; against MicroStation
 itself (18 files), element type/colour/weight, vertices, arcs, cell and shared-cell origins, dimensions, units, global

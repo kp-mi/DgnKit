@@ -3,6 +3,8 @@
     <Project Path="src/DgnKit.Cli/DgnKit.Cli.csproj" />
     <Project Path="src/DgnKit.Export/DgnKit.Export.csproj" />
     <Project Path="src/DgnKit.IModel/DgnKit.IModel.csproj" />
+    <Project Path="src/DgnKit.Logic/DgnKit.Logic.csproj" />
+    <Project Path="src/DgnKit.Logic.Dgn/DgnKit.Logic.Dgn.csproj" />
     <Project Path="src/DgnKit/DgnKit.csproj" />
   </Folder>
   <Folder Name="/tests/">

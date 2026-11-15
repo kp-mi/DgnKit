@@ -1,0 +1,103 @@
+// Gas distribution: a main is a common source of supply for several service lines; each service line taps one main (or a
+// branched service), ends at a customer meter, and the meter serves one premise (address). Derived: main feeds premise.
+// Precedents: 49 CFR 192.3 (definitions of main, service line, customer meter), §192.383 (excess flow valves),
+// §192.385 (manual shut-off); IFC IfcDistributionSystem GAS; Esri Utility Network.
+{
+  "dgnkit-rules": 1,
+  "name": "gas",
+  "version": "1.0.0",
+
+  "classes": {
+    "Gas":                { "abstract": true },
+    "Gas.Pipe":           { "traits": ["Util.Pipe"], "bis": "PipeworkPhysical:Pipe (dynamic gas system)", "ifc": "IfcPipeSegment (GAS)" },
+    "Gas.Pipe.Main":      { "description": "A distribution line that serves as a common source of supply for more than one service line (49 CFR 192.3)." },
+    "Gas.Pipe.Service":   { "description": "Service line / lateral: transports gas from a common source of supply to a customer meter (49 CFR 192.3)." },
+    "Gas.Meter":          { "traits": ["Util.Meter"], "ifc": "IfcFlowMeter GASMETER" },
+    "Gas.Regulator":      { "traits": ["Util.Device"], "ifc": "IfcValve PRESSUREREDUCING" },
+    "Gas.Valve":          { "traits": ["Util.Valve"], "ifc": "IfcValve ISOLATING" },
+    "Gas.Valve.EFV":      { "description": "Excess flow valve.", "ifc": "IfcValve SAFETYCUTOFF" },
+    "Gas.Valve.Curb":     {}
+  },
+
+  "classify": [
+    { "id": "gas.attr-main",    "class": "Gas.Pipe.Main", "when": "lower(coalesce(featureType, ecClass, '')) ~ 'gas ?main|distribution main' and lower(coalesce(featureType, ecClass, '')) ~ 'gas'", "confidence": 0.85 },
+    { "id": "gas.attr-service", "class": "Gas.Pipe.Service", "when": "lower(coalesce(featureType, ecClass, '')) ~ 'gas.*(service|lateral)'", "confidence": 0.85 },
+    { "id": "gas.attr-meter",   "class": "Gas.Meter", "when": "lower(coalesce(featureType, ecClass, '')) ~ 'gas ?meter'", "confidence": 0.85 },
+    { "id": "gas.ncs-main",     "class": "Gas.Pipe.Main", "when": "layer ~ '^C-NGAS(-PIPE|-MAIN)?$' and islinear", "confidence": 0.7 },
+    { "id": "gas.ncs-service",  "class": "Gas.Pipe.Service", "when": "layer ~ '^C-NGAS-(SERV|LATL)' and islinear", "confidence": 0.7 }
+  ],
+
+  "relate": [
+    {
+      "id": "gas.service-tap", "relation": "tapsInto", "subject": "Gas.Pipe.Service", "object": "Gas.Pipe.Main",
+      "test": "endpointNear", "tolerance": 0.5,
+      "evidence": [ { "when": "exists(subject.diameter) and exists(object.diameter) and subject.diameter <= object.diameter", "weight": 0.8, "label": "small-bore tap" } ],
+      "prior": 0.9, "cardinality": "one", "reference": "49 CFR 192.3"
+    },
+    {
+      "id": "gas.service-branch", "description": "Branched service: one service line tapping another.",
+      "relation": "tapsInto", "subject": "Gas.Pipe.Service", "object": "Gas.Pipe.Service",
+      "test": "endpointNear", "tolerance": 0.3, "prior": 0.85, "cardinality": "one", "skipIfRelated": "Gas.Pipe", "stage": 1,
+      "reference": "49 CFR 192.383 (branched service lines)"
+    },
+    {
+      "id": "gas.service-meter", "relation": "endsAt", "subject": "Gas.Pipe.Service", "object": "Gas.Meter",
+      "test": "endpointNear", "tolerance": 0.5, "prior": 0.9, "cardinality": "one", "objectCardinality": "one",
+      "reference": "49 CFR 192.3: the service line ends at the outlet of the customer meter"
+    },
+    {
+      "id": "gas.meter-premise", "relation": "servesPremise", "subject": "Gas.Meter", "object": "Site.Premise",
+      "test": "near", "tolerance": 3.0, "prior": 0.85, "cardinality": "one",
+      "evidence": [ { "when": "exists(subject.address) and exists(object.address) and lower(subject.address) == lower(object.address)", "weight": 3.0, "label": "same address" } ]
+    },
+    {
+      "id": "gas.service-premise", "description": "Unmetered or meter-not-drawn service: the free end at the premise.",
+      "relation": "servesPremise", "subject": "Gas.Pipe.Service", "object": "Site.Premise",
+      "test": "endpointNear", "tolerance": 3.0, "where": "not hasEdge(subject, 'endsAt', 'Gas.Meter')",
+      "prior": 0.7, "cardinality": "one", "stage": 2
+    },
+    {
+      "id": "gas.device-on-line", "relation": "locatedOn", "subject": "Util.Device", "object": "Gas.Pipe",
+      "test": "near", "tolerance": 0.3, "where": "subject.domain == 'Gas' and not isa(subject, 'Gas.Meter')",
+      "prior": 0.9, "cardinality": "one"
+    },
+    {
+      "id": "gas.main-continuity", "relation": "connectsTo", "subject": "Gas.Pipe.Main", "object": "Gas.Pipe.Main",
+      "test": "endpointNear", "tolerance": 0.3, "prior": 0.9
+    }
+  ],
+
+  "derive": [
+    { "id": "gas.feeds-via-meter", "relation": "feeds", "subject": "Gas.Pipe.Main", "object": "Site.Premise", "path": ["^tapsInto+", "endsAt", "servesPremise"], "through": "domain == 'Gas'",
+      "description": "Main → service line(s) → customer meter → premise (address)." },
+    { "id": "gas.feeds-direct", "relation": "feeds", "subject": "Gas.Pipe.Main", "object": "Site.Premise", "path": ["^tapsInto+", "servesPremise"], "through": "domain == 'Gas'" }
+  ],
+
+  "require": [
+    { "id": "gas.service-source", "subject": "Gas.Pipe.Service", "relation": "tapsInto", "object": "Gas.Pipe", "direction": "out", "exactly": 1, "severity": "error",
+      "message": "gas service line {key} taps {count} lines — a service line has exactly one source (a main or a branched service)", "reference": "49 CFR 192.3" },
+    { "id": "gas.service-metered", "subject": "Gas.Pipe.Service", "relation": "endsAt", "object": "Gas.Meter", "exactly": 1, "severity": "warning", "absent": "implicit",
+      "when": "degree(self, 'tapsInto', 'Gas.Pipe.Service') == 0 and not hasEdge(self, 'servesPremise')",
+      "message": "gas service line {key} ends at no customer meter" },
+    { "id": "gas.meter-serves-one", "subject": "Gas.Meter", "relation": "servesPremise", "object": "Site.Premise", "exactly": 1, "severity": "error",
+      "message": "gas meter {key} serves {count} premises — a customer meter measures the transfer to one consumer", "reference": "49 CFR 192.3" }
+  ],
+
+  "expect": [
+    { "id": "gas.main-several-services", "subject": "Gas.Pipe.Main", "relation": "tapsInto", "object": "Gas.Pipe.Service", "direction": "in", "min": 2, "probability": 0.8,
+      "message": "gas main {key} supplies {count} service lines — a main is by definition a common source for more than one service (misclassified?)", "reference": "49 CFR 192.3" }
+  ],
+
+  "check": [
+    { "id": "gas.efv", "subject": "Gas.Pipe.Service", "assert": "str(installed) < '2017-04-14' or efv == true or hasEdge(self, 'locatedOn', 'Gas.Valve.EFV')",
+      "when": "exists(installed)", "severity": "error",
+      "message": "service line {key} installed {installed} has no excess flow valve", "reference": "49 CFR 192.383" },
+    { "id": "gas.service-smaller", "subject": "Gas.Pipe.Service", "relation": "tapsInto", "object": "Gas.Pipe.Main", "assert": "subject.diameter <= object.diameter",
+      "when": "exists(subject.diameter) and exists(object.diameter)", "severity": "info",
+      "message": "service {subject.key} is larger than its main {object.key}" }
+  ],
+
+  "allow": [
+    { "id": "gas.allow-main-joint", "subject": "Gas.Pipe.Main", "relation": "connectsTo", "object": "Gas.Pipe.Main" }
+  ]
+}

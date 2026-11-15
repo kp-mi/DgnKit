@@ -1,0 +1,76 @@
+// WSDOT work-zone traffic control (TC/WZTC plan sheets) — classification of the CAD content DgnKit reads from WSDOT
+// DGNs (cell names, TR_* / RD_* levels; measured on the corpus: docs/LOGIC.md §6) plus work-zone associations.
+// Builds on the roadway pack (signs, supports, channelizing devices, markings).
+{
+  "dgnkit-rules": 1,
+  "name": "wsdot-workzone",
+  "version": "1.0.0",
+
+  "classes": {
+    "WorkZone":                   { "abstract": true },
+    "WorkZone.Attenuator":        { "traits": ["Road.EndTreatment"], "description": "A separately drawn attenuator (crash cushion) that has to sit on a vehicle or trailer." },
+    "WorkZone.ProtectiveVehicle": { "description": "Protective / shadow / buffer vehicle, pilot car." },
+    "WorkZone.ProtectiveVehicle.TMA": { "traits": ["Road.EndTreatment"], "description": "Transportable attenuator: WSDOT draws the protective vehicle and its truck- or trailer-mounted attenuator as one symbol (TR_WZ_TransportableAttenuator)." },
+    "WorkZone.ArrowBoard":        { "description": "Sequential arrow sign / arrow panel." },
+    "WorkZone.PCMS":              { "description": "Portable changeable message sign." },
+    "WorkZone.FlaggerStation":    {}
+  },
+
+  "classify": [
+    // sign panels: MUTCD-coded cell names (Signs_W20-1_48x48, RSDS - R2-1, W3-4 …), WSDOT sign class cells, NJ "W2 1L"
+    { "id": "wz.sign-mutcd-cell", "class": "Road.Sign", "confidence": 0.9,
+      "when": "kind ~ '^(Cell|SharedCell)$' and cell ~ '^(Signs_)?(RSDS - )?[WRGIEM]\\d{1,3}([-_ ]?\\w+)*(_\\d+x\\d+)?(_Stacked)?$'" },
+    { "id": "wz.sign-class-cell", "class": "Road.Sign", "confidence": 0.85, "when": "kind ~ '^(Cell|SharedCell)$' and cell ~ '^(TR_WZ_SignClass|WorkZoneSign$)'" },
+    { "id": "wz.sign-nj-cell", "class": "Road.Sign", "confidence": 0.8, "when": "kind ~ '^(Cell|SharedCell)$' and cell ~ '^[WR]\\d \\d+[LR]?$'" },
+    { "id": "wz.sign-level", "class": "Road.Sign", "confidence": 0.7,
+      "when": "kind ~ '^(Cell|SharedCell)$' and layer ~ '^(TR_SN_(ConstructionSigns|WarningSigns|StateRouteShield|USRouteShield)|TR_WZ_Sign|Sign(Panel|WorkZone))$'" },
+    { "id": "wz.not-a-sign", "class": "Road.Sign", "veto": true, "when": "cell ~ 'SignMount|MountTripod|Legend|Border|Title'" },
+
+    { "id": "wz.mount-cell", "class": "Road.SignSupport.PortableMount", "confidence": 0.9, "when": "kind ~ '^(Cell|SharedCell)$' and cell ~ 'SignMount|MountTripod'" },
+    { "id": "wz.mount-level", "class": "Road.SignSupport.PortableMount", "confidence": 0.75,
+      "when": "kind ~ '^(Cell|SharedCell)$' and layer ~ '^TR_WZ_(PortableSignMount|SignMountTripod)'" },
+
+    { "id": "wz.channelizer-cell", "class": "Road.ChannelizingDevice", "confidence": 0.85,
+      "when": "kind ~ '^(Cell|SharedCell)$' and cell ~ '[Cc]one|Drum|TubularMa|^TC0[123]$|ChannelDevice|GuidePost'" },
+    { "id": "wz.channelizer-level", "class": "Road.ChannelizingDevice", "confidence": 0.75,
+      "when": "kind ~ '^(Cell|SharedCell)$' and layer ~ '^(TR_WZ_(TrafficCone|TrafficSafetyDrum|TubularMarker|GuidePost)|ChannelDev)'" },
+
+    { "id": "wz.tma", "class": "WorkZone.ProtectiveVehicle.TMA", "confidence": 0.9,
+      "when": "kind ~ '^(Cell|SharedCell)$' and (cell ~ 'TransportableAttenuator|^TMA' or layer ~ '^TR_WZ_TransportableAttenuator')" },
+    { "id": "wz.attenuator", "class": "WorkZone.Attenuator", "confidence": 0.85,
+      "when": "kind ~ '^(Cell|SharedCell)$' and cell ~ 'Attenuator|^CUSH[AB]$' and cell !~ 'TransportableAttenuator'" },
+    { "id": "wz.vehicle", "class": "WorkZone.ProtectiveVehicle", "confidence": 0.85,
+      "when": "kind ~ '^(Cell|SharedCell)$' and (cell ~ 'ProtectiveVehicle|TruckBuffer|PilotCar|ShadowVehicle' or layer ~ '^TR_WZ_(ProtectiveVehicle|TruckBuffer|PilotCar)')" },
+    { "id": "wz.arrowboard", "class": "WorkZone.ArrowBoard", "confidence": 0.85, "when": "kind ~ '^(Cell|SharedCell)$' and cell ~ 'SequentialArrow|ArrowBoard|ArrowPanel'" },
+    { "id": "wz.pcms", "class": "WorkZone.PCMS", "confidence": 0.85, "when": "kind ~ '^(Cell|SharedCell)$' and cell ~ 'PCMS|ChangeMessage'" },
+    { "id": "wz.flagger", "class": "WorkZone.FlaggerStation", "confidence": 0.85,
+      "when": "kind ~ '^(Cell|SharedCell)$' and (cell ~ 'Flagg' or layer ~ '^TR_WZ_Flagg')" }
+  ],
+
+  "compute": [
+    {
+      "id": "wz.sign-attributes", "for": "Road.Sign",
+      "set": {
+        "code": "capture(cell, '([WRGIEM]\\d{1,3}(-\\d+[A-Z]?)?)')",
+        "panel": "capture(cell, '(\\d+x\\d+)')",
+        "integralSupport": "anyMatch(layers, '^TR_WZ_(PortableSignMount|SignMountTripod)')"
+      }
+    }
+  ],
+
+  "relate": [
+    {
+      "id": "wz.attenuator-on-vehicle", "relation": "mountedOn", "subject": "WorkZone.Attenuator", "object": "WorkZone.ProtectiveVehicle",
+      "test": "near", "toleranceFactor": 1.5, "prior": 0.85, "cardinality": "one", "objectCardinality": "one",
+      "reference": "MUTCD §6F.86 (truck-mounted attenuators on shadow/protective vehicles)"
+    }
+  ],
+
+  "require": [
+    {
+      "id": "wz.attenuator-mounted", "subject": "WorkZone.Attenuator", "relation": "mountedOn", "object": "WorkZone.ProtectiveVehicle", "min": 1,
+      "when": "peers('WorkZone.ProtectiveVehicle') > 0 and lower(coalesce(cell, '')) !~ 'trailer'",
+      "severity": "warning", "message": "attenuator {key} is not drawn on a protective vehicle"
+    }
+  ]
+}

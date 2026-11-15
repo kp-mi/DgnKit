@@ -30,9 +30,10 @@ import {
   Code, ColorDef, FontType, IModel, LinePixels, QueryBinder, QueryRowFormat, SubCategoryAppearance,
 } from "@itwin/core-common";
 import { Range2d, Range3d } from "@itwin/core-geometry";
-import { DynamicSchemaBuilder, DynamicSchemaName } from "./DynamicSchema";
+import { DynamicSchemaBuilder, DynamicSchemaName, toEcName } from "./DynamicSchema";
+import { LogicSchemaBuilder, LogicSchemaName } from "./LogicSchema";
 import {
-  ImxCategory, ImxElement, ImxHeader, ImxLineStyle, ImxModel, ImxPart, ImxRecord, ImxSource, ImxSubCategory, readImx,
+  ImxCategory, ImxElement, ImxHeader, ImxLineStyle, ImxModel, ImxPart, ImxRecord, ImxRelationship, ImxSource, ImxSubCategory, readImx,
 } from "./imx";
 
 const loggerCategory = "DgnKit.Connector";
@@ -46,6 +47,8 @@ export interface LoadReport {
   deleted: number;
   models: number;
   categories: number;
+  /** Logic-layer link-table relationships (DgnKitLogic). */
+  relationships: { inserted: number; updated: number; unchanged: number; deleted: number; unresolved: number };
   warnings: string[];
 }
 
@@ -74,7 +77,14 @@ export class ImxLoader {
   private readonly _elements = new Map<string, Id64String>();
   private readonly _prov = new Map<string, ProvenanceEntry[]>(); // kind|identifier → existing aspects
   private readonly _seen = new Set<Id64String>();
-  private readonly _report: LoadReport = { inserted: 0, updated: 0, unchanged: 0, deleted: 0, models: 0, categories: 0, warnings: [] };
+  private readonly _report: LoadReport = {
+    inserted: 0, updated: 0, unchanged: 0, deleted: 0, models: 0, categories: 0,
+    relationships: { inserted: 0, updated: 0, unchanged: 0, deleted: 0, unresolved: 0 }, warnings: [],
+  };
+  private readonly _logic = new LogicSchemaBuilder();
+  /** existing logic relationships of this job: class|source|target → id, checksum */
+  private readonly _logicExisting = new Map<string, { id: Id64String; classFullName: string; sourceId: Id64String; targetId: Id64String; checksum?: string }>();
+  private readonly _logicSeen = new Set<string>();
   private _jobSubject!: Id64String;
   private _definitionModel!: Id64String;
   private _documentList?: Id64String;
@@ -97,11 +107,13 @@ export class ImxLoader {
   public async run(): Promise<LoadReport> {
     // ---- pass 1: schema + fonts (async work that must happen outside the explicit edit transaction)
     this._schema.loadExisting(this._db);
+    this._logic.loadExisting(this._db);
     const fonts: Array<{ key: string; name: string; type: FontType }> = [];
     for await (const rec of readImx(this._imx)) {
       if (rec.kind === "header") this._header = rec;
       else if (rec.kind === "font") fonts.push({ key: rec.key, name: rec.name, type: rec.type === "rsc" ? FontType.Rsc : rec.type === "shx" ? FontType.Shx : FontType.TrueType });
       else if (rec.kind === "element") for (const g of rec.properties ?? []) this._schema.add(g);
+      else if (rec.kind === "relationshipClass") this._logic.add(rec);
     }
     await this.importSchemas();
     // fonts already mapped are just looked up; new ones are assigned ids in their own (saved) transaction, because an
@@ -123,8 +135,10 @@ export class ImxLoader {
     try {
       this.setUpJob();
       await this.loadProvenance();
+      await this.loadLogicRelationships();
       for await (const rec of readImx(this._imx))
         this.process(rec);
+      this.deleteUnseenRelationships();
       this.deleteUnseen();
       this.createViews();
       this.updateProjectExtents();
@@ -143,6 +157,8 @@ export class ImxLoader {
       await this._db.importSchemas([GenericSchema.schemaFilePath]);
     if (this._schema.hasClasses && (this._schema.changed || this._db.querySchemaVersion(DynamicSchemaName) === undefined))
       await this._db.importSchemaStrings([this._schema.toXml()]);
+    if (this._logic.hasClasses && (this._logic.changed || this._db.querySchemaVersion(LogicSchemaName) === undefined))
+      await this._db.importSchemaStrings([this._logic.toXml()]);
   }
 
   // ------------------------------------------------------------------ job structure
@@ -282,6 +298,8 @@ export class ImxLoader {
       case "model": return this.model(rec);
       case "part": return this.part(rec);
       case "element": return this.element(rec);
+      case "relationshipClass": return;
+      case "relationship": return this.relationship(rec);
     }
   }
 
@@ -503,6 +521,82 @@ export class ImxLoader {
       void is3d;
       return entry;
     });
+  }
+
+  // ------------------------------------------------------------------ logic relationships (DgnKitLogic)
+
+  /**
+   * Existing logic relationships whose source element belongs to this job (has provenance in its scope). Link-table
+   * relationships carry no ExternalSourceAspect, so identity is (class, source, target) and change detection uses the
+   * Checksum property; one row per (class, source, target) — the link table's uniqueness rule.
+   */
+  private async loadLogicRelationships(): Promise<void> {
+    if (this._db.querySchemaVersion(LogicSchemaName) === undefined)
+      return;
+    const jobElements = new Set<Id64String>();
+    for (const list of this._prov.values()) for (const p of list) jobElements.add(p.elementId);
+    if (jobElements.size === 0)
+      return;
+    const reader = this._db.createQueryReader(
+      `SELECT r.ECInstanceId, ec_classname(r.ECClassId, 's:c'), r.SourceECInstanceId, r.TargetECInstanceId
+         FROM bis.ElementRefersToElements r WHERE ec_classname(r.ECClassId, 's') = '${LogicSchemaName}'`,
+      undefined, { rowFormat: QueryRowFormat.UseECSqlPropertyIndexes });
+    const rows = await reader.toArray();
+    for (const row of rows) {
+      const [id, cls, src, tgt] = row as [Id64String, string, Id64String, Id64String];
+      if (!jobElements.has(src))
+        continue;
+      let checksum: string | undefined;
+      try {
+        checksum = (this._db.relationships.getInstanceProps(cls.replace(":", "."), id) as any).checksum;
+      } catch { /* class without checksum */ }
+      this._logicExisting.set(`${cls}|${src}|${tgt}`, { id, classFullName: cls, sourceId: src, targetId: tgt, checksum });
+    }
+  }
+
+  private relationship(rec: ImxRelationship): void {
+    const sourceId = this._elements.get(rec.source);
+    const targetId = this._elements.get(rec.target);
+    if (!sourceId || !targetId) {
+      this._report.relationships.unresolved++;
+      return;
+    }
+    const cls = toEcName(rec.class, "Relationship");
+    const classFullName = `${LogicSchemaName}:${cls}`;
+    const key = `${classFullName}|${sourceId}|${targetId}`;
+    if (this._logicSeen.has(key)) {
+      this._report.warnings.push(`relationship ${rec.key}: duplicate of an earlier ${cls} between the same elements (ignored)`);
+      return;
+    }
+    this._logicSeen.add(key);
+    const props: Record<string, unknown> = { classFullName, sourceId, targetId, checksum: rec.checksum };
+    for (const [k, v] of Object.entries(rec.properties ?? {})) {
+      let p = toEcName(k, "Property");
+      if (["id", "classname", "classfullname", "sourceid", "sourceclassid", "targetid", "targetclassid"].includes(p.toLowerCase())) p = "Logic_" + p;
+      const t = this._logic.propertyType(cls, p);
+      if (v === null || v === undefined || t === undefined) continue;
+      props[LogicSchemaBuilder.jsName(p)] = t === "string" ? (typeof v === "string" ? v : JSON.stringify(v)) : v;
+    }
+    const prev = this._logicExisting.get(key);
+    if (prev) {
+      if (prev.checksum === rec.checksum) { this._report.relationships.unchanged++; return; }
+      this._txn.updateRelationship({ ...props, id: prev.id } as any);
+      this._report.relationships.updated++;
+      return;
+    }
+    this._txn.insertRelationship(props as any);
+    this._report.relationships.inserted++;
+  }
+
+  /** Relationships this job wrote earlier but no longer infers (or whose ends are gone) are removed. */
+  private deleteUnseenRelationships(): void {
+    for (const [key, r] of this._logicExisting) {
+      if (this._logicSeen.has(key)) continue;
+      try {
+        this._txn.deleteRelationship({ id: r.id, classFullName: r.classFullName, sourceId: r.sourceId, targetId: r.targetId });
+        this._report.relationships.deleted++;
+      } catch { /* already removed with an end element */ }
+    }
   }
 
   // ------------------------------------------------------------------ deletions, views, extents

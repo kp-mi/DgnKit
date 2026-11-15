@@ -1,0 +1,167 @@
+// Buildings: hosting (windows/doors in walls), load path (roof/slab on walls and columns, columns on footings),
+// cover (roof over walls — usual, not universal), wall joins. Precedents: IFC 4.3 IfcRelVoidsElement /
+// IfcRelFillsElement / IfcRelConnectsPathElements, CityGML 3.0 filling, BIS ArchitecturalPhysical / StructuralPhysical.
+// Geometry convention (GeoJSON or other adapters): walls are centre lines with thickness, base and height (or zmin/zmax);
+// windows/doors are points or short lines along the wall with zmin (sill) / zmax (head); roofs and slabs are polygons with zmin/zmax.
+{
+  "dgnkit-rules": 1,
+  "name": "buildings",
+  "version": "1.0.0",
+
+  "classes": {
+    "Bldg":            { "abstract": true },
+    "Bldg.OpeningHost":{ "abstract": true, "description": "Role: can host openings (walls, curtain walls, roofs for skylights)." },
+    "Bldg.Support":    { "abstract": true, "description": "Role: can carry a roof/slab (wall, column, beam)." },
+    "Bldg.Cover":      { "abstract": true, "description": "Role: caps walls from above (roof, slab)." },
+    "Bldg.Bearing":    { "abstract": true, "description": "Role: can receive a column (footing, slab, beam)." },
+    "Bldg.Building":   { "bis": "BuildingSpatial:Building", "ifc": "IfcBuilding" },
+    "Bldg.Storey":     { "bis": "BuildingSpatial:RegularStory", "ifc": "IfcBuildingStorey" },
+    "Bldg.Space":      { "bis": "BuildingSpatial:Space", "ifc": "IfcSpace" },
+    "Bldg.Wall":       { "traits": ["Bldg.OpeningHost", "Bldg.Support"], "shape": "linear", "bis": "ArchitecturalPhysical:Wall", "ifc": "IfcWall" },
+    "Bldg.Wall.Curtain": { "bis": "ArchitecturalPhysical:CurtainWall", "ifc": "IfcCurtainWall" },
+    "Bldg.Window":     { "shape": "point", "bis": "ArchitecturalPhysical:Window", "ifc": "IfcWindow" },
+    "Bldg.Door":       { "shape": "point", "bis": "ArchitecturalPhysical:Door", "ifc": "IfcDoor" },
+    "Bldg.Opening":    { "description": "No BIS class: dynamic SpatialLocationElement owned by its host.", "ifc": "IfcOpeningElement" },
+    "Bldg.Roof":       { "traits": ["Bldg.OpeningHost", "Bldg.Cover"], "shape": "areal", "bis": "ArchitecturalPhysical:Roof", "ifc": "IfcRoof" },
+    "Bldg.Slab":       { "traits": ["Bldg.Cover", "Bldg.Bearing"], "shape": "areal", "bis": "StructuralPhysical:Slab", "ifc": "IfcSlab" },
+    "Bldg.Column":     { "traits": ["Bldg.Support"], "shape": "point", "bis": "StructuralPhysical:Column", "ifc": "IfcColumn" },
+    "Bldg.Beam":       { "traits": ["Bldg.Support", "Bldg.Bearing"], "shape": "linear", "bis": "StructuralPhysical:Beam", "ifc": "IfcBeam" },
+    "Bldg.Foundation": { "traits": ["Bldg.Bearing"], "bis": "StructuralPhysical:SpreadFooting", "ifc": "IfcFooting" },
+    "Bldg.Stair":      { "bis": "ArchitecturalPhysical:Stair", "ifc": "IfcStair" }
+  },
+
+  "classify": [
+    // IFC entity names carried as attributes (IFC → GeoJSON/IMX converters, item types)
+    { "id": "bld.ifc-wall",   "class": "Bldg.Wall",       "when": "ifcClass ~ '^IfcWall(StandardCase)?$'", "confidence": 0.98 },
+    { "id": "bld.ifc-curtain","class": "Bldg.Wall.Curtain","when": "ifcClass == 'IfcCurtainWall'", "confidence": 0.98 },
+    { "id": "bld.ifc-window", "class": "Bldg.Window",     "when": "ifcClass == 'IfcWindow'", "confidence": 0.98 },
+    { "id": "bld.ifc-door",   "class": "Bldg.Door",       "when": "ifcClass == 'IfcDoor'", "confidence": 0.98 },
+    { "id": "bld.ifc-roof",   "class": "Bldg.Roof",       "when": "ifcClass == 'IfcRoof' or (ifcClass == 'IfcSlab' and predefinedType == 'ROOF')", "confidence": 0.98 },
+    { "id": "bld.ifc-slab",   "class": "Bldg.Slab",       "when": "ifcClass == 'IfcSlab' and predefinedType != 'ROOF'", "confidence": 0.95 },
+    { "id": "bld.ifc-column", "class": "Bldg.Column",     "when": "ifcClass == 'IfcColumn'", "confidence": 0.98 },
+    { "id": "bld.ifc-beam",   "class": "Bldg.Beam",       "when": "ifcClass == 'IfcBeam'", "confidence": 0.98 },
+    { "id": "bld.ifc-footing","class": "Bldg.Foundation", "when": "ifcClass ~ '^Ifc(Footing|Pile)$'", "confidence": 0.98 },
+    // US National CAD Standard layer names (A-WALL, A-GLAZ, A-DOOR, A-ROOF, S-COLS, S-BEAM, S-FNDN, S-SLAB)
+    { "id": "bld.ncs-wall",   "class": "Bldg.Wall",       "when": "layer ~ '^[AS]-WALL'", "confidence": 0.8 },
+    { "id": "bld.ncs-glaz",   "class": "Bldg.Window",     "when": "layer ~ '^A-GLAZ' and kind != 'Text'", "confidence": 0.75 },
+    { "id": "bld.ncs-door",   "class": "Bldg.Door",       "when": "layer ~ '^A-DOOR' and kind != 'Text'", "confidence": 0.75 },
+    { "id": "bld.ncs-roof",   "class": "Bldg.Roof",       "when": "layer ~ '^A-ROOF' and kind != 'Text'", "confidence": 0.75 },
+    { "id": "bld.ncs-cols",   "class": "Bldg.Column",     "when": "layer ~ '^[AS]-COLS' and kind != 'Text'", "confidence": 0.75 },
+    { "id": "bld.ncs-beam",   "class": "Bldg.Beam",       "when": "layer ~ '^S-BEAM' and kind != 'Text'", "confidence": 0.75 },
+    { "id": "bld.ncs-fndn",   "class": "Bldg.Foundation", "when": "layer ~ '^S-FNDN' and kind != 'Text'", "confidence": 0.75 },
+    { "id": "bld.ncs-slab",   "class": "Bldg.Slab",       "when": "layer ~ '^(S-SLAB|A-FLOR)' and kind != 'Text'", "confidence": 0.7 },
+    // ProStructures / OpenBuildings level names (PC_WALL, PC_BEAM, PC_SLAB)
+    { "id": "bld.ps-levels",  "class": "Bldg.Wall",       "when": "layer == 'PC_WALL'", "confidence": 0.8 }
+  ],
+
+  "relate": [
+    {
+      "id": "bld.window-in-wall",
+      "description": "A window sits within the wall's thickness and between its base and top.",
+      "relation": "hostedBy", "subject": "Bldg.Window", "object": "Bldg.Wall",
+      "test": "near", "tolerance": "coalesce(object.thickness, 0.3) / 2 + 0.05", "searchRadius": 1.0,
+      "where": "subject.zmin >= object.zmin - 0.05 and subject.zmax <= object.zmax + 0.05",
+      "evidence": [
+        { "when": "angle <= 5", "weight": 1.0, "label": "parallel to wall" },
+        { "when": "subject.width + subject.depth > object.length", "weight": -3, "label": "wider than the wall" }
+      ],
+      "prior": 0.9, "cardinality": "one",
+      "reference": "IFC 4.3 IfcRelFillsElement / IfcRelVoidsElement (one host per opening); CityGML 3.0 filling"
+    },
+    {
+      "id": "bld.skylight-in-roof",
+      "relation": "hostedBy", "subject": "Bldg.Window", "object": "Bldg.Roof",
+      "test": "within", "tolerance": 0.05,
+      "where": "lower(coalesce(subject.predefinedType, subject.type, '')) == 'skylight' and subject.zmin >= object.zmin - 0.3 and subject.zmax <= object.zmax + 0.3",
+      "prior": 0.9, "cardinality": "one", "skipIfRelated": "Bldg.OpeningHost",
+      "reference": "IFC 4.3 IfcWindowTypeEnum SKYLIGHT"
+    },
+    {
+      "id": "bld.door-in-wall",
+      "relation": "hostedBy", "subject": "Bldg.Door", "object": "Bldg.Wall",
+      "test": "near", "tolerance": "coalesce(object.thickness, 0.3) / 2 + 0.05", "searchRadius": 1.0,
+      "where": "subject.zmin >= object.zmin - 0.05 and subject.zmax <= object.zmax + 0.05",
+      "evidence": [ { "when": "angle <= 5", "weight": 1.0, "label": "parallel to wall" } ],
+      "prior": 0.9, "cardinality": "one",
+      "reference": "IFC 4.3 IfcRelFillsElement"
+    },
+    {
+      "id": "bld.wall-under-cover",
+      "description": "A roof or slab sits on top of the wall (bottom of cover within 1.5 m above the wall top, footprints overlapping).",
+      "relation": "coveredBy", "subject": "Bldg.Wall", "object": "Bldg.Cover",
+      "test": "above", "tolerance": 0.3, "maxGap": 1.5, "minOverlap": 0.5,
+      "evidence": [ { "when": "dz <= 0.1", "weight": 1.0, "label": "cover bears directly on wall" } ],
+      "prior": 0.85,
+      "reference": "CityGML 3.0 WallSurface/RoofSurface; practice"
+    },
+    {
+      "id": "bld.cover-on-supports",
+      "relation": "supportedBy", "subject": "Bldg.Cover", "object": "Bldg.Support",
+      "test": "below", "tolerance": 0.05, "maxGap": 0.3, "minOverlap": 0.3,
+      "prior": 0.9,
+      "reference": "gravity load path (practice)"
+    },
+    {
+      "id": "bld.column-bearing",
+      "relation": "bearsOn", "subject": "Bldg.Column", "object": "Bldg.Bearing",
+      "test": "below", "tolerance": 0.05, "maxGap": 0.3, "minOverlap": 0.5,
+      "evidence": [ { "when": "isa(object, 'Bldg.Foundation')", "weight": 1.0, "label": "on a footing" } ],
+      "prior": 0.85, "cardinality": "one",
+      "reference": "gravity load path (practice)"
+    },
+    {
+      "id": "bld.wall-joins",
+      "relation": "joins", "subject": "Bldg.Wall", "object": "Bldg.Wall",
+      "test": "endpointNear", "tolerance": "coalesce(object.thickness, 0.3) / 2 + 0.05", "searchRadius": 1.0,
+      "where": "abs(subject.zmin - object.zmin) <= 0.3",
+      "prior": 0.9,
+      "reference": "IFC 4.3 IfcRelConnectsPathElements (ATSTART/ATEND/ATPATH)"
+    }
+  ],
+
+  "require": [
+    {
+      "id": "bld.window-host",
+      "subject": "Bldg.Window", "relation": "hostedBy", "object": "Bldg.OpeningHost", "exactly": 1,
+      "severity": "error",
+      "message": "window {key} is hosted by {count} walls/roofs — a window must fill an opening in exactly one host",
+      "reference": "IFC 4.3 IfcRelFillsElement; IfcOpeningElement 'has to be inserted into an IfcElement'"
+    },
+    {
+      "id": "bld.door-host",
+      "subject": "Bldg.Door", "relation": "hostedBy", "object": "Bldg.Wall", "exactly": 1,
+      "severity": "error",
+      "message": "door {key} is hosted by {count} walls — a door must fill an opening in exactly one wall"
+    },
+    {
+      "id": "bld.cover-supported",
+      "subject": "Bldg.Cover", "relation": "supportedBy", "object": "Bldg.Support", "min": 1,
+      "when": "zmin > 0.3",
+      "severity": "error",
+      "message": "{class} {key} has no wall, column or beam below it — floating roof/slab (missing supports or wrong elevations)"
+    },
+    {
+      "id": "bld.column-bears",
+      "subject": "Bldg.Column", "relation": "bearsOn", "object": "Bldg.Bearing", "exactly": 1,
+      "severity": "error",
+      "message": "column {key} bears on {count} elements — a column delivers its load to one footing, slab or beam"
+    }
+  ],
+
+  "expect": [
+    {
+      "id": "bld.wall-has-cover",
+      "description": "Usually a roof (or the slab above) sits on top of a wall — but not always: parapets, screen and retaining walls, open courts, roofs modelled in another file.",
+      "subject": "Bldg.Wall", "relation": "coveredBy", "object": "Bldg.Cover", "min": 1,
+      "probability": 0.85,
+      "message": "wall {key} has no roof or slab above it (usual for ~85% of walls; fine for parapets, screens, retaining walls)",
+      "reference": "CityGML 3.0; practice"
+    },
+    {
+      "id": "bld.wall-ends-joined",
+      "subject": "Bldg.Wall", "relation": "joins", "object": "Bldg.Wall", "min": 2,
+      "probability": 0.9,
+      "message": "wall {key} meets {count} other walls — a free wall end is usually a drafting gap"
+    }
+  ]
+}

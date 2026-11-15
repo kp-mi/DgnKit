@@ -72,6 +72,10 @@ async function main(): Promise<number> {
     const report = await new ImxLoader(db, imx).run();
     process.stdout.write(`${ConnectorName}: ${report.models} model(s), ${report.categories} categor(ies); elements inserted ${report.inserted}, ` +
       `updated ${report.updated}, unchanged ${report.unchanged}, deleted ${report.deleted} in ${Date.now() - t0} ms\n`);
+    const rel = report.relationships;
+    if (rel.inserted + rel.updated + rel.unchanged + rel.deleted + rel.unresolved > 0)
+      process.stdout.write(`${ConnectorName}: logic relationships inserted ${rel.inserted}, updated ${rel.updated}, unchanged ${rel.unchanged}, deleted ${rel.deleted}` +
+        (rel.unresolved > 0 ? `, ${rel.unresolved} with an unknown end skipped` : "") + "\n");
     for (const w of report.warnings.slice(0, 20))
       process.stdout.write(`warning: ${w}\n`);
     if (report.warnings.length > 20)

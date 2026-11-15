@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <RootNamespace>DgnKit.Logic</RootNamespace>
+    <AssemblyName>DgnKit.Logic</AssemblyName>
+    <Description>Engineering logic layer: a format-neutral knowledge graph of engineering objects with declarative classification, relationship-inference (confidence-weighted heuristics), derivation and validation rules. Zero dependencies.</Description>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- built-in rule packs (repo /rules) travel inside the assembly -->
+    <EmbeddedResource Include="..\..\rules\*.rules.json" LogicalName="DgnKit.Logic.Rules.%(Filename)%(Extension)" />
+  </ItemGroup>
+
+</Project>

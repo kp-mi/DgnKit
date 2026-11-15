@@ -1,0 +1,111 @@
+// Water distribution: services tap one main and are metered, meters serve one premise, hydrants are supplied through a
+// lead, fire-service mains are at least 150 mm, water lines keep their separation from sewers.
+// Precedents: Recommended Standards for Water Works (Ten States) 2018 §§8.1–8.8; BIS WaterDistributionPhysical +
+// PipeworkPhysical; Esri Utility Network.
+{
+  "dgnkit-rules": 1,
+  "name": "water",
+  "version": "1.0.0",
+
+  "classes": {
+    "Water":              { "abstract": true },
+    "Water.Pipe":         { "traits": ["Util.Pipe"], "bis": "PipeworkPhysical:Pipe in WaterDistributionPhysical:WaterDistributionSystem", "ifc": "IfcPipeSegment (WATERSUPPLY)" },
+    "Water.Pipe.Main":    {},
+    "Water.Pipe.Service": {},
+    "Water.Pipe.HydrantLead": {},
+    "Water.Hydrant":      { "bis": "dynamic", "ifc": "IfcFireSuppressionTerminal FIREHYDRANT" },
+    "Water.Valve":        { "traits": ["Util.Valve"], "bis": "PipeworkPhysical:Valve", "ifc": "IfcValve ISOLATING" },
+    "Water.Meter":        { "traits": ["Util.Meter"], "ifc": "IfcFlowMeter WATERMETER" },
+    "Water.Fitting":      { "bis": "PipeworkPhysical:PipeFitting", "ifc": "IfcPipeFitting" }
+  },
+
+  "classify": [
+    { "id": "water.attr-main",    "class": "Water.Pipe.Main", "when": "lower(coalesce(featureType, ecClass, '')) ~ 'water ?main|distribution main'", "confidence": 0.85 },
+    { "id": "water.attr-service", "class": "Water.Pipe.Service", "when": "lower(coalesce(featureType, ecClass, '')) ~ 'water.*service|service line'", "confidence": 0.8 },
+    { "id": "water.attr-hydrant", "class": "Water.Hydrant", "when": "lower(coalesce(featureType, ecClass, cell, '')) ~ 'hydrant'", "confidence": 0.85 },
+    { "id": "water.ncs-main",     "class": "Water.Pipe.Main", "when": "layer ~ '^C-WATR(-PIPE|-MAIN)?$' and islinear", "confidence": 0.7 },
+    { "id": "water.ncs-hydrant",  "class": "Water.Hydrant", "when": "layer ~ '^C-(WATR|FIRE)-HYDR' and not islinear", "confidence": 0.75 }
+  ],
+
+  "relate": [
+    {
+      "id": "water.service-tap", "relation": "tapsInto", "subject": "Water.Pipe.Service", "object": "Water.Pipe.Main",
+      "test": "endpointNear", "tolerance": 0.5,
+      "evidence": [ { "when": "exists(subject.diameter) and exists(object.diameter) and subject.diameter < object.diameter", "weight": 1.0, "label": "smaller than the main" } ],
+      "prior": 0.9, "cardinality": "one", "reference": "a service has one source main"
+    },
+    {
+      "id": "water.lead-tap", "relation": "tapsInto", "subject": "Water.Pipe.HydrantLead", "object": "Water.Pipe.Main",
+      "test": "endpointNear", "tolerance": 0.5, "prior": 0.9, "cardinality": "one"
+    },
+    {
+      "id": "water.hydrant-on-lead", "relation": "suppliedBy", "subject": "Water.Hydrant", "object": "Water.Pipe.HydrantLead",
+      "test": "near", "tolerance": 0.5, "prior": 0.9, "cardinality": "one", "reference": "Ten States 8.4.3"
+    },
+    {
+      "id": "water.hydrant-near-main", "description": "Fallback when only the hydrant symbol is drawn: the nearest main within 15 m (implicit lead).",
+      "relation": "suppliedBy", "subject": "Water.Hydrant", "object": "Water.Pipe.Main",
+      "test": "near", "tolerance": 15.0, "prior": 0.75, "cardinality": "one", "skipIfRelated": "Water.Pipe", "stage": 1
+    },
+    {
+      "id": "water.service-meter", "relation": "hasMeter", "subject": "Water.Pipe.Service", "object": "Water.Meter",
+      "test": "near", "tolerance": 0.5, "prior": 0.9, "cardinality": "one", "objectCardinality": "one"
+    },
+    {
+      "id": "water.meter-premise", "relation": "servesPremise", "subject": "Water.Meter", "object": "Site.Premise",
+      "test": "near", "tolerance": 5.0, "prior": 0.85, "cardinality": "one"
+    },
+    {
+      "id": "water.valve-on-main", "relation": "locatedOn", "subject": "Water.Valve", "object": "Water.Pipe",
+      "test": "near", "tolerance": 0.3, "prior": 0.9, "cardinality": "one"
+    },
+    {
+      "id": "water.main-continuity", "relation": "connectsTo", "subject": "Water.Pipe.Main", "object": "Water.Pipe.Main",
+      "test": "endpointNear", "tolerance": 0.3, "prior": 0.9
+    },
+    {
+      "id": "water.sewer-proximity", "description": "Spatial fact for the separation check: a water line running parallel to a sewer/storm line within 3.05 m.",
+      "relation": "nearParallel", "subject": "Water.Pipe", "object": "Util.Pipe",
+      "test": "near", "tolerance": 3.05, "where": "object.domain in ['Sewer', 'Storm'] and angle <= 20",
+      "prior": 0.95, "stage": 50
+    }
+  ],
+
+  "derive": [
+    { "id": "water.hydrant-main", "relation": "suppliedBy", "subject": "Water.Hydrant", "object": "Water.Pipe.Main", "path": ["suppliedBy", "tapsInto"] },
+    { "id": "water.feeds-premise", "relation": "feeds", "subject": "Water.Pipe.Main", "object": "Site.Premise", "path": ["^tapsInto", "hasMeter", "servesPremise"] }
+  ],
+
+  "require": [
+    { "id": "water.service-source", "subject": "Water.Pipe.Service", "relation": "tapsInto", "object": "Water.Pipe.Main", "exactly": 1, "severity": "error",
+      "message": "water service {key} taps {count} mains — a service has exactly one source main" },
+    { "id": "water.service-metered", "subject": "Water.Pipe.Service", "relation": "hasMeter", "object": "Water.Meter", "exactly": 1, "severity": "warning", "absent": "implicit",
+      "message": "water service {key} has no meter drawn", "reference": "Ten States 8.1.2 (each service connection individually metered)" },
+    { "id": "water.meter-serves-one", "subject": "Water.Meter", "relation": "servesPremise", "object": "Site.Premise", "exactly": 1, "severity": "error",
+      "message": "water meter {key} serves {count} premises — a meter measures one customer" },
+    { "id": "water.hydrant-supplied", "subject": "Water.Hydrant", "relation": "suppliedBy", "object": "Water.Pipe", "min": 1, "severity": "error",
+      "message": "hydrant {key} is not connected to any water line" }
+  ],
+
+  "check": [
+    { "id": "water.fire-main-size", "subject": "Water.Pipe.Main", "assert": "degree(self, 'suppliedBy', 'Water.Hydrant') == 0 or diameter >= 0.15 - 1e-6", "when": "exists(diameter)",
+      "severity": "error", "message": "main {key} (D = {diameter} m) supplies hydrants — fire-service mains must be at least 150 mm (6 in)", "reference": "Ten States 8.2.1 / 8.4.1" },
+    { "id": "water.min-main-size", "subject": "Water.Pipe.Main", "assert": "diameter >= 0.076", "when": "exists(diameter)",
+      "severity": "error", "message": "water main {key} is {diameter} m — minimum 76 mm (3 in)", "reference": "Ten States 8.2.1" },
+    { "id": "water.lead-size", "subject": "Water.Pipe.HydrantLead", "assert": "diameter >= 0.15 - 1e-6", "when": "exists(diameter)",
+      "severity": "error", "message": "hydrant lead {key} is {diameter} m — minimum 150 mm", "reference": "Ten States 8.4.3" },
+    { "id": "water.service-smaller", "subject": "Water.Pipe.Service", "relation": "tapsInto", "object": "Water.Pipe.Main",
+      "assert": "subject.diameter < object.diameter", "when": "exists(subject.diameter) and exists(object.diameter)",
+      "severity": "info", "message": "service {subject.key} is not smaller than main {object.key}" }
+  ],
+
+  "forbid": [
+    { "id": "water.sewer-separation", "subject": "Water.Pipe", "relation": "nearParallel", "object": "Util.Pipe", "severity": "warning",
+      "message": "water line {subject.key} runs within {round(distance, 2)} m of {object.class} {object.key} — keep 3.05 m (10 ft) horizontal separation or document the deviation",
+      "reference": "Ten States 8.8.2" }
+  ],
+
+  "allow": [
+    { "id": "water.allow-main-joint", "subject": "Water.Pipe.Main", "relation": "connectsTo", "object": "Water.Pipe.Main" }
+  ]
+}

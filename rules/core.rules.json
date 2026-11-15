@@ -1,0 +1,125 @@
+// DgnKit logic layer — core vocabulary, cross-domain roles and network policies.
+// Units are metres. Relations read "subject <relation> object". See docs/LOGIC.md.
+{
+  "dgnkit-rules": 1,
+  "name": "core",
+  "version": "1.0.0",
+  "description": "Shared relation vocabulary, role traits (Util.*), premises, cross-system prohibitions, default-deny connectivity and named traces.",
+  "minClassConfidence": 0.5,
+
+  "classes": {
+    // roles shared by every network domain (traits: a Gas.Main is a Gas object and a Util.Pipe)
+    "Util":            { "abstract": true, "description": "Roles shared across utility networks." },
+    "Util.Link":       { "abstract": true, "shape": "linear", "description": "Any linear network element (pipe, conductor, conduit, ditch)." },
+    "Util.Pipe":       { "abstract": true, "parent": "Util.Link", "shape": "linear", "description": "A fluid-carrying pipe of any system.", "ifc": "IfcPipeSegment" },
+    "Util.Structure":  { "abstract": true, "shape": "point", "description": "A network node structure (manhole, vault, pole, pull box).", "ifc": "IfcDistributionChamberElement" },
+    "Util.Device":     { "abstract": true, "shape": "point", "description": "An in-line or attached device (valve, meter, regulator, transformer)." },
+    "Util.Valve":      { "abstract": true, "parent": "Util.Device", "ifc": "IfcValve" },
+    "Util.Meter":      { "abstract": true, "parent": "Util.Device", "ifc": "IfcFlowMeter" },
+    // what networks serve
+    "Site":            { "abstract": true },
+    "Site.Premise":    { "shape": "areal", "description": "A served address / customer premise (building footprint or parcel with an address).", "bis": "bis:SpatialLocationElement (dynamic)", "ifc": "IfcBuilding.BuildingAddress" },
+    "Site.Parcel":     { "shape": "areal", "bis": "CivilPhysical:Parcel" }
+  },
+
+  "relations": {
+    "hostedBy":      { "inverse": "hosts", "description": "An opening filler (window, door) sits in its host element (IfcRelFillsElement + IfcRelVoidsElement)." },
+    "voids":         { "inverse": "voidedBy", "description": "An opening cuts a host element." },
+    "containedIn":   { "inverse": "contains", "description": "Spatial containment (storey, space, site, vault)." },
+    "partOf":        { "inverse": "hasPart", "description": "Whole/part aggregation." },
+    "supportedBy":   { "inverse": "supports", "description": "Gravity load path or physical mounting (roof on walls, sign on post, signal head on mast arm)." },
+    "bearsOn":       { "inverse": "carries", "description": "Structural member delivers load to the element below (column on footing)." },
+    "coveredBy":     { "inverse": "covers", "description": "An element is capped from above (wall under a roof or slab)." },
+    "joins":         { "symmetric": true, "description": "Path elements meet (wall to wall, IfcRelConnectsPathElements)." },
+    "connectsTo":    { "symmetric": true, "defaultDeny": true, "description": "Physical network connection between linear elements. Default deny: only rule-granted or allowed class pairs are legitimate (Esri Utility Network policy)." },
+    "tapsInto":      { "inverse": "tappedBy", "description": "A branch (service, lateral, lead) connects into a source line (49 CFR 192.3; Ten States 33.9)." },
+    "endsAt":        { "inverse": "terminates", "description": "A linear element ends at a node structure or device." },
+    "flowsInto":     { "inverse": "receivesFrom", "transitive": true, "description": "Directed flow (gravity, pressure, energy) from one element into the next." },
+    "drainsTo":      { "inverse": "drainedBy", "transitive": true, "description": "Derived: reaches a discharge point by flowsInto+." },
+    "feedsPipe":     { "inverse": "fedByPipe", "description": "Derived: pipe → structure → next pipe downstream." },
+    "feeds":         { "inverse": "isFedBy", "transitive": true, "description": "Derived: a supply element delivers to a premise through the network." },
+    "servesPremise": { "inverse": "servedBy", "description": "A service / meter / lateral serves one customer premise (IfcRelServicesBuildings)." },
+    "hasMeter":      { "inverse": "meters", "description": "A service connection is metered by a meter." },
+    "locatedOn":     { "inverse": "carriesDevice", "description": "An in-line device sits on a line (valve on a main)." },
+    "attachedTo":    { "inverse": "holds", "description": "Structural attachment: a device belongs to one structure (Esri structural attachment)." },
+    "mountedOn":     { "inverse": "carriesMount", "description": "Equipment mounted on a vehicle or carrier (truck-mounted attenuator)." },
+    "suppliedBy":    { "inverse": "supplies", "description": "A terminal (hydrant) is supplied by a line." },
+    "fedBy":         { "inverse": "feedsDevice", "description": "An electrical element is fed by a source (service drop from transformer)." },
+    "terminatesWith":{ "inverse": "terminates", "description": "A run ends with a crashworthy end treatment (guardrail terminal)." },
+    "adheresTo":     { "inverse": "carriesMarking", "description": "A surface feature is applied on a surface (IfcRelAdheresToElement)." },
+    "adjacentTo":    { "symmetric": true, "description": "Side by side (curb and pavement, inlet and gutter)." },
+    "alignedWith":   { "inverse": "guidedBy", "description": "A device or line runs along a guiding line (channelizing devices along a marking)." },
+    "locatedAlong":  { "inverse": "locates", "description": "Linear referencing: an object is positioned along a linear element (milepost on a route)." },
+    "crosses":       { "symmetric": true, "persist": false, "description": "Plan crossing of two linear features (spatial fact, recomputed)." },
+    "conveyedBy":    { "inverse": "conveys", "description": "A watercourse is carried under an obstacle by a structure (culvert, bridge)." },
+    "nearParallel":  { "symmetric": true, "persist": false, "description": "Spatial fact: two lines run parallel within a clearance distance (used for separation checks)." },
+    "duplicates":    { "symmetric": true, "persist": false, "description": "QA fact: the same symbol placed twice at the same spot." },
+    "controlledBy":  { "inverse": "controls", "description": "A device is controlled by a controller (IfcRelFlowControlElements)." }
+  },
+
+  "compute": [
+    {
+      "id": "core.pipe-flow-from",
+      "for": "Util.Link",
+      "description": "Which geometric end is upstream: explicit attribute, else the higher end when the line is 3D, else digitising direction (the GIS convention).",
+      "set": {
+        "flowFrom": "coalesce(upstreamEnd, if(startZ != endZ, if(startZ > endZ, 'start', 'end'), 'start'))",
+        "slope": "if(exists(invertUp) and exists(invertDown) and length > 0, (invertUp - invertDown) / length, null)"
+      }
+    }
+  ],
+
+  "relate": [
+    {
+      "id": "core.cross-system-contact",
+      "description": "Detector: a pipe end touching a pipe of another system. Finds cross-connections; grants nothing.",
+      "relation": "connectsTo", "subject": "Util.Pipe", "object": "Util.Pipe",
+      "test": "endpointNear", "tolerance": 0.3,
+      "where": "subject.domain != object.domain and not linked(subject, object)",
+      "prior": 0.9, "grants": false, "stage": 100
+    },
+    {
+      "id": "core.unexplained-pipe-contact",
+      "description": "Detector: same-system pipe ends that touch with no structure or tap rule explaining it (blind junctions). Default deny reports them unless allowed.",
+      "relation": "connectsTo", "subject": "Util.Pipe", "object": "Util.Pipe",
+      "test": "endpointNear", "tolerance": 0.3,
+      "where": "subject.domain == object.domain and not linked(subject, object) and common(subject, object) == 0",
+      "prior": 0.9, "grants": false, "stage": 101
+    },
+    {
+      "id": "core.duplicate-symbol",
+      "description": "QA: the same named symbol (cell / block) of the same class placed twice on top of itself — usually a copy-paste or a duplicated reference. Distinct GIS features at one spot (e.g. both directions of a route) are not symbols and are not flagged.",
+      "relation": "duplicates", "subject": "Object", "object": "Object",
+      "test": "near", "toleranceFactor": 0.02,
+      "where": "exists(subject.cell) and subject.cell == object.cell and subject.class == object.class and centerDistance <= max(subject.size * 0.02, 1e-6) and abs(subject.size - object.size) <= max(subject.size * 0.02, 1e-6)",
+      "prior": 0.95, "grants": false, "stage": 200
+    }
+  ],
+
+  "forbid": [
+    {
+      "id": "core.no-cross-system-connection",
+      "subject": "Util.Pipe", "relation": "connectsTo", "object": "Util.Pipe",
+      "when": "subject.domain != object.domain and not (subject.domain in ['Storm', 'Sewer'] and object.domain in ['Storm', 'Sewer'] and (subject.system == 'combined' or object.system == 'combined'))",
+      "severity": "error",
+      "message": "{subject.class} {subject.key} touches {object.class} {object.key}: connections only within one system (no cross-connections)",
+      "reference": "IFC IfcDistributionPort (same SystemType); Ten States Standards 8.10.1 (water) / 38.1 (sewer)"
+    },
+    {
+      "id": "core.no-duplicate-symbols",
+      "subject": "Object", "relation": "duplicates", "object": "Object", "severity": "warning",
+      "message": "{subject.class} {subject.key} ({subject.cell}) is drawn twice: {object.key} sits exactly on top of it"
+    }
+  ],
+
+  "queries": [
+    { "name": "downstream", "description": "Everything downstream along flowsInto.", "relations": ["flowsInto"], "direction": "out" },
+    { "name": "upstream", "description": "Everything upstream along flowsInto.", "relations": ["flowsInto"], "direction": "in" },
+    { "name": "feeds", "description": "Premises (and other targets) a supply element feeds.", "relations": ["feeds"], "direction": "out" },
+    { "name": "network", "description": "The connected network of the start element's own system (any direction; premises are reported, not crossed).",
+      "relations": ["connectsTo", "tapsInto", "endsAt", "flowsInto", "hasMeter", "servesPremise", "locatedOn"], "direction": "both",
+      "through": "domain == start.domain" },
+    { "name": "supply", "description": "From a premise back to its sources: meters, service lines, laterals, mains (relations walked against their direction: ^r).",
+      "relations": ["^servesPremise", "^endsAt", "^hasMeter", "tapsInto", "flowsInto"], "direction": "out" }
+  ]
+}

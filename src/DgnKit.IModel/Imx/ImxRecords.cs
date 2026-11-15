@@ -177,3 +177,29 @@ public sealed class ImxElement
     /// <summary>Source modification time, if the source tracks it (→ ExternalSourceAspect.Version).</summary>
     public DateTime? SourceModifiedUtc { get; init; }
 }
+
+/// <summary>
+/// A relationship class (v1 extension, written after all elements): becomes an ECRelationshipClass of the loader's
+/// dynamic logic schema, derived from <c>bis:ElementRefersToElements</c> (link table), with typed properties.
+/// </summary>
+public sealed class ImxRelationshipClass
+{
+    /// <summary>EC-safe class name (e.g. <c>HostedBy</c>).</summary>
+    public string Name { get; init; } = "";
+    public string? Description { get; init; }
+    /// <summary>Reading from source to target (relation name) and back (inverse), for role labels.</summary>
+    public string? SourceRole { get; init; }
+    public string? TargetRole { get; init; }
+    /// <summary>Property name → EC primitive type (<c>string</c>, <c>double</c>, <c>int</c>, <c>boolean</c>).</summary>
+    public Dictionary<string, string> Properties { get; init; } = new();
+}
+
+/// <summary>A relationship instance between two elements of the same IMX stream (keys), with typed properties.</summary>
+public sealed class ImxRelationship
+{
+    public string Key { get; init; } = "";
+    public string Class { get; init; } = "";
+    public string SourceKey { get; init; } = "";
+    public string TargetKey { get; init; } = "";
+    public Dictionary<string, object?> Properties { get; init; } = new();
+}

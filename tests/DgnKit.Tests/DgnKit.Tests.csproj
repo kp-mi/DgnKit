@@ -26,6 +26,8 @@
     <ProjectReference Include="..\..\src\DgnKit\DgnKit.csproj" />
     <ProjectReference Include="..\..\src\DgnKit.Export\DgnKit.Export.csproj" />
     <ProjectReference Include="..\..\src\DgnKit.IModel\DgnKit.IModel.csproj" />
+    <ProjectReference Include="..\..\src\DgnKit.Logic\DgnKit.Logic.csproj" />
+    <ProjectReference Include="..\..\src\DgnKit.Logic.Dgn\DgnKit.Logic.Dgn.csproj" />
   </ItemGroup>
 
 </Project>

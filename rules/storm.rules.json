@@ -1,0 +1,123 @@
+// Stormwater drainage: pipes run structure to structure, inlets discharge into pipes, flow is downhill and acyclic,
+// every drain reaches an outfall. Precedents: FHWA HEC-22 §6.2.7 (access holes), Table 6-1 (spacing), §7.2.4 (minimum
+// velocity), §7.1.5 (outfalls); BIS StormSewerPhysical (DistributionStructure + ManholeType/CatchbasinType/HeadwallType).
+// Attribute convention: diameter (m), invertUp / invertDown (m), upstreamEnd ('start'|'end'; default digitising direction).
+{
+  "dgnkit-rules": 1,
+  "name": "storm",
+  "version": "1.0.0",
+
+  "classes": {
+    "Storm":            { "abstract": true },
+    "Storm.Pipe":       { "traits": ["Util.Pipe"], "bis": "PipeworkPhysical:Pipe in StormSewerPhysical:StormwaterSystem", "ifc": "IfcPipeSegment (STORMWATER)" },
+    "Storm.Pipe.Culvert": { "ifc": "IfcPipeSegment CULVERT" },
+    "Storm.Receiver":   { "abstract": true, "description": "Role: something a ditch or culvert can discharge into." },
+    "Storm.Structure":  { "traits": ["Util.Structure", "Storm.Receiver"], "bis": "StormSewerPhysical:DistributionStructure" },
+    "Storm.Structure.Manhole":   { "bis": "DistributionStructure + ManholeType", "ifc": "IfcDistributionChamberElement MANHOLE" },
+    "Storm.Structure.Inlet":     { "bis": "DistributionStructure + CatchbasinType", "ifc": "IfcWasteTerminal GULLYSUMP" },
+    "Storm.Structure.CatchBasin":{ "parent": "Storm.Structure.Inlet" },
+    "Storm.Structure.Headwall":  { "bis": "DistributionStructure + HeadwallType" },
+    "Storm.Structure.Outfall":   { "description": "Discharge point to a receiving water." },
+    "Storm.Ditch":      { "traits": ["Util.Link", "Storm.Receiver"], "ifc": "IfcEarthworksCut TRENCH" },
+    "Storm.Pond":       { "traits": ["Storm.Receiver"], "bis": "CivilPhysical:PondArea" }
+  },
+
+  "classify": [
+    { "id": "storm.attr-type", "class": "Storm.Pipe", "when": "lower(coalesce(featureType, ecClass, '')) ~ '(storm|drain).*(pipe|main|line)'", "confidence": 0.85 },
+    { "id": "storm.attr-culvert", "class": "Storm.Pipe.Culvert", "when": "lower(coalesce(featureType, ecClass, '')) ~ 'culvert'", "confidence": 0.85 },
+    { "id": "storm.attr-manhole", "class": "Storm.Structure.Manhole", "when": "lower(coalesce(featureType, ecClass, '')) ~ '(storm|drain).*(manhole|access hole)'", "confidence": 0.85 },
+    { "id": "storm.attr-inlet", "class": "Storm.Structure.Inlet", "when": "lower(coalesce(featureType, ecClass, '')) ~ '(inlet|catch ?basin)'", "confidence": 0.85 },
+    // US National CAD Standard: C-STRM
+    { "id": "storm.ncs-pipe", "class": "Storm.Pipe", "when": "layer ~ '^C-STRM(-PIPE)?$' and islinear", "confidence": 0.7 },
+    { "id": "storm.ncs-struct", "class": "Storm.Structure", "when": "layer ~ '^C-STRM-(STRC|MHOL|INLT|CB)' and not islinear", "confidence": 0.7 },
+    // OpenRoads/WSDOT drainage levels (DR_*)
+    { "id": "storm.dr-pipe", "class": "Storm.Pipe", "when": "layer ~ '^DR_(PI|Pipe|StormPipe)' and islinear", "confidence": 0.75 },
+    { "id": "storm.dr-struct", "class": "Storm.Structure", "when": "layer ~ '^DR_(ST|Struct|CatchBasin|Inlet|Manhole)' and kind == 'Cell'", "confidence": 0.75 }
+  ],
+
+  "relate": [
+    {
+      "id": "storm.pipe-at-structure",
+      "description": "Each pipe end at a structure; the edge points downstream (pipe → structure at its downstream end, structure → pipe at its upstream end).",
+      "relation": "flowsInto", "subject": "Storm.Pipe", "object": "Storm.Structure",
+      "test": "endpointNear", "tolerance": 0.5,
+      "reverseWhen": "contactEnd == subject.flowFrom",
+      "evidence": [ { "when": "contactEnd == 'point'", "weight": -2, "label": "pipe has no end points" } ],
+      "prior": 0.92, "cardinality": 2,
+      "reference": "HEC-22 §6.2.7: drains run structure to structure"
+    },
+    {
+      "id": "storm.ditch-discharge",
+      "relation": "flowsInto", "subject": "Storm.Ditch", "object": "Storm.Receiver",
+      "test": "endpointNear", "tolerance": 1.0,
+      "where": "not (contactEnd == subject.flowFrom)",
+      "prior": 0.8, "cardinality": "one"
+    }
+  ],
+
+  "derive": [
+    { "id": "storm.feeds-pipe", "relation": "feedsPipe", "subject": "Storm.Pipe", "object": "Storm.Pipe", "path": ["flowsInto", "flowsInto"], "through": "isa(self, 'Storm.Structure')" },
+    { "id": "storm.drains-to-outfall", "relation": "drainsTo", "subject": "Storm.Pipe", "object": "Storm.Structure.Outfall", "path": ["flowsInto+"], "through": "domain == 'Storm'" }
+  ],
+
+  "require": [
+    {
+      "id": "storm.pipe-outlet", "subject": "Storm.Pipe", "relation": "flowsInto", "object": "Storm.Receiver", "direction": "out", "exactly": 1,
+      "when": "not isa(self, 'Storm.Pipe.Culvert')", "boundaryMargin": 1.0, "severity": "error",
+      "message": "storm pipe {key} discharges into {count} structures — its downstream end must be at exactly one structure",
+      "reference": "HEC-22 §6.2.7"
+    },
+    {
+      "id": "storm.pipe-inlet-end", "subject": "Storm.Pipe", "relation": "flowsInto", "object": "Storm.Structure", "direction": "in", "exactly": 1,
+      "when": "not isa(self, 'Storm.Pipe.Culvert')", "boundaryMargin": 1.0, "severity": "error",
+      "message": "storm pipe {key} starts at {count} structures — its upstream end must be at exactly one structure"
+    },
+    {
+      "id": "storm.inlet-has-outlet", "subject": "Storm.Structure.Inlet", "relation": "flowsInto", "object": "Storm.Pipe", "direction": "out", "min": 1,
+      "severity": "error",
+      "message": "inlet {key} has no outlet pipe (missing connector pipe, or a dry well)"
+    },
+    {
+      "id": "storm.reaches-outfall", "subject": "Storm.Pipe", "relation": "drainsTo", "object": "Storm.Structure.Outfall", "min": 1,
+      "absent": "unresolved", "severity": "warning",
+      "message": "storm pipe {key} does not reach an outfall in this data (the outfall may be on another sheet)",
+      "reference": "HEC-22 §7.1.5"
+    }
+  ],
+
+  "check": [
+    {
+      "id": "storm.adverse-slope", "subject": "Storm.Pipe", "assert": "invertUp >= invertDown", "when": "exists(invertUp) and exists(invertDown)",
+      "severity": "error", "message": "storm pipe {key} slopes uphill (invert up {invertUp} < invert down {invertDown})"
+    },
+    {
+      "id": "storm.min-velocity-slope", "subject": "Storm.Pipe",
+      "description": "Self-cleansing: full-flow velocity >= 0.9 m/s by Manning (n = 0.013): S >= (V·n / (D/4)^(2/3))^2.",
+      "assert": "slope >= pow(0.9 * coalesce(manningN, 0.013) / pow(diameter / 4, 2 / 3), 2)", "when": "exists(slope) and exists(diameter) and slope >= 0",
+      "severity": "warning", "message": "storm pipe {key} slope {round(slope, 4)} is below the self-cleansing minimum for D = {diameter} m",
+      "reference": "HEC-22 §7.2.4 (3 ft/s full-flow velocity)"
+    },
+    {
+      "id": "storm.access-spacing", "subject": "Storm.Pipe",
+      "assert": "length <= if(diameter <= 0.6, 91.4, if(diameter <= 0.9, 121.9, if(diameter <= 1.4, 152.4, 304.8)))",
+      "when": "exists(diameter) and not isa(self, 'Storm.Pipe.Culvert')", "severity": "warning",
+      "message": "storm pipe {key} runs {round(length, 1)} m between structures (suggested maximum for D = {diameter} m exceeded)",
+      "reference": "HEC-22 Table 6-1 (300/400/500/1000 ft)"
+    },
+    {
+      "id": "storm.outlet-below-inlets", "subject": "Storm.Pipe", "relation": "feedsPipe", "object": "Storm.Pipe",
+      "assert": "subject.invertDown >= object.invertUp - 0.01", "when": "exists(subject.invertDown) and exists(object.invertUp)",
+      "severity": "error", "message": "outlet pipe {object.key} leaves the structure above incoming pipe {subject.key} (water does not climb)",
+      "reference": "HEC-22 crown-drop method; Ten States Standards 33.6 analogue"
+    },
+    {
+      "id": "storm.size-not-decreasing", "subject": "Storm.Pipe", "relation": "feedsPipe", "object": "Storm.Pipe",
+      "assert": "object.diameter >= subject.diameter", "when": "exists(subject.diameter) and exists(object.diameter)",
+      "severity": "info", "message": "downstream pipe {object.key} (D = {object.diameter}) is smaller than upstream {subject.key} (D = {subject.diameter})"
+    }
+  ],
+
+  "acyclic": [
+    { "id": "storm.no-flow-cycles", "relation": "flowsInto", "subject": "Storm", "severity": "error" }
+  ]
+}

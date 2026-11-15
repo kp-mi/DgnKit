@@ -82,7 +82,20 @@ async function main(): Promise<number> {
       process.stdout.write(`model    : '${m.name}' (${m.type}) imx x ${f(wl[0])}..${f(wh[0])} y ${f(wl[1])}..${f(wh[1])}; ` +
         `iModel x ${f(lo[0])}..${f(hi[0])} y ${f(lo[1])}..${f(hi[1])}; largest edge difference ${(dev * 100).toFixed(2)}% of model size\n`);
     }
-    return match ? 0 : 1;
+    // logic relationships: every one sent is stored, with its class and ends
+    const sentRels = fs.readFileSync(imx, "utf8").split("\n").filter((l) => l.includes('"kind":"relationship"')).map((l) => JSON.parse(l));
+    let relMatch = true;
+    if (sentRels.length > 0) {
+      const byClass = new Map<string, number>();
+      for (const r of sentRels) byClass.set(r.class, (byClass.get(r.class) ?? 0) + 1);
+      const stored = new Map<string, number>();
+      for await (const row of db.createQueryReader("SELECT ec_classname(ECClassId, 'c'), COUNT(*) FROM bis.ElementRefersToElements WHERE ec_classname(ECClassId, 's') = 'DgnKitLogic' GROUP BY ECClassId"))
+        stored.set(row[0], row[1]);
+      relMatch = show(byClass) === show(stored);
+      process.stdout.write(`logic    : ${sentRels.length} relationships sent; ${relMatch ? "all stored" : "DIFFER"}\n  sent   : ${show(byClass)}\n`);
+      if (!relMatch) process.stdout.write(`  stored : ${show(stored)}\n`);
+    }
+    return match && relMatch ? 0 : 1;
   } finally {
     db.close();
     await IModelHost.shutdown();
