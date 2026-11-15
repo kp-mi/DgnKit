@@ -18,3 +18,5 @@ connector/dist/
 *.bim-wal
 *.bim-shm
 *.imx.jsonl
+# engineering-logic outputs written next to the input by `dgnkit logic`
+*.logic.json

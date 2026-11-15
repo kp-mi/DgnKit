@@ -187,6 +187,34 @@ public sealed class ImxWriter : IDisposable
         WriteSource(w, e.Source);
     }, checksum: true);
 
+    public void Write(ImxRelationshipClass c) => Record("relationshipClass", w =>
+    {
+        w.WriteString("name", c.Name);
+        if (c.Description != null) w.WriteString("description", c.Description);
+        w.WriteString("base", "bis:ElementRefersToElements");
+        if (c.SourceRole != null) w.WriteString("sourceRole", c.SourceRole);
+        if (c.TargetRole != null) w.WriteString("targetRole", c.TargetRole);
+        w.WritePropertyName("properties");
+        w.WriteStartObject();
+        foreach (var kv in c.Properties) w.WriteString(kv.Key, kv.Value);
+        w.WriteEndObject();
+    }, checksum: false);
+
+    public void Write(ImxRelationship r) => Record("relationship", w =>
+    {
+        w.WriteString("key", r.Key);
+        w.WriteString("class", r.Class);
+        w.WriteString("source", r.SourceKey);
+        w.WriteString("target", r.TargetKey);
+        if (r.Properties.Count > 0)
+        {
+            w.WritePropertyName("properties");
+            w.WriteStartObject();
+            foreach (var kv in r.Properties) { w.WritePropertyName(kv.Key); WriteValue(w, kv.Value); }
+            w.WriteEndObject();
+        }
+    }, checksum: true);
+
     private static void WriteAppearance(Utf8JsonWriter w, ImxAppearance a)
     {
         w.WritePropertyName("appearance");

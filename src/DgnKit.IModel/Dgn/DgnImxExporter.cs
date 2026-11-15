@@ -21,6 +21,20 @@ public sealed class DgnImxOptions
     public bool IncludeConstruction { get; set; } = true;
     /// <summary>Only convert models with these names (null = all non-dictionary models).</summary>
     public IReadOnlyCollection<string>? Models { get; set; }
+    /// <summary>
+    /// Semantic enrichment (e.g. from the logic layer, <see cref="Logic.LogicImx"/>): extra property groups per element
+    /// key, plus relationship classes and relationships written after the elements. Relationships whose ends are not
+    /// elements of this stream are dropped (counted in the report).
+    /// </summary>
+    public ImxEnrichment? Enrichment { get; set; }
+}
+
+/// <summary>Content added to an IMX stream on top of the faithful DGN mapping.</summary>
+public sealed class ImxEnrichment
+{
+    public Dictionary<string, List<ImxPropertyGroup>> ElementProperties { get; } = new(StringComparer.Ordinal);
+    public List<ImxRelationshipClass> RelationshipClasses { get; } = new();
+    public List<ImxRelationship> Relationships { get; } = new();
 }
 
 public sealed class DgnImxReport
@@ -29,6 +43,8 @@ public sealed class DgnImxReport
     public int Elements { get; set; }
     public int ChildElements { get; set; }
     public int SkippedEmpty { get; set; }
+    /// <summary>Enrichment relationships not written because an end is not an element of the stream (e.g. in a reference).</summary>
+    public int DroppedRelationships { get; set; }
     public Dictionary<string, int> Unsupported { get; } = new();
     public Dictionary<string, int> Records { get; set; } = new();
     public override string ToString() =>
@@ -99,7 +115,21 @@ public sealed class DgnImxExporter
         foreach (var n in _styles) w.Write(LineStyle(n));
         foreach (var c in _categories.Values) w.Write(c);
         foreach (var m in _models) w.Write(m);
+        var enrich = _opt.Enrichment;
+        if (enrich != null)
+            foreach (var e in _elements)
+                if (e.Parent == null && enrich.ElementProperties.TryGetValue(e.Key, out var extra))
+                    e.Properties.AddRange(extra);
         foreach (var e in _elements) w.Write(e);
+        if (enrich != null && enrich.Relationships.Count > 0)
+        {
+            var keys = new HashSet<string>(_elements.Select(e => e.Key), StringComparer.Ordinal);
+            var rels = enrich.Relationships.Where(r => keys.Contains(r.SourceKey) && keys.Contains(r.TargetKey)).ToList();
+            _report.DroppedRelationships = enrich.Relationships.Count - rels.Count;
+            var used = new HashSet<string>(rels.Select(r => r.Class), StringComparer.Ordinal);
+            foreach (var c in enrich.RelationshipClasses) if (used.Contains(c.Name)) w.Write(c);
+            foreach (var r in rels) w.Write(r);
+        }
         _report.Records = new Dictionary<string, int>(w.Counts);
         return _report;
     }

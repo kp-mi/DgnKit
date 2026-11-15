@@ -1,0 +1,74 @@
+// Electric / telecom: spans run structure to structure, transformers and luminaires are attached to one structure,
+// conduits run between pull points, every pull box has a conduit, meters serve one premise.
+// Precedents: Esri Utility Network structural attachments and terminals; INSPIRE Utility Networks; BIS
+// PowerSystemResourcesPhysical (WIP); NEC 344/352/358.26 (≤ 360° of bends) and TxDOT conduit run guidance (secondary sources).
+{
+  "dgnkit-rules": 1,
+  "name": "electric",
+  "version": "1.0.0",
+
+  "classes": {
+    "Elec":                 { "abstract": true },
+    "Elec.Structure":       { "traits": ["Util.Structure"], "bis": "PowerSystemResourcesPhysical:Structure (WIP) / dynamic" },
+    "Elec.Structure.Pole":  { "traits": ["Elec.Mount", "Elec.Source"], "ifc": "IfcMember POST" },
+    "Elec.Structure.Tower": {},
+    "Elec.Structure.Pad":   {},
+    "Elec.Structure.Vault": {},
+    "Elec.Structure.PullBox": { "ifc": "IfcJunctionBox" },
+    "Elec.Structure.Cabinet": {},
+    "Elec.Link":            { "traits": ["Util.Link"] },
+    "Elec.Link.OverheadConductor": { "bis": "PowerSystemResourcesPhysical:Conductor (WIP)", "ifc": "IfcCableSegment CONDUCTORSEGMENT" },
+    "Elec.Link.ServiceDrop": {},
+    "Elec.Link.Conduit":    { "ifc": "IfcCableCarrierSegment CONDUITSEGMENT" },
+    "Elec.Source":          { "abstract": true, "description": "Role: what feeds a service drop (transformer, pole)." },
+    "Elec.Mount":           { "abstract": true, "description": "Role: what a luminaire can be mounted on (pole, signal pole, mast arm)." },
+    "Elec.Transformer":     { "traits": ["Util.Device", "Elec.Source"], "ifc": "IfcTransformer" },
+    "Elec.Streetlight":     { "traits": ["Util.Device"], "ifc": "IfcLightFixture" },
+    "Elec.Meter":           { "traits": ["Util.Meter"], "ifc": "IfcFlowMeter ENERGYMETER" }
+  },
+
+  "classify": [
+    { "id": "elec.attr-pole",   "class": "Elec.Structure.Pole", "when": "lower(coalesce(featureType, ecClass, '')) ~ '(power|utility|light(ing)?) ?pole'", "confidence": 0.8 },
+    { "id": "elec.attr-light",  "class": "Elec.Streetlight", "when": "lower(coalesce(featureType, ecClass, '')) ~ 'luminaire|street ?light'", "confidence": 0.8 },
+    { "id": "elec.attr-pullbox","class": "Elec.Structure.PullBox", "when": "lower(coalesce(featureType, ecClass, cell, '')) ~ 'pull ?box|junction ?box|jbox|handhole'", "confidence": 0.75 },
+    { "id": "elec.attr-conduit","class": "Elec.Link.Conduit", "when": "lower(coalesce(featureType, ecClass, '')) ~ 'conduit' and islinear", "confidence": 0.8 },
+    { "id": "elec.ncs-power",   "class": "Elec.Link.OverheadConductor", "when": "layer ~ '^(C|E)-POWR-(OVHD|OH)' and islinear", "confidence": 0.7 },
+    { "id": "elec.wsdot-power", "class": "Elec.Link.OverheadConductor", "when": "layer ~ '^UT_PW_AbvGndPower' and islinear", "confidence": 0.7 }
+  ],
+
+  "relate": [
+    { "id": "elec.span-ends", "relation": "endsAt", "subject": "Elec.Link.OverheadConductor", "object": "Elec.Structure", "test": "endpointNear", "tolerance": 0.5,
+      "prior": 0.9, "cardinality": 2, "reference": "spans run structure to structure (Esri structural attachment)" },
+    { "id": "elec.transformer-mount", "relation": "attachedTo", "subject": "Elec.Transformer", "object": "Elec.Structure", "test": "near", "tolerance": 1.5,
+      "evidence": [ { "when": "isa(object, 'Elec.Structure.Pole') or isa(object, 'Elec.Structure.Pad') or isa(object, 'Elec.Structure.Vault')", "weight": 1.0, "label": "pole / pad / vault" } ],
+      "prior": 0.85, "cardinality": "one", "reference": "Esri Utility Network: one attachment belongs to one structure" },
+    { "id": "elec.light-mount", "relation": "attachedTo", "subject": "Elec.Streetlight", "object": "Elec.Mount", "test": "near", "tolerance": 4.5,
+      "prior": 0.85, "cardinality": "one", "reference": "luminaire arm reach" },
+    { "id": "elec.conduit-ends", "relation": "endsAt", "subject": "Elec.Link.Conduit", "object": "Elec.Structure", "test": "endpointNear", "tolerance": 0.3,
+      "prior": 0.9, "cardinality": 2 },
+    { "id": "elec.drop-source", "relation": "fedBy", "subject": "Elec.Link.ServiceDrop", "object": "Elec.Source", "test": "endpointNear", "tolerance": 0.5,
+      "prior": 0.85, "cardinality": "one" },
+    { "id": "elec.meter-premise", "relation": "servesPremise", "subject": "Elec.Meter", "object": "Site.Premise", "test": "near", "tolerance": 3.0,
+      "prior": 0.85, "cardinality": "one" }
+  ],
+
+  "require": [
+    { "id": "elec.span-two-structures", "subject": "Elec.Link.OverheadConductor", "relation": "endsAt", "object": "Elec.Structure", "min": 2, "boundaryMargin": 5.0,
+      "severity": "error", "message": "overhead span {key} ends at {count} structures — spans run structure to structure" },
+    { "id": "elec.transformer-attached", "subject": "Elec.Transformer", "relation": "attachedTo", "object": "Elec.Structure", "exactly": 1, "absent": "implicit",
+      "severity": "warning", "message": "transformer {key} is attached to {count} structures (pole-, pad- or vault-mounted)" },
+    { "id": "elec.light-attached", "subject": "Elec.Streetlight", "relation": "attachedTo", "object": "Elec.Mount", "exactly": 1, "absent": "implicit",
+      "severity": "warning", "message": "luminaire {key} has no pole or arm drawn" },
+    { "id": "elec.conduit-ends-at-pull-points", "subject": "Elec.Link.Conduit", "relation": "endsAt", "object": "Elec.Structure", "min": 2, "boundaryMargin": 2.0,
+      "severity": "error", "message": "conduit {key} ends at {count} pull points — raceways run between pull points" },
+    { "id": "elec.pullbox-has-conduit", "subject": "Elec.Structure.PullBox", "relation": "endsAt", "object": "Elec.Link.Conduit", "direction": "in", "min": 1,
+      "severity": "error", "message": "pull box {key} has no conduit (orphan)" },
+    { "id": "elec.meter-serves-one", "subject": "Elec.Meter", "relation": "servesPremise", "object": "Site.Premise", "exactly": 1,
+      "severity": "error", "message": "electric meter {key} serves {count} premises" }
+  ],
+
+  "check": [
+    { "id": "elec.conduit-run-length", "subject": "Elec.Link.Conduit", "assert": "length <= 213.4", "severity": "warning",
+      "message": "conduit {key} runs {round(length, 1)} m between pull points (guidance 213 m / 700 ft)", "reference": "TxDOT conduit run length guidance; NEC bend limits" }
+  ]
+}

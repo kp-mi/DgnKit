@@ -1,0 +1,26 @@
+{
+  "type": "FeatureCollection",
+  "name": "Building A",
+  "features": [
+    { "type": "Feature", "id": "WALL-S", "properties": { "class": "Bldg.Wall", "thickness": 0.3, "base": 0, "height": 3 }, "geometry": { "type": "LineString", "coordinates": [[0, 0], [10, 0]] } },
+    { "type": "Feature", "id": "WALL-E", "properties": { "class": "Bldg.Wall", "thickness": 0.3, "base": 0, "height": 3 }, "geometry": { "type": "LineString", "coordinates": [[10, 0], [10, 8]] } },
+    { "type": "Feature", "id": "WALL-N", "properties": { "class": "Bldg.Wall", "thickness": 0.3, "base": 0, "height": 3 }, "geometry": { "type": "LineString", "coordinates": [[10, 8], [0, 8]] } },
+    { "type": "Feature", "id": "WALL-W", "properties": { "class": "Bldg.Wall", "thickness": 0.3, "base": 0, "height": 3 }, "geometry": { "type": "LineString", "coordinates": [[0, 8], [0, 0]] } },
+    { "type": "Feature", "id": "WALL-SCREEN", "properties": { "ifcClass": "IfcWall", "thickness": 0.2, "base": 0, "height": 2, "note": "garden screen wall: no roof, free ends" }, "geometry": { "type": "LineString", "coordinates": [[14, 0], [14, 6]] } },
+
+    { "type": "Feature", "id": "ROOF-1", "properties": { "class": "Bldg.Roof", "zmin": 3.0, "zmax": 3.4 }, "geometry": { "type": "Polygon", "coordinates": [[[-0.3, -0.3], [10.3, -0.3], [10.3, 8.3], [-0.3, 8.3], [-0.3, -0.3]]] } },
+    { "type": "Feature", "id": "CANOPY-1", "properties": { "layer": "A-ROOF-CNPY", "zmin": 2.8, "zmax": 3.0, "note": "nothing holds it up" }, "geometry": { "type": "Polygon", "coordinates": [[[20, 0], [24, 0], [24, 3], [20, 3], [20, 0]]] } },
+
+    { "type": "Feature", "id": "WIN-1", "properties": { "class": "Bldg.Window", "zmin": 0.9, "zmax": 2.1 }, "geometry": { "type": "LineString", "coordinates": [[2, 0], [3.2, 0]] } },
+    { "type": "Feature", "id": "WIN-2", "properties": { "class": "Bldg.Window", "zmin": 0.9, "zmax": 2.1 }, "geometry": { "type": "LineString", "coordinates": [[10, 3], [10, 4.2]] } },
+    { "type": "Feature", "id": "WIN-3", "properties": { "layer": "A-GLAZ", "zmin": 0.9, "zmax": 2.1 }, "geometry": { "type": "LineString", "coordinates": [[5, 8], [6.2, 8]] } },
+    { "type": "Feature", "id": "WIN-FLOAT", "properties": { "class": "Bldg.Window", "zmin": 0.9, "zmax": 2.1, "note": "in the middle of the room: no host" }, "geometry": { "type": "LineString", "coordinates": [[5, 4], [6.2, 4]] } },
+    { "type": "Feature", "id": "WIN-HIGH", "properties": { "class": "Bldg.Window", "zmin": 3.5, "zmax": 4.5, "note": "above the wall top" }, "geometry": { "type": "LineString", "coordinates": [[6, 0], [7.2, 0]] } },
+    { "type": "Feature", "id": "SKY-1", "properties": { "class": "Bldg.Window", "predefinedType": "SKYLIGHT", "zmin": 3.05, "zmax": 3.35 }, "geometry": { "type": "Point", "coordinates": [5, 4] } },
+    { "type": "Feature", "id": "DOOR-1", "properties": { "ifcClass": "IfcDoor", "zmin": 0, "zmax": 2.1 }, "geometry": { "type": "LineString", "coordinates": [[0, 3], [0, 4]] } },
+
+    { "type": "Feature", "id": "FTG-1", "properties": { "class": "Bldg.Foundation", "zmin": -0.6, "zmax": 0 }, "geometry": { "type": "Polygon", "coordinates": [[[29.5, -0.5], [30.5, -0.5], [30.5, 0.5], [29.5, 0.5], [29.5, -0.5]]] } },
+    { "type": "Feature", "id": "COL-1", "properties": { "class": "Bldg.Column", "zmin": 0, "zmax": 3 }, "geometry": { "type": "Point", "coordinates": [30, 0] } },
+    { "type": "Feature", "id": "COL-2", "properties": { "class": "Bldg.Column", "zmin": 0, "zmax": 3, "note": "no footing" }, "geometry": { "type": "Point", "coordinates": [34, 0] } }
+  ]
+}

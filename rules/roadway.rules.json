@@ -1,0 +1,111 @@
+// Roadway / traffic: signs are held by supports, signal heads by poles or mast arms, guardrail runs end in crashworthy
+// terminals, markings adhere to pavement, channelizing devices line up along markings.
+// Precedents: MUTCD 2009 §2A.16–2A.21 (signs), §4D.11–4D.15 (signals); IFC 4.3 IfcSign, IfcSignal, IfcRelAdheresToElement,
+// IfcImpactProtectionDevice; FHWA guardrail guidance. Tolerances on symbols scale with the symbol size (toleranceFactor),
+// because plan sheets draw signs at symbol scale, not real size.
+{
+  "dgnkit-rules": 1,
+  "name": "roadway",
+  "version": "1.0.0",
+
+  "classes": {
+    "Road":                   { "abstract": true },
+    "Elec.Mount":             { "abstract": true, "description": "Role (shared with the electric pack): what a luminaire can be mounted on." },
+    "Road.Sign":              { "shape": "point", "ifc": "IfcSign" },
+    "Road.SignSupport":       { "shape": "point", "description": "Post, portable mount, sign structure.", "ifc": "IfcMember POST / IfcElementAssembly SUPPORTINGASSEMBLY" },
+    "Road.SignSupport.Post":  {},
+    "Road.SignSupport.PortableMount": { "description": "Work-zone portable sign stand / tripod." },
+    "Road.SignSupport.Structure": {},
+    "Road.SignalHead":        { "shape": "point", "ifc": "IfcSignal VISUAL" },
+    "Road.SignalSupport":     { "traits": ["Elec.Mount"], "ifc": "IfcElementAssembly SIGNALASSEMBLY" },
+    "Road.SignalSupport.Pole":{},
+    "Road.SignalSupport.MastArm": {},
+    "Road.Guardrail":         { "shape": "linear", "ifc": "IfcRailing GUARDRAIL" },
+    "Road.Barrier":           { "shape": "linear" },
+    "Road.EndTreatment":      { "description": "Crashworthy end terminal, crash cushion or anchor.", "ifc": "IfcImpactProtectionDevice" },
+    "Road.PavementMarking":   { "ifc": "IfcSurfaceFeature LINEMARKING" },
+    "Road.Pavement":          { "shape": "areal", "bis": "CivilPhysical:Course", "ifc": "IfcCourse PAVEMENT" },
+    "Road.PavementEdge":      { "shape": "linear" },
+    "Road.Curb":              { "shape": "linear", "bis": "CivilPhysical:Curb", "ifc": "IfcKerb" },
+    "Road.Alignment":         { "shape": "linear", "bis": "RoadRailAlignment:Alignment", "ifc": "IfcAlignment" },
+    "Road.ChannelizingDevice":{ "shape": "point", "description": "Cones, drums, tubular markers, guide posts (MUTCD 6F.63–6F.68)." }
+  },
+
+  "classify": [
+    { "id": "road.attr-sign",   "class": "Road.Sign", "when": "lower(coalesce(featureType, ecClass, '')) ~ '^(traffic )?sign( panel)?$'", "confidence": 0.85 },
+    { "id": "road.attr-post",   "class": "Road.SignSupport.Post", "when": "lower(coalesce(featureType, ecClass, '')) ~ 'sign ?post|sign support'", "confidence": 0.85 },
+    { "id": "road.attr-guardrail", "class": "Road.Guardrail", "when": "lower(coalesce(featureType, ecClass, '')) ~ 'guard ?rail|beam guard fence'", "confidence": 0.85 },
+    // WSDOT CAD standards (RD_BR_*, RD_MK_*, RD_ED_*, AL_*)
+    { "id": "road.wsdot-guardrail", "class": "Road.Guardrail", "when": "layer ~ '^(RD_BR_Guardrail|TR_WZ_Guardrail)' and islinear", "confidence": 0.75 },
+    { "id": "road.wsdot-barrier",   "class": "Road.Barrier", "when": "layer ~ '^(RD_BR_Barrier|TR_WZ_Barrier)' and islinear", "confidence": 0.75 },
+    { "id": "road.wsdot-marking",   "class": "Road.PavementMarking", "when": "layer ~ '^(RD_MK_Line|PMStripe|RD_MK_RumbleStrip)' and kind != 'Text' and kind != 'TextNode'", "confidence": 0.75 },
+    { "id": "road.wsdot-edge",      "class": "Road.PavementEdge", "when": "layer ~ '^(RD_ED_(ShoulderPavedEdge|PavementEdge|EdgeOfPavement)|ShldrPaved|PavtAsphalt)' and islinear", "confidence": 0.7 },
+    { "id": "road.wsdot-alignment", "class": "Road.Alignment", "when": "layer ~ '^AL_(HW|SA|TA)_CLine' and islinear and kind != 'Text'", "confidence": 0.7 }
+  ],
+
+  "relate": [
+    {
+      "id": "road.sign-support", "relation": "supportedBy", "subject": "Road.Sign", "object": "Road.SignSupport",
+      "test": "near", "toleranceFactor": 2.0,
+      "evidence": [
+        { "when": "distance <= subject.size * 0.5", "weight": 1.0, "label": "touching the sign symbol" },
+        { "when": "centerDistance <= subject.size * 0.75", "weight": 1.5, "label": "centred on the sign (its own stand, not the neighbour's)" }
+      ],
+      "prior": 0.85, "cardinality": "one", "objectCardinality": 2,
+      "reference": "MUTCD §2A.21 (posts and mountings); IFC 4.3 IfcSign"
+    },
+    {
+      "id": "road.signal-support", "relation": "supportedBy", "subject": "Road.SignalHead", "object": "Road.SignalSupport",
+      "test": "near", "toleranceFactor": 1.5, "prior": 0.85, "cardinality": "one", "reference": "IFC 4.3 IfcSignal (signal assembly)"
+    },
+    {
+      "id": "road.guardrail-terminal", "relation": "terminatesWith", "subject": "Road.Guardrail", "object": "Road.EndTreatment",
+      "test": "endpointNear", "tolerance": 1.0, "prior": 0.85, "cardinality": 2, "reference": "FHWA: exposed approach ends need crashworthy terminals"
+    },
+    {
+      "id": "road.marking-on-pavement", "relation": "adheresTo", "subject": "Road.PavementMarking", "object": "Road.Pavement",
+      "test": "within", "tolerance": 0.3, "prior": 0.9, "cardinality": "one", "reference": "IFC 4.3 IfcRelAdheresToElement"
+    },
+    {
+      "id": "road.curb-pavement", "relation": "adjacentTo", "subject": "Road.Curb", "object": "Road.Pavement",
+      "test": "near", "tolerance": 0.15, "where": "angle <= 5", "prior": 0.85
+    },
+    {
+      "id": "road.device-along-marking", "relation": "alignedWith", "subject": "Road.ChannelizingDevice", "object": "Road.PavementMarking",
+      "test": "near", "toleranceFactor": 3.0, "prior": 0.7, "cardinality": "one",
+      "reference": "MUTCD Part 6 (devices delineate the taper and the closed lane along the lane lines)"
+    }
+  ],
+
+  "require": [
+    {
+      "id": "road.sign-supported", "subject": "Road.Sign", "relation": "supportedBy", "object": "Road.SignSupport", "min": 1,
+      "description": "Drawing convention gate: only where this drawing shows supports at all; a sign symbol whose cell includes its own stand counts as supported.",
+      "when": "peers('Road.SignSupport') > 0 and not coalesce(integralSupport, false)",
+      "severity": "warning",
+      "message": "sign {key} {coalesce(code, '')} has no support drawn next to it, while this drawing draws supports for other signs",
+      "reference": "MUTCD §2A.21"
+    },
+    {
+      "id": "road.signal-supported", "subject": "Road.SignalHead", "relation": "supportedBy", "object": "Road.SignalSupport", "exactly": 1, "absent": "implicit",
+      "severity": "error", "message": "signal head {key} is on {count} supports", "reference": "IFC 4.3 IfcSignal; MUTCD §4D.15"
+    },
+    {
+      "id": "road.guardrail-terminated", "subject": "Road.Guardrail", "relation": "terminatesWith", "object": "Road.EndTreatment", "min": 1, "boundaryMargin": 5.0,
+      "severity": "warning", "message": "guardrail run {key} has no end terminal or anchor", "reference": "FHWA guardrail safety guidance"
+    }
+  ],
+
+  "expect": [
+    {
+      "id": "road.signs-have-supports", "subject": "Road.Sign", "relation": "supportedBy", "object": "Road.SignSupport", "min": 1, "probability": 0.9,
+      "when": "peers('Road.SignSupport') > 0 and not coalesce(integralSupport, false)",
+      "message": "sign {key} has no support next to it"
+    },
+    {
+      "id": "road.devices-along-lines", "subject": "Road.ChannelizingDevice", "relation": "alignedWith", "object": "Road.PavementMarking", "min": 1, "probability": 0.7,
+      "when": "peers('Road.PavementMarking') > 0",
+      "message": "channelizing device {key} is not near any lane line or edge line"
+    }
+  ]
+}

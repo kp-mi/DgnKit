@@ -1,0 +1,73 @@
+// GIS content imported into DGN (WSDOT vicinity / index maps): state-route linear referencing (LRS) and hydrography.
+// Mileposts sit along their route (same RouteID, ARM inside the route segment's ARM range); a stream that crosses a
+// state route must pass under it through a culvert or bridge — usually in another dataset, so it is reported as unresolved.
+{
+  "dgnkit-rules": 1,
+  "name": "lrs-gis",
+  "version": "1.0.0",
+
+  "classes": {
+    "LRS":                 { "abstract": true },
+    "LRS.Route":           { "shape": "linear", "bis": "LinearReferencing:ILinearElement", "description": "State route LRS line (RouteID, BARM..EARM)." },
+    "LRS.ReferencePoint":  { "shape": "point", "bis": "LinearReferencing:ILinearlyLocated", "description": "Milepost / SRMP point (RouteID, ARM, SRMP)." },
+    "Hydro":               { "abstract": true },
+    "Hydro.Stream":        { "shape": "linear" },
+    "Hydro.WaterBody":     { "shape": "areal" },
+    "Hydro.Conveyance":    { "abstract": true, "description": "Role: carries a watercourse under a road (culvert, bridge)." },
+    "Road.Bridge":         { "traits": ["Hydro.Conveyance"] },
+    "Storm.Pipe.Culvert":  { "traits": ["Hydro.Conveyance"] },
+    "Rail":                { "abstract": true },
+    "Rail.Line":           { "shape": "linear" }
+  },
+
+  "classify": [
+    { "id": "lrs.point-ec", "class": "LRS.ReferencePoint", "confidence": 0.9, "when": "ecClass ~ 'LRS_\\d{4}_Points' or (exists(ARM) and exists(RouteID) and not exists(BARM))" },
+    { "id": "lrs.route-ec", "class": "LRS.Route", "confidence": 0.9, "when": "(ecClass ~ 'LRS_Lines' or (exists(BARM) and exists(EARM))) and islinear" },
+    { "id": "hydro.stream-ec", "class": "Hydro.Stream", "confidence": 0.85, "when": "(ecClass ~ 'Ster?ams|Streams' or layer ~ '^GIS_DNR_Streams$') and islinear" },
+    { "id": "hydro.waterbody-ec", "class": "Hydro.WaterBody", "confidence": 0.85, "when": "ecClass ~ 'WaterBod' or layer ~ '^GIS_DNR_WaterBodies$'" },
+    { "id": "rail.line-ec", "class": "Rail.Line", "confidence": 0.8, "when": "ecClass ~ 'Rail' and islinear" }
+  ],
+
+  "relate": [
+    {
+      "id": "lrs.point-on-route",
+      "description": "A milepost lies along the route line with the same RouteID (a different RouteID vetoes).",
+      "relation": "locatedAlong", "subject": "LRS.ReferencePoint", "object": "LRS.Route",
+      "test": "along", "tolerance": 60.0,
+      "where": "exists(subject.RouteID) and (not exists(object.RouteID) or str(subject.RouteID) == str(object.RouteID) or number(subject.RouteID) == number(object.RouteID))",
+      "evidence": [
+        { "when": "exists(subject.RouteID) and exists(object.RouteID)", "weight": 2.0, "label": "same RouteID" },
+        { "when": "exists(subject.ARM) and exists(object.BARM) and subject.ARM >= object.BARM - 0.01 and subject.ARM <= object.EARM + 0.01", "weight": 1.5, "label": "ARM inside the segment" },
+        { "when": "exists(subject.ARM) and exists(object.BARM) and subject.ARM >= object.BARM - 0.001 and subject.ARM < object.EARM - 0.001", "weight": 1.2, "label": "ARM in [BARM, EARM) (boundary points belong to the segment that starts there)" },
+        { "when": "exists(subject.Direction) and exists(object.Direction) and lower(subject.Direction) == lower(object.Direction)", "weight": 1.5, "label": "same direction (i/d)" },
+        { "when": "exists(subject.Direction) and exists(object.Direction) and lower(subject.Direction) != lower(object.Direction)", "weight": -1.0, "label": "opposite direction" }
+      ],
+      "prior": 0.7, "distanceWeight": 2.0, "cardinality": "one",
+      "reference": "BIS LinearReferencing; WSDOT LRS (ARM / SRMP)"
+    },
+    { "id": "hydro.stream-crosses-route", "relation": "crosses", "subject": "Hydro.Stream", "object": "LRS.Route", "test": "crosses", "prior": 0.95 },
+    { "id": "hydro.stream-conveyed", "relation": "conveyedBy", "subject": "Hydro.Stream", "object": "Hydro.Conveyance", "test": "near", "tolerance": 30.0, "prior": 0.8 }
+  ],
+
+  "require": [
+    {
+      "id": "lrs.point-located", "subject": "LRS.ReferencePoint", "relation": "locatedAlong", "object": "LRS.Route", "exactly": 1,
+      "when": "exists(RouteID) and peersWhere('LRS.Route', 'str(RouteID) == str(self.RouteID) and self.ARM >= BARM - 0.01 and self.ARM <= EARM + 0.01') > 0", "boundaryMargin": 50.0, "severity": "warning",
+      "message": "milepost {key} (SR {RouteID} ARM {ARM}) is not along a route line of the same RouteID"
+    },
+    {
+      "id": "hydro.crossing-structure", "subject": "Hydro.Stream", "relation": "conveyedBy", "object": "Hydro.Conveyance", "min": 1,
+      "when": "degree(self, 'crosses', 'LRS.Route') > 0", "absent": "unresolved", "severity": "warning",
+      "message": "stream {key} crosses a state route but no culvert or bridge is in this data (expected in the drainage/structures set)"
+    }
+  ],
+
+  "check": [
+    {
+      "id": "lrs.arm-in-segment", "subject": "LRS.ReferencePoint", "relation": "locatedAlong", "object": "LRS.Route",
+      "assert": "subject.ARM >= object.BARM - 0.01 and subject.ARM <= object.EARM + 0.01",
+      "when": "exists(subject.ARM) and exists(object.BARM) and exists(object.EARM) and peersWhere(subject, 'LRS.Route', 'str(RouteID) == str(self.RouteID) and self.ARM >= BARM - 0.01 and self.ARM <= EARM + 0.01') > 0", "severity": "warning",
+      "message": "milepost {subject.key} ARM {subject.ARM} lies outside route segment {object.key} ARM {object.BARM}–{object.EARM}"
+    }
+  ]
+}

@@ -109,7 +109,31 @@ export interface ImxElement {
   checksum: string;
 }
 
-export type ImxRecord = ImxHeader | ImxFont | ImxLineStyle | ImxCategory | ImxSubCategory | ImxModel | ImxPart | ImxElement;
+/** A relationship class (logic layer): becomes an ECRelationshipClass derived from bis:ElementRefersToElements. */
+export interface ImxRelationshipClass {
+  kind: "relationshipClass";
+  name: string;
+  description?: string;
+  base: string;
+  sourceRole?: string;
+  targetRole?: string;
+  /** property name → EC primitive type */
+  properties: Record<string, "string" | "double" | "int" | "long" | "boolean">;
+}
+
+/** A link-table relationship between two elements of the same IMX stream (by element key). */
+export interface ImxRelationship {
+  kind: "relationship";
+  key: string;
+  class: string;
+  source: string;
+  target: string;
+  properties?: Record<string, unknown>;
+  checksum: string;
+}
+
+export type ImxRecord = ImxHeader | ImxFont | ImxLineStyle | ImxCategory | ImxSubCategory | ImxModel | ImxPart | ImxElement
+  | ImxRelationshipClass | ImxRelationship;
 
 /** Streams the records of an IMX file in order. */
 export async function* readImx(path: string): AsyncGenerator<ImxRecord> {

@@ -12,7 +12,8 @@ iModelHub. One loader serves every format.
 
 * Newline-delimited JSON (UTF-8), one record per line, `kind` first.
 * Records appear in dependency order: `header`, `font`*, `lineStyle`*, `category`*, `subCategory`*, `model`*, `part`*,
-  `element`*. A record only references keys of records that appeared before it (an element's `parent` precedes it).
+  `element`*, `relationshipClass`*, `relationship`*. A record only references keys of records that appeared before it
+  (an element's `parent` precedes it; a relationship's ends are elements).
 * **All coordinates are metres** in the iModel's world frame (DGN: `(uor − globalOrigin) / uorPerMaster × metresPerMaster`).
 * `key`s are unique within the file and are only used to link records; the loader maps them to element ids.
 * `source` = `{ kind, id, info? }` is the stable identity in the source repository → `bis:ExternalSourceAspect`
@@ -90,6 +91,31 @@ multi-level cells into child elements instead).
 * `properties`: `[{ source, name, schema?, class?, values:{…} }]` — EC instances, item types, tags, string/database
   linkages, civil feature data.
 * `modified`: source modification time → `ExternalSourceAspect.Version`.
+
+### relationshipClass (v1 extension, after all elements)
+
+`{ name, description?, base:"bis:ElementRefersToElements", sourceRole?, targetRole?, properties:{ name: type } }`
+
+* Becomes an `ECRelationshipClass` in the loader's dynamic schema **`DgnKitLogic`**.
+* Derived from `bis:ElementRefersToElements`: a link table, with subclass properties in shared columns.
+* `strength="referencing"`, Source and Target `bis:Element` (0..*), polymorphic.
+* `type` ∈ `string | double | int | long | boolean`.
+* The loader adds a `Checksum` string property.
+* The schema is additive across runs, like `DgnKitDynamic`.
+
+### relationship (v1 extension)
+
+`{ key, class, source, target, properties?, checksum }`
+
+* `source` / `target` are **element keys of the same stream**.
+* `properties` match the class's properties. The logic layer writes `Confidence`, `Rule`, `Status`
+  (asserted / inferred / derived), `Evidence` (JSON text) and `Ambiguous`.
+* There is no `source` identity: link-table relationships have no `ExternalSourceAspect`. Identity is therefore
+  (class, source element, target element) — one row per triple, as the link table itself enforces. The `checksum`
+  is stored in `Checksum` for change detection.
+* Standalone updates insert new triples, update changed checksums, and delete triples of this job (source element
+  in the job's provenance scope) that are no longer present.
+* Producers: `DgnKit.IModel.Logic.LogicImx` (engineering logic layer, [LOGIC.md](LOGIC.md)). Older loaders ignore both kinds.
 
 ## Geometry stream entries
 

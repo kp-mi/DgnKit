@@ -1,0 +1,145 @@
+// Sanitary sewer: gravity mains manhole to manhole, laterals (service connections / "feeders") flow into exactly one
+// public sewer, mains converge on a lift station or treatment plant, minimum size/slope, manhole spacing.
+// Precedents: Recommended Standards for Wastewater Facilities (Ten States) 2014 §§33–34, §48–49; BIS StormSewerPhysical
+// SanitarySewerSystem; Esri Utility Network connectivity rules. Attributes: diameter, invertUp, invertDown (m).
+{
+  "dgnkit-rules": 1,
+  "name": "sewer",
+  "version": "1.0.0",
+
+  "classes": {
+    "Sewer":               { "abstract": true },
+    "Sewer.Pipe":          { "traits": ["Util.Pipe"], "bis": "PipeworkPhysical:Pipe in StormSewerPhysical:SanitarySewerSystem", "ifc": "IfcPipeSegment (SEWAGE)" },
+    "Sewer.Pipe.GravityMain": { "traits": ["Sewer.Collector"] },
+    "Sewer.Pipe.Lateral":  { "description": "Building sewer / service connection (the 'feeder')." },
+    "Sewer.Pipe.ForceMain":{},
+    "Sewer.Collector":     { "abstract": true, "description": "Role: what a lateral may discharge into (a main, a manhole)." },
+    "Sewer.Terminal":      { "abstract": true, "description": "Role: where gravity collection converges (lift station, treatment plant)." },
+    "Sewer.Structure":     { "traits": ["Util.Structure"], "bis": "StormSewerPhysical:DistributionStructure" },
+    "Sewer.Structure.Manhole":     { "traits": ["Sewer.Collector"], "bis": "DistributionStructure + ManholeType", "ifc": "IfcDistributionChamberElement MANHOLE" },
+    "Sewer.Structure.Cleanout":    { "ifc": "IfcPipeFitting USERDEFINED (cleanout)" },
+    "Sewer.Structure.LiftStation": { "traits": ["Sewer.Terminal"], "ifc": "IfcDistributionChamberElement SUMP" },
+    "Sewer.Structure.TreatmentPlant": { "traits": ["Sewer.Terminal"] }
+  },
+
+  "classify": [
+    { "id": "sewer.attr-main",    "class": "Sewer.Pipe.GravityMain", "when": "lower(coalesce(featureType, ecClass, '')) ~ '(sanitary|sewer|wastewater).*(main|pipe)' and lower(coalesce(featureType, ecClass, '')) !~ 'force|lateral|service'", "confidence": 0.85 },
+    { "id": "sewer.attr-lateral", "class": "Sewer.Pipe.Lateral", "when": "lower(coalesce(featureType, ecClass, '')) ~ '(sewer|sanitary).*(lateral|service)|building sewer'", "confidence": 0.85 },
+    { "id": "sewer.attr-force",   "class": "Sewer.Pipe.ForceMain", "when": "lower(coalesce(featureType, ecClass, '')) ~ 'force ?main'", "confidence": 0.85 },
+    { "id": "sewer.attr-manhole", "class": "Sewer.Structure.Manhole", "when": "lower(coalesce(featureType, ecClass, '')) ~ '(sanitary|sewer).*manhole'", "confidence": 0.85 },
+    { "id": "sewer.ncs-main",     "class": "Sewer.Pipe.GravityMain", "when": "layer ~ '^C-SSWR(-PIPE|-MAIN)?$' and islinear", "confidence": 0.7 },
+    { "id": "sewer.ncs-lateral",  "class": "Sewer.Pipe.Lateral", "when": "layer ~ '^C-SSWR-(LATL|SERV|LAT)' and islinear", "confidence": 0.7 },
+    { "id": "sewer.ncs-manhole",  "class": "Sewer.Structure.Manhole", "when": "layer ~ '^C-SSWR-(MHOL|STRC|MH)' and not islinear", "confidence": 0.7 }
+  ],
+
+  "relate": [
+    {
+      "id": "sewer.main-at-structure",
+      "relation": "flowsInto", "subject": "Sewer.Pipe.GravityMain", "object": "Sewer.Structure",
+      "test": "endpointNear", "tolerance": 0.5,
+      "reverseWhen": "contactEnd == subject.flowFrom",
+      "prior": 0.92, "cardinality": 2,
+      "reference": "Ten States 34.1: manholes at the end of each line, at all changes in grade, size or alignment, at all intersections"
+    },
+    {
+      "id": "sewer.lateral-outlet",
+      "description": "The feeder's downstream end taps the main (or, less preferred, a manhole).",
+      "relation": "flowsInto", "subject": "Sewer.Pipe.Lateral", "object": "Sewer.Collector",
+      "test": "endpointNear", "tolerance": 0.5,
+      "evidence": [
+        { "when": "exists(subject.diameter) and exists(object.diameter) and subject.diameter < object.diameter", "weight": 1.0, "label": "smaller than the main" },
+        { "when": "exists(subject.diameter) and exists(object.diameter) and subject.diameter >= object.diameter", "weight": -2.0, "label": "not smaller than the main" },
+        { "when": "angle >= 45", "weight": 0.5, "label": "leaves the main roughly square" },
+        { "when": "isa(object, 'Sewer.Structure.Manhole')", "weight": -0.8, "label": "into a manhole (less usual)" }
+      ],
+      "prior": 0.9, "cardinality": "one",
+      "reference": "Ten States 33.9 (service connections); Esri Utility Network edge–junction connectivity"
+    },
+    {
+      "id": "sewer.lateral-premise",
+      "relation": "servesPremise", "subject": "Sewer.Pipe.Lateral", "object": "Site.Premise",
+      "test": "endpointNear", "tolerance": 3.0,
+      "prior": 0.85, "cardinality": "one"
+    },
+    {
+      "id": "sewer.forcemain-discharge",
+      "relation": "flowsInto", "subject": "Sewer.Pipe.ForceMain", "object": "Sewer.Structure.Manhole",
+      "test": "endpointNear", "tolerance": 0.5, "where": "not (contactEnd == subject.flowFrom)",
+      "prior": 0.85, "cardinality": "one",
+      "reference": "Ten States 48.6: force main enters the receiving manhole at no more than 0.3 m above the flow line"
+    },
+    {
+      "id": "sewer.forcemain-from-station",
+      "relation": "flowsInto", "subject": "Sewer.Pipe.ForceMain", "object": "Sewer.Structure.LiftStation",
+      "test": "endpointNear", "tolerance": 1.0, "reverseWhen": "true",
+      "prior": 0.85, "cardinality": "one"
+    }
+  ],
+
+  "derive": [
+    { "id": "sewer.feeds-pipe", "relation": "feedsPipe", "subject": "Sewer.Pipe.GravityMain", "object": "Sewer.Pipe.GravityMain", "path": ["flowsInto", "flowsInto"], "through": "isa(self, 'Sewer.Structure')" },
+    { "id": "sewer.drains-to", "relation": "drainsTo", "subject": "Sewer.Pipe", "object": "Sewer.Terminal", "path": ["flowsInto+"], "through": "domain == 'Sewer'" }
+  ],
+
+  "allow": [
+    { "id": "sewer.allow-forcemain-joint", "subject": "Sewer.Pipe.ForceMain", "relation": "connectsTo", "object": "Sewer.Pipe.ForceMain" }
+  ],
+
+  "require": [
+    {
+      "id": "sewer.main-downstream-manhole", "subject": "Sewer.Pipe.GravityMain", "relation": "flowsInto", "object": "Sewer.Structure", "direction": "out", "exactly": 1,
+      "boundaryMargin": 2.0, "severity": "error",
+      "message": "sewer main {key} ends at {count} structures downstream — sewers run manhole to manhole",
+      "reference": "Ten States 34.1"
+    },
+    {
+      "id": "sewer.main-upstream-manhole", "subject": "Sewer.Pipe.GravityMain", "relation": "flowsInto", "object": "Sewer.Structure", "direction": "in", "exactly": 1,
+      "boundaryMargin": 2.0, "severity": "error",
+      "message": "sewer main {key} starts at {count} structures — a manhole is required at the end of each line",
+      "reference": "Ten States 34.1"
+    },
+    {
+      "id": "sewer.lateral-one-outlet", "subject": "Sewer.Pipe.Lateral", "relation": "flowsInto", "object": "Sewer.Collector", "direction": "out", "exactly": 1,
+      "severity": "error",
+      "message": "lateral {key} connects to {count} public sewers — a service connection joins exactly one",
+      "reference": "Ten States 33.9"
+    },
+    {
+      "id": "sewer.reaches-terminal", "subject": "Sewer.Pipe", "relation": "drainsTo", "object": "Sewer.Terminal", "min": 1,
+      "absent": "unresolved", "severity": "warning",
+      "message": "sewer {key} does not reach a lift station or treatment plant in this data"
+    }
+  ],
+
+  "expect": [
+    {
+      "id": "sewer.lateral-serves-premise", "subject": "Sewer.Pipe.Lateral", "relation": "servesPremise", "object": "Site.Premise", "min": 1,
+      "probability": 0.9, "message": "lateral {key} reaches no premise (one lateral per building is typical)"
+    }
+  ],
+
+  "check": [
+    { "id": "sewer.min-diameter", "subject": "Sewer.Pipe.GravityMain", "assert": "diameter >= 0.2 - 1e-6", "when": "exists(diameter)",
+      "severity": "error", "message": "public gravity sewer {key} is {diameter} m — minimum is 0.20 m (8 in)", "reference": "Ten States 33.1" },
+    { "id": "sewer.min-slope", "subject": "Sewer.Pipe.GravityMain",
+      "assert": "slope >= if(diameter <= 0.21, 0.0040, if(diameter <= 0.26, 0.0028, if(diameter <= 0.31, 0.0022, if(diameter <= 0.39, 0.0015, if(diameter <= 0.46, 0.0012, if(diameter <= 0.54, 0.0010, if(diameter <= 0.62, 0.0008, 0.00067)))))))",
+      "when": "exists(slope) and exists(diameter) and slope >= 0", "severity": "warning",
+      "message": "sewer {key} slope {round(slope, 4)} is below the minimum for D = {diameter} m (0.6 m/s full flow)", "reference": "Ten States 33.41 (n = 0.013)" },
+    { "id": "sewer.adverse-slope", "subject": "Sewer.Pipe", "assert": "invertUp >= invertDown", "when": "exists(invertUp) and exists(invertDown) and not isa(self, 'Sewer.Pipe.ForceMain')",
+      "severity": "error", "message": "gravity sewer {key} slopes uphill (invert up {invertUp} < invert down {invertDown})" },
+    { "id": "sewer.manhole-spacing", "subject": "Sewer.Pipe.GravityMain", "assert": "length <= if(diameter <= 0.375, 121.9, 152.4)", "when": "exists(diameter)",
+      "severity": "warning", "message": "sewer {key} is {round(length, 1)} m between manholes (max 122 m for D ≤ 375 mm, 152 m for 450–750 mm)", "reference": "Ten States 34.2" },
+    { "id": "sewer.lateral-smaller", "subject": "Sewer.Pipe.Lateral", "relation": "flowsInto", "object": "Sewer.Pipe.GravityMain",
+      "assert": "subject.diameter < object.diameter", "when": "exists(subject.diameter) and exists(object.diameter)",
+      "severity": "info", "message": "lateral {subject.key} (D = {subject.diameter}) is not smaller than main {object.key} (D = {object.diameter})" },
+    { "id": "sewer.outlet-below-inlets", "subject": "Sewer.Pipe.GravityMain", "relation": "feedsPipe", "object": "Sewer.Pipe.GravityMain",
+      "assert": "subject.invertDown >= object.invertUp - 0.01", "when": "exists(subject.invertDown) and exists(object.invertUp)",
+      "severity": "error", "message": "outlet {object.key} leaves the manhole above inlet {subject.key}", "reference": "Ten States 33.6 / 34.4" },
+    { "id": "sewer.manhole-diameter", "subject": "Sewer.Structure.Manhole", "assert": "diameter >= 1.2", "when": "exists(diameter)",
+      "severity": "warning", "message": "manhole {key} inside diameter {diameter} m < 1.22 m (48 in)", "reference": "Ten States 34.3" }
+  ],
+
+  "acyclic": [
+    { "id": "sewer.no-flow-cycles", "relation": "flowsInto", "subject": "Sewer", "severity": "error" }
+  ]
+}

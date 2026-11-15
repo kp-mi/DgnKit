@@ -25,9 +25,24 @@
                  ┌───────────── DgnKit.IModel (net8.0) ─────────────┐        ┌──────── connector/ (TypeScript) ────────┐
   DgnFile ──►    │ DgnImxExporter: DGN → BIS (exact geometry, metres,│ IMX ──►│ ImxLoader on @itwin/core-backend 5.x:    │──► .bim
                  │ provenance, checksums) → ImxWriter (NDJSON)       │        │ BIS tree, schemas, sync, views (EditTxn) │
-                 └───────────────────────────────────────────────────┘        └──────────────────────────────────────────┘
-                 DgnKit.Cli: info | scan | dump | export | imodel
+                 └──────────────▲────────────────────────────────────┘        │ + DgnKitLogic relationship schema        │
+                                │ ImxEnrichment (LogicImx: classifications, relationships)  └──────────────────────────────────────────┘
+                 ┌──────────────┴───── DgnKit.Logic (netstandard2.0, no dependencies) ──────────────────────────────────────┐
+  DgnFile ──►    │ DgnKit.Logic.Dgn: DgnFeatureExtractor (display list → features in metres, levels, cells, EC/tags, sheet) │
+  GeoJSON ──►    │ GeoJsonFeatures ─► FeatureSet ─► LogicEngine(RuleSet from rules/*.rules.json)                            │
+                 │   classify → compute → relate (R-tree candidates, log-odds evidence, cardinality, ambiguity, orientation) │
+                 │   → derive (path closure) → validate (require/expect/forbid/check/acyclic/default-deny, open world)      │
+                 │ LogicGraph (typed nodes, attributed edges) · GraphQuery (traces) · writers: JSON, MD, GraphML, Neo4j, Cypher│
+                 └──────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+                 DgnKit.Cli: info | scan | dump | export | imodel [--logic] | logic [query|rules|scan]
 ```
+
+The **engineering logic layer** ([LOGIC.md](LOGIC.md)) is deliberately format-neutral:
+* it consumes `Feature`s (identity, naming signals, attributes, geometry in metres);
+* its rules are data (JSON packs), not code;
+* it never reads DGN structures itself — `DgnKit.Logic.Dgn` does.
+
+The same engine therefore runs on GIS data today, and on IFC or IMX input later.
 
 The iModel path deliberately does **not** go through the display list: iModels keep exact curves, ByLevel symbology
 (inherited from sub-categories) and element identity, so `DgnImxExporter` walks the element tree itself and reuses only

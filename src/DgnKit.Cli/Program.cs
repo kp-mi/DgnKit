@@ -23,6 +23,7 @@ internal static class Program
                 "dump" => Dump(args.Skip(1).ToArray()),
                 "export" => ExportCmd(args.Skip(1).ToArray()),
                 "imodel" => IModelCmd(args.Skip(1).ToArray()),
+                "logic" => LogicCli.Run(args.Skip(1).ToArray()),
                 _ => Usage(),
             };
         }
@@ -49,6 +50,14 @@ internal static class Program
               dgnkit imodel <file.dgn> [-o out.imx.jsonl] [--model name] [--2d-spatial] [--bim out.bim]
                             map the DGN onto BIS and write the iModel interchange (IMX, docs/IMODEL-INTERCHANGE.md);
                             --bim also runs the iTwin.js connector (connector/, needs Node.js) to create a snapshot iModel
+                            --logic [rules] adds engineering-logic classifications and relationships (docs/LOGIC.md)
+              dgnkit logic  <file.dgn|file.geojson>... [--rules builtin|builtin:<pack>|file|dir]... [--model name] [--no-refs]
+                            [-o out.logic.json] [--report out.md] [--graphml out.graphml] [--cypher out.cypher] [--neo4j dir]
+                            classify engineering objects, infer relationships, derive, validate (docs/LOGIC.md)
+              dgnkit logic query <input>... --from <key> [--query downstream|upstream|feeds|network|supply] [--rules …]
+              dgnkit logic rules [--rules …]                    list packs, classes, relations and rules
+              dgnkit logic scan <dir> [--rules …] [--csv out.csv] [--report out.md]
+                            run the rules over every *.dgn / *.geojson under dir
             """);
         return 1;
     }
@@ -159,12 +168,24 @@ internal static class Program
         var f = DgnFile.Open(a[0]);
         var imx = Opt(a, "-o") ?? Path.ChangeExtension(a[0], ".imx.jsonl");
         var model = Opt(a, "--model");
+        DgnKit.IModel.Dgn.ImxEnrichment? enrichment = null;
+        if (Flag(a, "--logic"))
+        {
+            // optional value: --logic <rules>; a following option or nothing means the built-in packs
+            var lv = Opt(a, "--logic");
+            var rules = DgnKit.Logic.Rules.RuleSet.FromPaths(lv == null || lv.StartsWith("-") ? new[] { "builtin" } : new[] { lv });
+            var fs = DgnKit.Logic.Dgn.DgnFeatureExtractor.Extract(f, new DgnKit.Logic.Dgn.DgnFeatureOptions { Models = model == null ? null : new[] { model }, IncludeReferences = false });
+            var lr = DgnKit.Logic.Engine.LogicEngine.Run(fs, rules);
+            enrichment = DgnKit.IModel.Logic.LogicImx.ToEnrichment(lr);
+            Console.WriteLine($"logic: {lr.Classified.Count()} classified, {lr.Graph.Edges.Count} edges, {lr.Findings.Count} findings; {enrichment.Relationships.Count} relationships to write");
+        }
         var report = DgnKit.IModel.Dgn.DgnImxExporter.Export(f, imx, new DgnKit.IModel.Dgn.DgnImxOptions
         {
             TwoDAsSpatial = Flag(a, "--2d-spatial"),
             Models = model == null ? null : new[] { model },
+            Enrichment = enrichment,
         });
-        Console.WriteLine($"wrote {imx} in {sw.ElapsedMilliseconds} ms: {report}");
+        Console.WriteLine($"wrote {imx} in {sw.ElapsedMilliseconds} ms: {report}" + (report.DroppedRelationships > 0 ? $"; {report.DroppedRelationships} relationships dropped (end not in this file)" : ""));
 
         var bim = Opt(a, "--bim");
         if (bim == null) return 0;
